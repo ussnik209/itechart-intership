@@ -1,7 +1,14 @@
 node_modules
 
 src
+
+.gitignore
+
 .babelrc
+
 webpack.config.js
+
 package.json
+
 package-lock.json
+
