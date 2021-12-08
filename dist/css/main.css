@@ -310,17 +310,12 @@ template {
 [hidden] {
   display: none; }
 
-.header__container, .navigator, .row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-.quote {
+.quote, .subscribe {
   display: flex;
   flex-direction: column;
   align-items: center; }
 
-.welcome, .content {
+.welcome {
   display: flex;
   flex-direction: column;
   justify-content: center; }
@@ -335,8 +330,11 @@ template {
 
 h1,
 h2,
-p {
-  margin: 0; }
+p,
+button,
+input {
+  margin: 0;
+  padding: 0; }
 
 a {
   text-decoration: none;
@@ -345,6 +343,9 @@ a {
 li {
   list-style-type: none; }
 
+main {
+  font-size: 0; }
+
 html {
   font-size: 10px; }
 
@@ -352,7 +353,10 @@ html {
   background-color: #db5940;
   color: white; }
   .header__container {
-    height: 80px; }
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
     .header__container .header__site-name {
       font-size: 2.4rem;
       letter-spacing: 1px;
@@ -360,7 +364,10 @@ html {
       font-family: 'Source Sans Pro', sans-serif; }
 
 .navigator {
-  width: 410px; }
+  width: 410px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
   .navigator__item {
     font-size: 1.6rem;
     letter-spacing: 1px;
@@ -383,11 +390,11 @@ html {
   height: 140px; }
   .welcome__title {
     text-transform: uppercase;
-    font-size: inherit;
     font-weight: 300;
     font-size: 3rem; }
   .welcome__text {
-    font-size: 2rem; }
+    font-size: 2rem;
+    letter-spacing: 2px; }
 
 .image__container {
   max-width: 1920px;
@@ -398,11 +405,11 @@ html {
   margin: 0 auto; }
 
 .quote__icon {
-  margin-bottom: 34px; }
+  margin-bottom: 29px; }
 
 .quote__title {
-  margin-bottom: 29px;
-  font-size: 28px;
+  margin-bottom: 15px;
+  font-size: 2.8rem;
   letter-spacing: 1px;
   color: #605f64;
   font-weight: 300;
@@ -410,7 +417,7 @@ html {
   text-align: center; }
 
 .quote__text {
-  margin-bottom: 28px;
+  margin-bottom: 23px;
   width: 318px;
   text-align: center; }
 
@@ -418,6 +425,7 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   width: 100px;
   height: 100px;
   border-radius: 50px;
@@ -436,7 +444,10 @@ html {
   padding-left: 5px; }
 
 .row {
-  padding: 80px 0; }
+  padding: 80px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
 
 .article {
   display: grid;
@@ -464,14 +475,15 @@ html {
   grid-template-areas: 'icon content'; }
 
 .content {
-  width: 318px; }
+  width: 318px;
+  padding-top: 33px; }
   .content__title {
     font-size: 2.8rem;
     letter-spacing: 1px;
     color: #605f64;
     font-weight: 300;
     font-family: "Source Sans Pro";
-    margin-bottom: 31px; }
+    margin-bottom: 15px; }
   .content__text {
     font-size: 1.6rem;
     letter-spacing: 1px;
@@ -493,7 +505,7 @@ html {
   grid-template-columns: 1fr 1fr;
   padding: 80px 0px 110px 0px; }
 
-.more-link {
+.link {
   color: #db5940; }
 
 .contacts {
@@ -509,6 +521,61 @@ html {
     max-width: 250px; }
   .contact__icon {
     margin-right: 30px; }
+
+.subscribe__title {
+  font-size: 2.8rem;
+  letter-spacing: 5px;
+  color: #e6e6e6;
+  font-weight: 300;
+  font-family: "Source Sans Pro";
+  text-align: center;
+  margin-bottom: 23px; }
+
+.subscribe__field {
+  display: flex; }
+
+.subscribe__input {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: 2.6rem;
+  color: #e6e6e6;
+  font-weight: 400;
+  font-family: "Source Sans Pro";
+  height: 48px;
+  width: 455px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  padding-left: 21px;
+  box-sizing: border-box;
+  background-color: #db5940; }
+
+.subscribe__input::-webkit-input-placeholder {
+  color: #e6e6e6; }
+
+.subscribe__button {
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+  line-height: 2.6rem;
+  color: #db5940;
+  font-weight: 400;
+  font-family: "Source Sans Pro";
+  text-align: center;
+  height: 48px;
+  width: 116px;
+  border-radius: 0 5px 5px 0;
+  border: none; }
+
+footer {
+  padding: 60px 0 55px 0; }
+
+.sign {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: #9a98a2;
+  font-weight: 400;
+  font-family: "Source Sans Pro";
+  text-align: center;
+  padding-top: 39px; }
 
 
 /*# sourceMappingURL=main.css.map*/
