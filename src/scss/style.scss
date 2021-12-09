@@ -1,0 +1,452 @@
+@import '~normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+$orange: #db5940;
+$light-grey: #e6e6e6;
+$grey: #9a98a2;
+$dark-grey: #605f64;
+$dark-background: #38373b;
+$small-icon: 70px;
+$search-height: 48px;
+$contact-width: 400px;
+@mixin flex($justification) {
+  display: flex;
+  justify-content: $justification;
+  align-items: center;
+}
+
+%horizontal-centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+%vertical-centering {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+%simple-text {
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  line-height: 2.6rem;
+  color: $grey;
+  font-weight: 400;
+  font-family: "Source Sans Pro";
+}
+
+// disable margins and paddings
+h1,
+h2,
+p,
+button,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+// disable decoration
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style-type: none;
+}
+
+main {
+  font-size: 0;
+}
+
+// default size to 1rem
+html {
+  font-size: 10px;
+  @media (max-width: 768px) {
+    font-size: 8px;
+  }
+  @media (max-width: 425px) {
+    font-size: 7px;
+  }
+  @media (max-width: 320px) {
+    font-size: 6px;
+  }
+}
+
+.header {
+  background-color: $orange;
+  color: white;
+  &__container {
+    height: 80px;
+    @include flex(space-between);
+    .header__site-name {
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      font-weight: 300;
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    @media (max-width: 425px) {
+      flex-direction: column;
+      height: unset;
+      min-height: 40px;
+    }
+  }
+}
+
+.navigator {
+  width: calc((410 / 1170) * 100%);
+  @include flex(space-between);
+  flex-wrap: wrap;
+  &__item {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+  @media (max-width: 425px) {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    // margin: 0px;
+  }
+}
+
+.container {
+  max-width: 1170px;
+  padding: 0px 30px;
+  margin: 0px auto;
+}
+
+.wrapper_dark {
+  background-color: $dark-background;
+}
+
+.welcome {
+  box-sizing: border-box;
+  height: 140px;
+  letter-spacing: 5px;
+  font-weight: 300;
+  color: $light-grey;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  @extend %vertical-centering;
+  &__title {
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 3rem;
+  }
+  &__text {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+}
+
+.image {
+  &__container {
+    width: 100vw;
+    height: 400px;
+    background: url('../assets/img/welcome.webp');
+    background-size: cover;
+    background-position: center;
+    margin: 0 auto;
+    @media (max-width: 425px) {
+      height: 200px;
+    }
+  }
+}
+
+.quote {
+  @extend %horizontal-centering;
+  &__icon {
+    margin-bottom: 29px;
+  }
+  &__title {
+    margin-bottom: 15px;
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: $dark-grey;
+    font-weight: 300;
+    font-family: "Source Sans Pro";
+    text-align: center;
+  }
+  &__text {
+    margin-bottom: 23px;
+    width: 318px;
+    text-align: center;
+    @extend %simple-text;
+    @media (max-width: 425px) {
+      width: 100%;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  border: 3px solid #a6a4ad;
+}
+
+.icon_small {
+  width: $small-icon;
+  min-width: $small-icon;
+  height: $small-icon;
+  border-radius: 35px;
+}
+
+#plane {
+  margin-left: -5px;
+}
+
+#heart-icon {
+  // correct not symmetric image
+  padding-left: 5px;
+}
+
+.row {
+  padding: 80px 25px;
+  @include flex(space-between);
+  flex-wrap: wrap;
+  @media (max-width: 1024px) {
+    padding: 50px;
+    &__column {
+      padding: 30px 0px;
+    }
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+}
+
+.article {
+  display: grid;
+  grid-column-gap: 30px;
+  grid-template-areas: 'content icon';
+  &__content {
+    grid-area: content;
+    text-align: right;
+  }
+  &__icon {
+    width: 201px;
+    height: 201px;
+    border-radius: 101px;
+    background-position: center;
+    grid-area: icon;
+  }
+  &__icon_child {
+    background-image: url('../assets/img/child.webp');
+  }
+  &__icon_birds {
+    background-image: url('../assets/img/birds.webp');
+  }
+  &__icon_jesus {
+    background-image: url('../assets/img/jesus.webp');
+  }
+  &__icon_tree {
+    background-image: url('../assets/img/tree.webp');
+  }
+  @media (max-width: 425px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.article_reverse {
+  grid-template-areas: 'icon content';
+}
+
+.content {
+  max-width: 318px;
+  padding-top: 33px;
+  &__title {
+    font-size: 2.8rem;
+    letter-spacing: 1px;
+    color: $dark-grey;
+    font-weight: 300;
+    font-family: "Source Sans Pro";
+    margin-bottom: 15px;
+  }
+  &__text {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    line-height: 2.6rem;
+    color: $grey;
+    font-weight: 400;
+    font-family: "Source Sans Pro";
+  }
+  @media (max-width: 425px) {
+    max-width: 100%;
+    &__title,
+    &__text {
+      text-align: center;
+    }
+  }
+}
+
+.content_left {
+  text-align: left;
+  width: 302px;
+  &__title {
+    margin-bottom: 25px;
+  }
+}
+
+.articles {
+  display: grid;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  padding: 80px 0px 110px 0px;
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 70px;
+  }
+}
+
+.link {
+  color: $orange;
+}
+
+.contacts {
+  display: grid;
+  grid-template-columns: repeat(3, $contact-width);
+  padding-top: 80px;
+  padding-bottom: 80px;
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 30px;
+  }
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+  }
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  &__text {
+    max-width: 250px;
+    @extend %simple-text;
+  }
+  &__icon {
+    margin-right: 30px;
+  }
+  @media (max-width: 320px) {
+    flex-direction: column;
+    &__icon {
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.subscribe {
+  @extend %horizontal-centering;
+  padding-top: 50px;
+  &__title {
+    font-size: 2.8rem;
+    letter-spacing: 5px;
+    color: $light-grey;
+    font-weight: 300;
+    font-family: "Source Sans Pro";
+    text-align: center;
+    margin-bottom: 23px;
+  }
+  &__field {
+    display: flex;
+    width: calc((570 / 1170) * 100%);
+    @media (max-width: 425px) {
+      flex-direction: column;
+      align-items: center;
+      width: 80%;
+    }
+  }
+  &__input {
+    box-sizing: border-box;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    line-height: 2.6rem;
+    color: $light-grey;
+    font-weight: 400;
+    font-family: "Source Sans Pro";
+    height: $search-height;
+    width: 100%;
+    border-radius: 5px 0 0 5px;
+    border: none;
+    padding-left: 21px;
+    padding-right: 21px;
+    box-sizing: border-box;
+    background-color: $orange;
+    @media (max-width: 425px) {
+      width: 100%;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+  }
+  &__input::-webkit-input-placeholder {
+    color: $light-grey;
+  }
+  &__button {
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+    line-height: 2.6rem;
+    color: $orange;
+    font-weight: 400;
+    font-family: "Source Sans Pro";
+    text-align: center;
+    height: $search-height;
+    min-width: 116px;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    @media (max-width: 425px) {
+      border-radius: 5px;
+    }
+  }
+}
+
+footer {
+  padding: 0 0 55px 0;
+}
+
+.sign {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+  color: $grey;
+  font-weight: 400;
+  font-family: "Source Sans Pro";
+  text-align: center;
+  padding-top: 35px;
+}
+
+.menu__button {
+  position: relative;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  height: 100%;
+  span,
+  span::before,
+  span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #FFFFFF;
+    visibility: inherit;
+  }
+  span::before {
+    content: "";
+    top: -8px;
+  }
+  span::after {
+    content: "";
+    top: 8px;
+  }
+}
