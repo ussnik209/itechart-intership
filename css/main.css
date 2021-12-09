@@ -353,10 +353,10 @@ html {
       font-size: 8px; } }
   @media (max-width: 425px) {
     html {
-      font-size: 6px; } }
+      font-size: 7px; } }
   @media (max-width: 320px) {
     html {
-      font-size: 5px; } }
+      font-size: 6px; } }
 
 .header {
   background-color: #db5940;
@@ -378,7 +378,7 @@ html {
         min-height: 40px; } }
 
 .navigator {
-  width: 410px;
+  width: calc((410 / 1170) * 100%);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -388,9 +388,6 @@ html {
     letter-spacing: 1px;
     font-weight: 400;
     font-family: 'Source Sans Pro', sans-serif; }
-  @media (max-width: 768px) {
-    .navigator {
-      width: 300px; } }
   @media (max-width: 425px) {
     .navigator {
       box-sizing: border-box;
@@ -422,7 +419,7 @@ html {
     letter-spacing: 2px; }
 
 .image__container {
-  max-width: 1920px;
+  width: 100vw;
   height: 400px;
   background: url("../assets/img/welcome.webp");
   background-size: cover;
@@ -601,13 +598,15 @@ html {
     text-align: center;
     margin-bottom: 23px; }
   .subscribe__field {
-    display: flex; }
+    display: flex;
+    width: calc((570 / 1170) * 100%); }
     @media (max-width: 425px) {
       .subscribe__field {
         flex-direction: column;
         align-items: center;
-        width: 100%; } }
+        width: 80%; } }
   .subscribe__input {
+    box-sizing: border-box;
     font-size: 1.6rem;
     letter-spacing: 1px;
     line-height: 2.6rem;
@@ -615,10 +614,11 @@ html {
     font-weight: 400;
     font-family: "Source Sans Pro";
     height: 48px;
-    width: 455px;
+    width: 100%;
     border-radius: 5px 0 0 5px;
     border: none;
     padding-left: 21px;
+    padding-right: 21px;
     box-sizing: border-box;
     background-color: #db5940; }
     @media (max-width: 425px) {
@@ -637,7 +637,7 @@ html {
     font-family: "Source Sans Pro";
     text-align: center;
     height: 48px;
-    width: 116px;
+    min-width: 116px;
     border-radius: 0 5px 5px 0;
     border: none; }
     @media (max-width: 425px) {
