@@ -71,7 +71,7 @@ let arrayProcessingTool = {
 
 // change to slice
     return arr.splice(max.first, max.length)
-  }
+  },
 }
 
 module.exports = arrayProcessingTool
