@@ -41,12 +41,12 @@ const plugins = () => {
     new MiniCSSExtractPlugin({
       filename: `./css/${filename('css')}`
     }),
-    new CopyWebpackPlugin({
-      patterns: [{
-        from: path.resolve(__dirname, 'src/assets'),
-        to: path.resolve(__dirname, 'dist/assets')
-      }, ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{
+    //     from: path.resolve(__dirname, 'src/assets'),
+    //     to: path.resolve(__dirname, 'dist/assets')
+    //   }, ]
+    // }),
   ]
 
   if (isProd) {

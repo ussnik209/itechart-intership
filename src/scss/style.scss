@@ -1,1 +1,17 @@
 @import '~normalize.css';
+
+
+.container {
+  max-width: 1440px;
+  padding: 0px 50px;
+}
+
+.section {
+  padding: 50px 0px;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
