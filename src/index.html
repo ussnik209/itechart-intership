@@ -13,9 +13,25 @@
   <main class="container">
     <section class="array-processing section">
       <form class="array-processing__form form" action="">
-        <label for="sub-sum-input" class="form__name">Array processing tool</label>
-        <input id="sub-sum-input" class="form__input" type="text">
-        <output for="sub-sum-input" class="form__results">Here wil be your results</output>
+        <div class="form__input input">
+          <label for="array-processing-input" class="input__title">Array processing tool</label>
+          <input id="array-processing-input" class="input__text" type="text" placeholder="Enter your array">
+        </div>
+        <div class="form__select select">
+          <select name="processing-type" id="processing-selection">
+            <option value="">Choose one of the options</option>
+            <option value="">Maximum subarray's summary O(n<sup>2</sup>)</option>
+            <option value="">Maximum subarray's summary O(n)</option>
+            <option value="">Minimum value</option>
+            <option value="">Maximum value</option>
+            <option value="">Median value</option>
+            <option value="">Ascending sequence of maximum length</option>
+          </select>
+        </div>
+       <div class="form__output output">
+          <label for="array-processing-output" class="output__title">Results of chosen operation:</label>
+          <output id="array-processing-output" for="sub-sum-input" class="output__text" ></output>
+       </div>
       </form>
     </section>
     <section></section>
