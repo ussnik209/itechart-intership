@@ -5,8 +5,13 @@
   align-items: center;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
   padding: 0px 50px;
+  // width: 90wh;
 }
 
 .container {
@@ -20,22 +25,31 @@ body {
 }
 
 .form {
+  font-size: 3rem;
   @extend %horizontal-centering;
   &__output {
     width: 100%;
-    @extend %horizontal-centering
+    @extend %horizontal-centering;
+  }
+  &__input {
+    width: 60%;
+    @extend %horizontal-centering;  
   }
   &>* {
     margin-top: 20px;
   }
 }
 
-
+.input {
+  &__text {
+    width: 100%;
+  }
+}
 
 .output {
   &__text {
     box-sizing: border-box;
-    width: 50%;
+    width: 60%;
     height: 200px;
     padding: 10px;
     background-color: white;

@@ -105,11 +105,11 @@ let arraySort = {
 }
 
 
-const test1 = [-1, 2, 3, -9, 11],
-  test2 = [-2, -1, 1, 2],
-  test3 = [100, -9, 2, -3, 5],
-  test4 = [1, 2, 3],
-  test5 = [-1, -2, -3],
-  test6 = [1, 3, 7, 4, 6, 7, 8, 1, 2, 5, 7, 8, 90, 1]
-const res = arraySort.shakerSort(test6)
-console.log(res)
+// const test1 = [-1, 2, 3, -9, 11],
+//   test2 = [-2, -1, 1, 2],
+//   test3 = [100, -9, 2, -3, 5],
+//   test4 = [1, 2, 3],
+//   test5 = [-1, -2, -3],
+//   test6 = [1, 3, 7, 4, 6, 7, 8, 1, 2, 5, 7, 8, 90, 1]
+// const res = arraySort.shakerSort(test6)
+// console.log(res)
