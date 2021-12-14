@@ -2,6 +2,7 @@ import './scss/style.scss'
 import './index.html'
 import './js/Array-processing-tool'
 import './js/Array-sort'
+import ArrayProcessingTool from './js/Array-processing-tool'
 
 
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -21,10 +22,41 @@ function getSelected(options) {
 
 function processArray(e) {
   let arr = arrayProcessingInput.value.split(',')
+  let res = null
+  const selected = getSelected(arrayProcessingOptions)
 
+  if (selected === null) {
+    arrayProcessingOutput.textContent = 'Select one of the processing options!'
+    return
+  }
 
-  console.log(getSelected(arrayProcessingOptions));
-  arrayProcessingOutput.textContent = arr
+  arr = arr.map(el => +el)
+
+  switch (selected.value) {
+    case 'MaxSubLong':
+      res = ArrayProcessingTool.getMaxSubSumLong(arr)
+      break
+    case 'MaxSubShort':
+      res = ArrayProcessingTool.getMaxSubSum(arr)
+      break
+    case 'Min':
+      res = ArrayProcessingTool.min(arr)
+      break
+    case 'Max':
+      res = ArrayProcessingTool.max(arr)
+      break
+    case 'Med':
+      res = ArrayProcessingTool.med(arr)
+      break
+    case 'AscSec':
+      res = ArrayProcessingTool.selectIncreasing(arr)
+      break
+    default:
+      arrayProcessingOutput.textContent = 'Select one of the processing options!'
+      return
+  }
+
+  arrayProcessingOutput.textContent = res
 }
 
 function processArrayWithEnterKey(e) {
