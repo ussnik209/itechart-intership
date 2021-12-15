@@ -10,22 +10,19 @@ let dateDisplayFormatter = {
     isText = isText || false
 
     if (typeof dateStr !== 'string') dateStr = String(dateStr)
-    let { day, month, year } = this.getParsedDate(dateStr, inputExpr.split(''))
-    let formattedDate = this.getFormattedDate(outputExpr.split(''),
-      day.split(''),
-      month.split(''),
-      year.split(''))
+    let { day, month, year } = this.getParsedDate(dateStr, inputExpr)
+    let formattedDate = this.getFormattedDate(outputExpr, day, month, year)
 
 
     if (isText) {
-      formattedDate = this.toText(formattedDate.split('-'), outputExpr.split('-')).join(' ')
+      formattedDate = this.toText(formattedDate, outputExpr)
     }
-    
+
     return formattedDate
   },
 
-  getParsedDate(dateStr, exprArr) {
-    let expr = exprArr,
+  getParsedDate(dateStr, exprStr) {
+    let expr = exprStr.split(''),
       date = dateStr
     let year = '',
       month = '',
@@ -52,11 +49,12 @@ let dateDisplayFormatter = {
     }
   },
 
-  getFormattedDate(exprArr, dayInputArr, monthInputArr, yearInputArr) {
-    let expr = exprArr.reverse()
-    let day = dayInputArr,
-      month = monthInputArr,
-      year = yearInputArr
+  getFormattedDate(exprStr, dayInputStr, monthInputStr, yearInputStr) {
+    let expr = exprStr.split('')
+    expr.reverse()
+    let day = dayInputStr.split(''),
+      month = monthInputStr.split(''),
+      year = yearInputStr.split('')
 
     expr = expr.map(el => {
       switch (el) {
@@ -74,22 +72,67 @@ let dateDisplayFormatter = {
     return expr.reverse().join('')
   },
 
-  toText(dateArr, exprArr) {
-    let date = dateArr,
-      expr = exprArr
+  toText(dateStr, exprStr) {
+    let date = dateStr.split('-'),
+      expr = exprStr.split('-')
 
     expr.forEach((el, i) => {
       if (el[0] === 'M') date[i] = this.monthToText(+date[i] - 1)
     })
 
-    return date
+    return date.join(' ')
   },
 
   monthToText(month) {
     return this.months[month]
+  },
+
+  fromNow(dateStr, inputExpr) {
+    let date = String(dateStr),
+      expr = inputExpr
+    let { day, month, year } = this.getParsedDate(date, expr)
+
+    let matchingDate = new Date(`${year}-${month}-${day}`)
+
+    const now = new Date()
+    const nowWithoutTime = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+    let timeDif = nowWithoutTime - matchingDate
+    console.log(timeDif)
+
+    if (timeDif === 0) {
+      return 'Today'
+    }
+
+    const yearDif = Math.abs(nowWithoutTime.getFullYear() - matchingDate.getFullYear())
+    const monthDif = Math.abs(nowWithoutTime.getMonth() - matchingDate.getMonth())
+    const dayDif = Math.abs(nowWithoutTime.getDate() - matchingDate.getDate())
+    let dateDif = ''
+
+    if (yearDif) {
+      dateDif += ` ${yearDif} year`
+      if (yearDif > 1) dateDif += 's'
+    }
+
+    if (monthDif) {
+      dateDif += ` ${monthDif} month`
+      if (monthDif > 1) dateDif += 's'
+    }
+
+    if (dayDif) {
+      dateDif += ` ${dayDif} day`
+      if (dayDif > 1) dateDif += 's'
+    }
+
+    if (timeDif > 0) {
+      return( dateDif + ' ago').trim()
+    } else {
+      return ('after' + dateDif).trim()
+    }
   }
 }
 
 module.exports = dateDisplayFormatter
 
 // let res = DateDisplayFormatter.format('31102011', { isText: true, outputExpr: 'DD MM YYYY' })
+// let res = dateDisplayFormatter.fromNow('17122021', 'DDMMYYYY')
+// console.log(res)

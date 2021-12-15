@@ -94,6 +94,11 @@ function formateDate() {
   let outputFormat = getSelected(outputFormats).value
   let isText = textChecking.checked
 
+  if (outputFormat === 'from-now') {
+    dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
+    return
+  }
+
   let formattedDate = dateDisplayFormatter.format(date, {
     inputExpr: inputFormat,
     outputExpr: outputFormat,
@@ -112,5 +117,4 @@ function preventDefaultEnter(e) {
 }
 
 formatButton.addEventListener('click', formateDate)
-  // dateInput.addEventListener('change', formateDate)
 dateInput.addEventListener('keydown', preventDefaultEnter)
