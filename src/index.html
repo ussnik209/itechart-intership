@@ -34,7 +34,38 @@
        </div>
       </form>
     </section>
-    <section></section>
+    <section class="section">
+      <form class="form" action="">
+        <div class="form__input input">
+          <label for="date-input" class="input__title">Date display formatter</label>
+          <input id="date-input" class="input__text" type="text" placeholder="Enter your date">
+        </div>
+        <div class="form__select">
+          <select name="input-format" id="date-input-format">
+            <option value="DDMMYYYY">DDMMYYYY</option>
+            <option value="YYYYMMDD">YYYYMMDD</option>
+            <option value="MMDDYYYY">MMDDYYYY</option>
+            <option value="DDMMYY">DDMMYY</option>
+          </select>
+        </div>
+        <div class="form__select">
+          <select name="output-format" id="date-output-format">
+            <option value="DD-MM-YYYY">31-01-2020</option>
+            <option value="YYYY-MM-DD">2020-01-31</option>
+            <option value="MM-DD-YYYY">01-31-2020</option>
+            <option value="DD-MM-YY">31.01.20</option>
+          </select>
+        </div>
+        <div class="form__checkbox checkbox">
+          <label for="is-text-month" class="checkbox__title">Put a checkbox if you want text format:</label>
+          <input type="checkbox" name="is-text" id="is-text-month">
+        </div>
+        <div class="form__output output">
+          <label for="date-output" class="output__title">Result of formatting date:</label>
+          <output id="date-output" for="date-input" class="output__text" ></output>
+        </div>
+      </form>
+    </section>
     <section></section>
     <section></section>
     <section></section>

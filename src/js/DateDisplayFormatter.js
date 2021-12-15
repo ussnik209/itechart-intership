@@ -16,11 +16,11 @@ let DateDisplayFormatter = {
       month.split(''),
       year.split(''))
 
-      
-      if (isText) {
-        formattedDate = this.toText(formattedDate.split(' '), outputExpr.split(' ')).join(' ')
-      }
-      console.log(formattedDate)
+
+    if (isText) {
+      formattedDate = this.toText(formattedDate.split('-'), outputExpr.split('-')).join(' ')
+    }
+    console.log(formattedDate)
 
     return formattedDate
   },

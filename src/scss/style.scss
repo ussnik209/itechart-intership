@@ -5,6 +5,8 @@
   align-items: center;
 }
 
+$dark-grey: rgb(42, 41, 41);
+
 html {
   font-size: 10px;
 }
@@ -22,14 +24,21 @@ body {
 
 .section {
   padding: 50px 0px;
+  border-bottom: 3px solid $dark-grey;
 }
 
 .form {
   font-size: 3rem;
+  color: $dark-grey;
   @extend %horizontal-centering;
   &__output {
     width: 100%;
     @extend %horizontal-centering;
+  }
+  &__select {
+    select {
+      color: $dark-grey
+    }
   }
   &__input {
     width: 60%;
