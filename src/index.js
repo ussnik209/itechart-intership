@@ -2,7 +2,7 @@ import './scss/style.scss'
 import './index.html'
 import './js/Array-sort'
 import arrayProcessingTool from './js/Array-processing-tool'
-import dateDisplayFormatter from './js/DateDisplayFormatter'
+import dateDisplayFormatter from './js/Date-Display-Formatter'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
