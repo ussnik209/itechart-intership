@@ -2,6 +2,7 @@ import './scss/style.scss'
 import './index.html'
 import './js/Array-sort'
 import arrayProcessingTool from './js/Array-processing-tool'
+import dateDisplayFormatter from './js/DateDisplayFormatter'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -74,18 +75,34 @@ const dateInput = document.querySelector('.date-formatter .input__text')
 const inputFormats = document.querySelectorAll('#date-input-format option')
 const outputFormats = document.querySelectorAll('#date-output-format option')
 const formatButton = document.querySelector('.date-formatter .form__start button')
+const textChecking = document.querySelector('#is-text-month')
+const dateOutput = document.querySelector('.date-formatter .output__text')
 
 
 function formateDate() {
 
   let date = dateInput.value
-  let inputFormat = getSelected(inputFormats)
-  let outputFormat = getSelected(outputFormats)
 
+  if (date === undefined || date.length < 6) {
+    dateInput.value = ''
+    dateInput.placeholder = 'Date must be more than 6 characters!'
+    dateInput.focus()
+    return
+  }
 
-  
-  console.log(date, inputFormat, outputFormat)
+  let inputFormat = getSelected(inputFormats).value
+  let outputFormat = getSelected(outputFormats).value
+  let isText = textChecking.checked
 
+  let formattedDate = dateDisplayFormatter.format(date, {
+    inputExpr: inputFormat,
+    outputExpr: outputFormat,
+    isText
+  })
+
+  dateOutput.textContent = formattedDate
+
+  dateInput.placeholder = 'Enter your date'
 }
 
 function preventDefaultEnter(e) {
@@ -95,5 +112,5 @@ function preventDefaultEnter(e) {
 }
 
 formatButton.addEventListener('click', formateDate)
-// dateInput.addEventListener('change', formateDate)
+  // dateInput.addEventListener('change', formateDate)
 dateInput.addEventListener('keydown', preventDefaultEnter)

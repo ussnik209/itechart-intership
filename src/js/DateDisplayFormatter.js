@@ -1,4 +1,4 @@
-let DateDisplayFormatter = {
+let dateDisplayFormatter = {
   months: ['January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August',
     'September', 'October', 'November', 'December'
@@ -20,8 +20,7 @@ let DateDisplayFormatter = {
     if (isText) {
       formattedDate = this.toText(formattedDate.split('-'), outputExpr.split('-')).join(' ')
     }
-    console.log(formattedDate)
-
+    
     return formattedDate
   },
 
@@ -80,7 +79,7 @@ let DateDisplayFormatter = {
       expr = exprArr
 
     expr.forEach((el, i) => {
-      if (el[0] === 'M') date[i] = this.monthToText(date[i])
+      if (el[0] === 'M') date[i] = this.monthToText(+date[i] - 1)
     })
 
     return date
@@ -91,4 +90,6 @@ let DateDisplayFormatter = {
   }
 }
 
-let res = DateDisplayFormatter.format('31102011', { isText: true, outputExpr: 'DD MM YYYY' })
+module.exports = dateDisplayFormatter
+
+// let res = DateDisplayFormatter.format('31102011', { isText: true, outputExpr: 'DD MM YYYY' })
