@@ -1,10 +1,9 @@
 import './scss/style.scss'
 import './index.html'
-import './js/Array-processing-tool'
 import './js/Array-sort'
-import ArrayProcessingTool from './js/Array-processing-tool'
+import arrayProcessingTool from './js/Array-processing-tool'
 
-
+// Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
 const arrayProcessingOutput = document.querySelector('#array-processing-output')
 const arrayProcessingSelect = document.querySelector('.array-processing .select')
@@ -34,22 +33,22 @@ function processArray(e) {
 
   switch (selected.value) {
     case 'MaxSubLong':
-      res = ArrayProcessingTool.getMaxSubSumLong(arr)
+      res = arrayProcessingTool.getMaxSubSumLong(arr)
       break
     case 'MaxSubShort':
-      res = ArrayProcessingTool.getMaxSubSum(arr)
+      res = arrayProcessingTool.getMaxSubSum(arr)
       break
     case 'Min':
-      res = ArrayProcessingTool.min(arr)
+      res = arrayProcessingTool.min(arr)
       break
     case 'Max':
-      res = ArrayProcessingTool.max(arr)
+      res = arrayProcessingTool.max(arr)
       break
     case 'Med':
-      res = ArrayProcessingTool.med(arr)
+      res = arrayProcessingTool.med(arr)
       break
     case 'AscSec':
-      res = ArrayProcessingTool.selectIncreasing(arr)
+      res = arrayProcessingTool.selectIncreasing(arr)
       break
     default:
       arrayProcessingOutput.textContent = 'Select one of the processing options!'
@@ -69,3 +68,32 @@ function processArrayWithEnterKey(e) {
 arrayProcessingInput.addEventListener('change', processArray)
 arrayProcessingInput.addEventListener('keydown', processArrayWithEnterKey)
 arrayProcessingSelect.addEventListener('change', processArray)
+
+//Date display formatter
+const dateInput = document.querySelector('.date-formatter .input__text')
+const inputFormats = document.querySelectorAll('#date-input-format option')
+const outputFormats = document.querySelectorAll('#date-output-format option')
+const formatButton = document.querySelector('.date-formatter .form__start button')
+
+
+function formateDate() {
+
+  let date = dateInput.value
+  let inputFormat = getSelected(inputFormats)
+  let outputFormat = getSelected(outputFormats)
+
+
+  
+  console.log(date, inputFormat, outputFormat)
+
+}
+
+function preventDefaultEnter(e) {
+  if (e.keyCode != 13) return
+
+  e.preventDefault()
+}
+
+formatButton.addEventListener('click', formateDate)
+// dateInput.addEventListener('change', formateDate)
+dateInput.addEventListener('keydown', preventDefaultEnter)
