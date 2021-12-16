@@ -2,6 +2,10 @@ let textFormatter = {
   format(inputStr, { maxStrLength, maxStrAmount, carryover }) {
     let str = inputStr
 
+    if (maxStrLength === 0) {
+      return ''
+    }
+
     if (maxStrLength !== undefined) {
       str = this.getSplittedByLength(str, maxStrLength)
         .join('\n')
