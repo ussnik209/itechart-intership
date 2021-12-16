@@ -118,3 +118,23 @@ function preventDefaultEnter(e) {
 
 formatButton.addEventListener('click', formateDate)
 dateInput.addEventListener('keydown', preventDefaultEnter)
+
+
+// Text formatter
+const textFormattingBlock = document.querySelector('.text-formatting')
+const textFormattingButton = textFormattingBlock.querySelector('.form__start button')
+const inputStr = textFormattingBlock.querySelector('#string-input')
+const inputMaxLength = textFormattingBlock.querySelector('#max-length')
+const inputMaxStr = textFormattingBlock.querySelector('#max-strings')
+
+function formatText() {
+  const str = inputStr.value
+
+  const maxLength = inputMaxLength.value
+  const maxStrings = inputMaxStr.value
+
+  
+
+}
+
+textFormattingButton.addEventListener('click', formatText)

@@ -72,7 +72,32 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="text-formatting section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="string-input" class="input__title">Text formatter</label>
+          <input id="string-input" class="input__text" type="text" placeholder="Enter string to format">
+        </div>
+        <div class="form__input">
+          <label for="max-length" class="input__title">Maximum string length:</label>
+          <input id="max-length" class="input__text" type="number" min='1'>
+        </div>
+        <div>
+          <label for="max-strings" class="input__title">Maximum string number:</label>
+          <input id="max-strings" class="input__text" type="number" min='0'>
+        </div>
+        <div class="form__input input">
+          <label for="carryover-input" class="input__title">Carryover</label>
+          <input id="carryover-input" class="input__text" type="text" placeholder="Enter character, word or sentence">
+        </div>
+        <div class="form__start">
+          <button>Format</button>
+        </div>
+        <div class="form__output output">
+          <label for="string-output" class="output__title">Result of formatting string:</label>
+          <output id="string-output" for="string-input" class="output__text" ></output>
+        </div>
+      </div>
     </section>
     <section></section>
     <section></section>
