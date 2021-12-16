@@ -3,6 +3,7 @@ import './index.html'
 import './js/Array-sort'
 import arrayProcessingTool from './js/Array-processing-tool'
 import dateDisplayFormatter from './js/Date-Display-Formatter'
+import textFormatter from './js/Text-Formatter'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -126,14 +127,28 @@ const textFormattingButton = textFormattingBlock.querySelector('.form__start but
 const inputStr = textFormattingBlock.querySelector('#string-input')
 const inputMaxLength = textFormattingBlock.querySelector('#max-length')
 const inputMaxStr = textFormattingBlock.querySelector('#max-strings')
+const inputCarryover = textFormattingBlock.querySelector('#carryover-input')
+const outputFormattingText = textFormattingBlock.querySelector('#string-output')
 
 function formatText() {
   const str = inputStr.value
 
-  const maxLength = inputMaxLength.value
-  const maxStrings = inputMaxStr.value
+  const maxLength = inputMaxLength.value || undefined
+  const maxStrings = inputMaxStr.value || undefined
+  const carryover = inputCarryover.value || undefined
 
-  
+  outputFormattingText.textContent = textFormatter.format(str, {
+    inputMaxStrLength: maxLength,
+    inputMaxStrAmount: maxStrings,
+    inputCarryover: carryover
+  })  
+
+  console.log( textFormatter.format(str, {
+    inputMaxStrLength: maxLength,
+    inputMaxStrAmount: maxStrings,
+    inputCarryover: carryover
+  }) )
+
 
 }
 

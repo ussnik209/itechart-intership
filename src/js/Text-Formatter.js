@@ -1,6 +1,9 @@
 let textFormatter = {
-  format(inputStr, { maxStrLength, maxStrAmount, carryover }) {
-    let str = inputStr
+  format(inputStr, { inputMaxStrLength, inputMaxStrAmount, inputCarryover }) {
+    let str = inputStr,
+      maxStrLength = +inputMaxStrLength || undefined,
+      maxStrAmount = +inputMaxStrAmount || undefined,
+      carryover = inputCarryover
 
     if (maxStrLength === 0) {
       return ''
@@ -22,7 +25,7 @@ let textFormatter = {
         .join('\n')
 
     }
-
+    
     return str
   },
 
