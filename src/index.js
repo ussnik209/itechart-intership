@@ -4,6 +4,7 @@ import './js/Array-sort'
 import arrayProcessingTool from './js/Array-processing-tool'
 import dateDisplayFormatter from './js/Date-Display-Formatter'
 import textFormatter from './js/Text-Formatter'
+import stringCalculator from './js/String-calculator'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -60,15 +61,15 @@ function processArray(e) {
   arrayProcessingOutput.textContent = res
 }
 
-function processArrayWithEnterKey(e) {
+function runWithKeyEnter(e, fun) {
   if (e.keyCode != 13) return
 
   e.preventDefault()
-  processArray()
+  fun()
 }
 
 arrayProcessingInput.addEventListener('change', processArray)
-arrayProcessingInput.addEventListener('keydown', processArrayWithEnterKey)
+arrayProcessingInput.addEventListener('keydown', runWithKeyEnter.bind(this, processArray))
 arrayProcessingSelect.addEventListener('change', processArray)
 
 //Date display formatter
@@ -133,8 +134,8 @@ const outputFormattingText = textFormattingBlock.querySelector('#string-output')
 function formatText() {
   const str = inputStr.value
 
-  const maxLength = inputMaxLength.value || undefined
-  const maxStrings = inputMaxStr.value || undefined
+  const maxLength = +inputMaxLength.value || undefined
+  const maxStrings = +inputMaxStr.value || undefined
   const carryover = inputCarryover.value || undefined
 
   outputFormattingText.textContent = textFormatter.format(str, {
@@ -153,3 +154,23 @@ function formatText() {
 }
 
 textFormattingButton.addEventListener('click', formatText)
+
+// String calculator 
+const stringCalculatorBlock = document.querySelector('.string-calculator')
+const exprInput = stringCalculatorBlock.querySelector('#calc-expr-input')
+const exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output')
+
+function calculateExpr() {
+  const expr = exprInput.value
+
+  try {
+    exprOutput.textContent = stringCalculator.calculateExpression(expr)
+    
+  } catch (error) {
+    exprOutput.textContent = error.message
+    
+  }
+}
+
+exprInput.addEventListener('change', calculateExpr)
+exprInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateExpr))
