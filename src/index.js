@@ -168,7 +168,7 @@ function calculateExpr() {
     
   } catch (error) {
     exprOutput.textContent = error.message
-    
+
   }
 }
 

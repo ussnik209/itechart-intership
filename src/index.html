@@ -112,7 +112,27 @@
         </div>
     </div>
     </section>
-    <section></section>
+    <section class="array-sort section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="array-sort-input" class="input__title">Array sort</label>
+          <input id="array-sort-input" class="input__text" type="text"
+            placeholder="Enter your array with comma between numbers">
+        </div>
+        <div class="form__select select">
+          <select name="sort-type" id="sort-selection">
+            <option value="bubble">Bubble sort</option>
+            <option value="quick">Quick sort</option>
+            <option value="choice">Choice sort</option>
+            <option value="shaker">Shaker sort</option>
+           </select>
+        </div>
+        <div class="form__output output">
+          <label for="array-sort-output" class="output__title">Result of sorting:</label>
+          <output id="array-sort-output" for="array-sort-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
     <section></section>
     <section></section>
   </main>
