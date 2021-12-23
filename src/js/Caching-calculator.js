@@ -1,14 +1,22 @@
-import stringCalculator from "./String-calculator"
+const stringCalculator = require('./String-calculator')
 
 let cachingCalculator = {
   cache: [],
 
   calculate(expr) {
-    let cacheValue = cache[expr]
-    if (cacheValue) return cacheValue
+    let start = Date.now()
+    const cacheValue = this.cache[expr]
+    if (cacheValue) {
+      console.log(`Caching time: ${Date.now() - start}ms`)
 
+      return cacheValue
+    }
+
+    start = Date.now()
     let result = stringCalculator.calculateExpression(expr)
     this.cache[expr] = result
+
+    console.log(`Calculating time: ${Date.now() - start}ms`)
 
     return result
   },

@@ -6,6 +6,7 @@ import textFormatter from './js/Text-Formatter'
 import stringCalculator from './js/String-calculator'
 import arraySort from './js/Array-sort'
 import binaryConverter from './js/Binary-converter'
+import cachingCalculator from './js/Caching-calculator'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -239,3 +240,23 @@ function convertation() {
 
 convertationStart.addEventListener('click', convertation)
 
+// caching caclculator 
+
+const cachingCalculatorBlock = document.querySelector('.caching-calculator')
+const cachingCalcInput = cachingCalculatorBlock.querySelector('#caching-calc-input')
+const cachingCalcOutput = cachingCalculatorBlock.querySelector('#caching-calc-output')
+
+function calculateWithCache() {
+  const expr = cachingCalcInput.value
+
+  try {
+    cachingCalcOutput.textContent = cachingCalculator.calculate(expr)
+
+  } catch (error) {
+    cachingCalcOutput.textContent = error.message
+
+  }
+}
+
+cachingCalcInput.addEventListener('change', calculateWithCache)
+cachingCalcInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateWithCache))
