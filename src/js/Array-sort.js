@@ -7,7 +7,6 @@ let arraySort = {
       isSwap = false
       for (let i = 1, length = arr.length; i < length; i++) {
         if (arr[i] < arr[i - 1]) {
-          // swap
           this.swap(arr, i, i - 1)
           isSwap = true
         }
@@ -20,7 +19,7 @@ let arraySort = {
     return arr
   },
 
-  quickSort(array, first = 0, last = arr.length - 1) {
+  quickSort(array, first = 0, last = array.length - 1) {
     if (last == first) return
 
     let arr = array
@@ -65,10 +64,10 @@ let arraySort = {
     let arr = array
 
     for (let i = 0, length = arr.length; i < length - 1; i++) {
-      const minEl = Math.min(arr.slice(i))
-      const minIndex = arr.slice(i).indexOf(minEl)
+      const minEl = Math.min(...arr.slice(i))
+      const minIndex = arr.slice(i).indexOf(minEl) + i
 
-      this.swap(array, i, minIndex)
+      this.swap(arr, i, minIndex)
     }
 
     return arr
@@ -104,12 +103,4 @@ let arraySort = {
   }
 }
 
-
-// const test1 = [-1, 2, 3, -9, 11],
-//   test2 = [-2, -1, 1, 2],
-//   test3 = [100, -9, 2, -3, 5],
-//   test4 = [1, 2, 3],
-//   test5 = [-1, -2, -3],
-//   test6 = [1, 3, 7, 4, 6, 7, 8, 1, 2, 5, 7, 8, 90, 1]
-// const res = arraySort.shakerSort(test6)
-// console.log(res)
+module.exports = arraySort

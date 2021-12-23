@@ -1,10 +1,10 @@
 import './scss/style.scss'
 import './index.html'
-import './js/Array-sort'
 import arrayProcessingTool from './js/Array-processing-tool'
 import dateDisplayFormatter from './js/Date-Display-Formatter'
 import textFormatter from './js/Text-Formatter'
 import stringCalculator from './js/String-calculator'
+import arraySort from './js/Array-sort'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -142,13 +142,13 @@ function formatText() {
     inputMaxStrLength: maxLength,
     inputMaxStrAmount: maxStrings,
     inputCarryover: carryover
-  })  
+  })
 
-  console.log( textFormatter.format(str, {
+  console.log(textFormatter.format(str, {
     inputMaxStrLength: maxLength,
     inputMaxStrAmount: maxStrings,
     inputCarryover: carryover
-  }) )
+  }))
 
 
 }
@@ -165,7 +165,7 @@ function calculateExpr() {
 
   try {
     exprOutput.textContent = stringCalculator.calculateExpression(expr)
-    
+
   } catch (error) {
     exprOutput.textContent = error.message
 
@@ -174,3 +174,41 @@ function calculateExpr() {
 
 exprInput.addEventListener('change', calculateExpr)
 exprInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateExpr))
+
+// Array sort
+const arraySorting = document.querySelector('.array-sort')
+const sortInput = arraySorting.querySelector('#array-sort-input')
+const sortSelecting = arraySorting.querySelector('#sort-selection')
+const sortOutput = arraySorting.querySelector('#array-sort-output')
+
+function sortArray() {
+  const arr = sortInput.value.split(',').map(el => +el)
+  let sortType = getSelected(sortSelecting.children)
+
+  if (sortType === null) {
+    return
+  }
+
+  sortType = sortType.value
+  let sortedArr = []
+  
+  switch (sortType) {
+    case 'bubble':
+      sortedArr = arraySort.bubbleSort(arr)
+      break
+      case 'quick':
+      sortedArr = arraySort.quickSort(arr)
+      break
+    case 'choice':
+      sortedArr = arraySort.choiceSort(arr)
+      break
+    case 'shaker':
+      sortedArr = arraySort.shakerSort(arr)
+      break
+  }
+
+  sortOutput.textContent = sortedArr
+}
+
+sortInput.addEventListener('change', sortArray)
+sortInput.addEventListener('keydown', runWithKeyEnter.bind(this, sortArray))
