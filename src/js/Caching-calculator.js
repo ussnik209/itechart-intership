@@ -13,3 +13,5 @@ let cachingCalculator = {
     return result
   },
 }
+
+module.exports = cachingCalculator
