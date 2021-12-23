@@ -81,11 +81,11 @@
         </div>
         <div class="form__input">
           <label for="max-length" class="input__title">Maximum string length:</label>
-          <input id="max-length" class="input__text" type="number" min='1'>
+          <input id="max-length" class="input__text" type="number" min="1">
         </div>
         <div>
           <label for="max-strings" class="input__title">Maximum string number:</label>
-          <input id="max-strings" class="input__text" type="number" min='0'>
+          <input id="max-strings" class="input__text" type="number" min="0">
         </div>
         <div class="form__input input">
           <label for="carryover-input" class="input__title">Carryover</label>
@@ -133,7 +133,27 @@
         </div>
       </div>
     </section>
-    <section></section>
+    <section class="binary-converter section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="convertation-input" class="input__title">Binary converter</label>
+          <input id="convertation-input" class="input__text" type="text"
+            placeholder="Enter the number to convertation">
+        </div>
+        <div class="form__input">
+          <label for="old-base" class="input__title">Old base:</label>
+          <input id="old-base" class="input__text" type="number" min="1" max="10">
+        </div>
+        <div class="form__input">
+          <label for="new-base" class="input__title">Maximum string length:</label>
+          <input id="new-base" class="input__text" type="number" min="1" max="10">
+        </div>
+        <div class="form__output output">
+          <label for="convertation-output" class="output__title">Result of convertation:</label>
+          <output id="convertation-output" for="convertation-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
     <section></section>
   </main>
 </body>
