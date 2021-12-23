@@ -5,6 +5,7 @@ import dateDisplayFormatter from './js/Date-Display-Formatter'
 import textFormatter from './js/Text-Formatter'
 import stringCalculator from './js/String-calculator'
 import arraySort from './js/Array-sort'
+import binaryConverter from './js/Binary-converter'
 
 // Array processing tool
 const arrayProcessingInput = document.querySelector('#array-processing-input')
@@ -191,12 +192,12 @@ function sortArray() {
 
   sortType = sortType.value
   let sortedArr = []
-  
+
   switch (sortType) {
     case 'bubble':
       sortedArr = arraySort.bubbleSort(arr)
       break
-      case 'quick':
+    case 'quick':
       sortedArr = arraySort.quickSort(arr)
       break
     case 'choice':
@@ -213,3 +214,27 @@ function sortArray() {
 sortInput.addEventListener('change', sortArray)
 sortInput.addEventListener('keydown', runWithKeyEnter.bind(this, sortArray))
 
+// binary convertation
+const convertationBlock = document.querySelector('.binary-converter')
+const convertationInput = convertationBlock.querySelector('#convertation-input')
+const oldBaseInput = convertationBlock.querySelector('#old-base')
+const newBaseInput = convertationBlock.querySelector('#new-base')
+const convertationOutput = convertationBlock.querySelector('#convertation-output')
+const convertationStart = convertationBlock.querySelector('.form__start')
+
+function convertation() {
+  const numArr = convertationInput.value
+    .split('')
+    .map(el => +el)
+    .reverse('')
+  const oldBase = +oldBaseInput.value
+  const newBase = +newBaseInput.value
+
+  let result = binaryConverter.convertToNewSystem(numArr, oldBase, newBase)
+    .reverse()
+    .join('')
+
+  convertationOutput.textContent = result
+}
+
+convertationStart.addEventListener('click', convertation)
