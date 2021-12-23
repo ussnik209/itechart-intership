@@ -212,3 +212,4 @@ function sortArray() {
 
 sortInput.addEventListener('change', sortArray)
 sortInput.addEventListener('keydown', runWithKeyEnter.bind(this, sortArray))
+
