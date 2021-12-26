@@ -245,12 +245,28 @@ convertationStart.addEventListener('click', convertation)
 const cachingCalculatorBlock = document.querySelector('.caching-calculator')
 const cachingCalcInput = cachingCalculatorBlock.querySelector('#caching-calc-input')
 const cachingCalcOutput = cachingCalculatorBlock.querySelector('#caching-calc-output')
+const cachingFunctionsOutput = cachingCalculatorBlock.querySelector('#caching-functions')
 
 function calculateWithCache() {
   const expr = cachingCalcInput.value
 
   try {
-    cachingCalcOutput.textContent = cachingCalculator.calculate(expr)
+    let { result, cache } = cachingCalculator.calculate(expr)
+    let cacheOutput = ''
+
+
+    for (let expr in cache) {
+      cacheOutput += `${expr.split(' ').join('')}=${cache[expr]}\n`
+    }
+
+    cachingFunctionsOutput.textContent = cacheOutput
+    if (isNaN(result)) {
+      cachingCalcOutput.textContent = 'The entered expression is incorrect!'
+
+    } else {
+      cachingCalcOutput.textContent = result
+
+    }
 
   } catch (error) {
     cachingCalcOutput.textContent = error.message

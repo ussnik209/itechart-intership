@@ -5,20 +5,23 @@ let cachingCalculator = {
 
   calculate(expr) {
     let start = Date.now()
-    const cacheValue = this.cache[expr]
-    if (cacheValue) {
-      console.log(`Caching time: ${Date.now() - start}ms`)
-
-      return cacheValue
+    let result = this.cache[expr]
+    
+    if (result) {
+      console.log(`Caching time: ${Date.now() - start }ms`)
+      
+      const cache = this.cache
+      return { result, cache }
     }
-
+    
     start = Date.now()
-    let result = stringCalculator.calculateExpression(expr)
+    result = stringCalculator.calculateExpression(expr)
     this.cache[expr] = result
 
     console.log(`Calculating time: ${Date.now() - start}ms`)
 
-    return result
+    const cache = this.cache
+    return { result, cache }
   },
 }
 

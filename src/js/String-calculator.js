@@ -29,11 +29,12 @@ let stringCalculator = {
 
     expr = expr.replace(/ /g, '')
 
-    exprArr = expr.replace(/[0-9]{1,3}/g, '$& ')
-      .replace(/[\+\-\*\/\(\)]{1}/g, '$& ')
-      .split(' ')
-      .slice(0, -1)
-
+    
+    exprArr = expr.replace(/[0-9]+/g, '$& ')
+    .replace(/[\+\-\*\/\(\)]{1}/g, '$& ')
+    .split(' ')
+    .slice(0, -1)
+    
     let openedBrackets = []
     let closedBrackets = []
     for (let i = 0, len = exprArr.length; i < len; i++) {
