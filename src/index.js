@@ -14,16 +14,6 @@ const arrayProcessingOutput = document.querySelector('#array-processing-output')
 const arrayProcessingSelect = document.querySelector('.array-processing .select')
 const arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option')
 
-function getSelected(options) {
-  for (let option of options) {
-    if (option.selected) {
-      return option
-    }
-  }
-
-  return null
-}
-
 function processArray(e) {
   let arr = arrayProcessingInput.value.split(',')
   let res = null
@@ -60,14 +50,14 @@ function processArray(e) {
       return
   }
 
-  arrayProcessingOutput.textContent = res
-}
+  if (isNaN(res)) {
+    arrayProcessingOutput.textContent = 'Your input is incorrect!'
+    arrayProcessingInput.focus()
 
-function runWithKeyEnter(e, fun) {
-  if (e.keyCode != 13) return
+  } else {
+    arrayProcessingOutput.textContent = res
 
-  e.preventDefault()
-  fun()
+  }
 }
 
 arrayProcessingInput.addEventListener('change', processArray)
@@ -87,9 +77,8 @@ function formateDate() {
 
   let date = dateInput.value
 
-  if (date === undefined || date.length < 6) {
-    dateInput.value = ''
-    dateInput.placeholder = 'Date must be more than 6 characters!'
+  if (date === undefined || !(date.length === 6 || date.length === 8)) {
+    dateOutput.textContent = 'Date input is incorrect!'
     dateInput.focus()
     return
   }
@@ -110,8 +99,6 @@ function formateDate() {
   })
 
   dateOutput.textContent = formattedDate
-
-  dateInput.placeholder = 'Enter your date'
 }
 
 function preventDefaultEnter(e) {
@@ -166,8 +153,15 @@ function calculateExpr() {
   const expr = exprInput.value
 
   try {
-    exprOutput.textContent = stringCalculator.calculateExpression(expr)
+    const res = stringCalculator.calculateExpression(expr)
 
+    if (isNaN(res)) {
+      exprOutput.textContent = 'The entered expression is incorrect!'
+
+    } else {
+      exprOutput.textContent = res
+
+    }
   } catch (error) {
     exprOutput.textContent = error.message
 
@@ -209,7 +203,14 @@ function sortArray() {
       break
   }
 
-  sortOutput.textContent = sortedArr
+  if (sortedArr.some(el => isNaN(el))) {
+    sortOutput.textContent = 'Your input is incorrect!'
+    sortInput.focus()
+
+  } else {
+    sortOutput.textContent = sortedArr
+
+  }
 }
 
 sortInput.addEventListener('change', sortArray)
@@ -224,6 +225,13 @@ const convertationOutput = convertationBlock.querySelector('#convertation-output
 const convertationStart = convertationBlock.querySelector('.form__start')
 
 function convertation() {
+  if (isNaN(convertationInput.value)) {
+    convertationOutput.textContent = 'Your input should be number!'
+    convertationInput.focus()
+    return
+
+  }
+
   const numArr = convertationInput.value
     .split('')
     .map(el => +el)
@@ -276,3 +284,22 @@ function calculateWithCache() {
 
 cachingCalcInput.addEventListener('change', calculateWithCache)
 cachingCalcInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateWithCache))
+
+// common functions
+function runWithKeyEnter(e, fun) {
+  if (e.keyCode != 13) return
+
+  e.preventDefault()
+  fun()
+}
+
+
+function getSelected(options) {
+  for (let option of options) {
+    if (option.selected) {
+      return option
+    }
+  }
+
+  return null
+}
