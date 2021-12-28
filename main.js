@@ -591,7 +591,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Js Tasks</title>\r\n</head>\r\n\r\n<body>\r\n  <header></header>\r\n  <main class=\"container\">\r\n    <section class=\"array-processing section\">\r\n      <div class=\"array-processing__form form\" action=\"\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"array-processing-input\" class=\"input__title\">Array processing tool</label>\r\n          <input id=\"array-processing-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter your array with comma between numbers\">\r\n        </div>\r\n        <div class=\"form__select select\">\r\n          <select name=\"processing-type\" id=\"processing-selection\">\r\n            <option value=\"\">Choose one of the options</option>\r\n            <option value=\"MaxSubLong\">Maximum subarray's summary O(n<sup>2</sup>)</option>\r\n            <option value=\"MaxSubShort\">Maximum subarray's summary O(n)</option>\r\n            <option value=\"Min\">Minimum value</option>\r\n            <option value=\"Max\">Maximum value</option>\r\n            <option value=\"Med\">Median value</option>\r\n            <option value=\"AscSec\">Ascending sequence of maximum length</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"array-processing-output\" class=\"output__title\">Result of chosen operation:</label>\r\n          <output id=\"array-processing-output\" for=\"sub-sum-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"date-formatter section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"date-input\" class=\"input__title\">Date display formatter</label>\r\n          <input id=\"date-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter your date\">\r\n        </div>\r\n        <div class=\"form__select\">\r\n          <label for=\"date-input-format\">Chose input format of date:</label>\r\n          <select name=\"input-format\" id=\"date-input-format\">\r\n            <option value=\"DDMMYYYY\">DDMMYYYY</option>\r\n            <option value=\"YYYYMMDD\">YYYYMMDD</option>\r\n            <option value=\"MMDDYYYY\">MMDDYYYY</option>\r\n            <option value=\"DDMMYY\">DDMMYY</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__select\">\r\n          <label for=\"date-output-format\">Chose output format of date:</label>\r\n          <select name=\"output-format\" id=\"date-output-format\">\r\n            <option value=\"DD-MM-YYYY\">DD-MM-YYYY</option>\r\n            <option value=\"YYYY-MM-DD\">YYYY-MM-DD</option>\r\n            <option value=\"MM-DD-YYYY\">MM-DD-YYYY</option>\r\n            <option value=\"DD-MM-YY\">DD-MM-YY</option>\r\n            <option value=\"from-now\">From now</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__checkbox checkbox\">\r\n          <label for=\"is-text-month\" class=\"checkbox__title\">Put a checkbox if you want text format:</label>\r\n          <input type=\"checkbox\" name=\"is-text\" id=\"is-text-month\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Format</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"date-output\" class=\"output__title\">Result of formatting date:</label>\r\n          <output id=\"date-output\" for=\"date-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"text-formatting section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"string-input\" class=\"input__title\">Text formatter</label>\r\n          <input id=\"string-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter string to format\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"max-length\" class=\"input__title\">Maximum string length:</label>\r\n          <input id=\"max-length\" class=\"input__text\" type=\"number\" min=\"1\">\r\n        </div>\r\n        <div>\r\n          <label for=\"max-strings\" class=\"input__title\">Maximum string number:</label>\r\n          <input id=\"max-strings\" class=\"input__text\" type=\"number\" min=\"0\">\r\n        </div>\r\n        <div class=\"form__input input\">\r\n          <label for=\"carryover-input\" class=\"input__title\">Carryover</label>\r\n          <input id=\"carryover-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter character, word or sentence\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Format</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"string-output\" class=\"output__title\">Result of formatting string:</label>\r\n          <pre id=\"string-output\" for=\"string-input\" class=\"output__text\"></з>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"string-calculator section\">\r\n    <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"calc-expr-input\" class=\"input__title\">String calculator</label>\r\n          <input id=\"calc-expr-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter mathematic expression\">\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"calc-expr-output\" class=\"output__title\">Result of calculating:</label>\r\n          <output id=\"calc-expr-output\" for=\"date-input\" class=\"output__text\" ></output>\r\n        </div>\r\n    </div>\r\n    </section>\r\n    <section class=\"array-sort section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"array-sort-input\" class=\"input__title\">Array sort</label>\r\n          <input id=\"array-sort-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter your array with comma between numbers\">\r\n        </div>\r\n        <div class=\"form__select select\">\r\n          <select name=\"sort-type\" id=\"sort-selection\">\r\n            <option value=\"bubble\">Bubble sort</option>\r\n            <option value=\"quick\">Quick sort</option>\r\n            <option value=\"choice\">Choice sort</option>\r\n            <option value=\"shaker\">Shaker sort</option>\r\n           </select>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"array-sort-output\" class=\"output__title\">Result of sorting:</label>\r\n          <output id=\"array-sort-output\" for=\"array-sort-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"binary-converter section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"convertation-input\" class=\"input__title\">Binary converter</label>\r\n          <input id=\"convertation-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter the number to convertation\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"old-base\" class=\"input__title\">Old base:</label>\r\n          <input id=\"old-base\" class=\"input__text\" type=\"number\" min=\"1\" max=\"10\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"new-base\" class=\"input__title\">New base:</label>\r\n          <input id=\"new-base\" class=\"input__text\" type=\"number\" min=\"1\" max=\"10\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Convert</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"convertation-output\" class=\"output__title\">Result of convertation:</label>\r\n          <output id=\"convertation-output\" for=\"convertation-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"caching-calculator section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"caching-calc-input\" class=\"input__title\">Caching calculator</label>\r\n          <input id=\"caching-calc-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter mathematic expression\">\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"caching-functions\" class=\"output__title\">Caching functions:</label>\r\n          <pre id=\"caching-functions\" class=\"output__text\" ></pre>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"caching-calc-output\" class=\"output__title\">Result of calculating:</label>\r\n          <output id=\"caching-calc-output\" for=\"caching-calc-input\" class=\"output__text\" ></output>\r\n        </div>\r\n    </section>\r\n  </main>\r\n</body>\r\n\r\n</html>";
+var code = "<!DOCTYPE html>\r\n<html lang=\"en\">\r\n\r\n<head>\r\n  <meta charset=\"UTF-8\">\r\n  <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n  <title>Js Tasks</title>\r\n</head>\r\n\r\n<body>\r\n  <header></header>\r\n  <main class=\"container\">\r\n    <section class=\"array-processing section\">\r\n      <div class=\"array-processing__form form\" action=\"\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"array-processing-input\" class=\"input__title\">Array processing tool</label>\r\n          <input id=\"array-processing-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter your array with comma between numbers\">\r\n        </div>\r\n        <div class=\"form__select select\">\r\n          <select name=\"processing-type\" id=\"processing-selection\">\r\n            <option value=\"\">Choose one of the options</option>\r\n            <option value=\"MaxSubLong\">Maximum subarray's summary O(n<sup>2</sup>)</option>\r\n            <option value=\"MaxSubShort\">Maximum subarray's summary O(n)</option>\r\n            <option value=\"Min\">Minimum value</option>\r\n            <option value=\"Max\">Maximum value</option>\r\n            <option value=\"Med\">Median value</option>\r\n            <option value=\"AscSec\">Ascending sequence of maximum length</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"array-processing-output\" class=\"output__title\">Result of chosen operation:</label>\r\n          <output id=\"array-processing-output\" for=\"sub-sum-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"date-formatter section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"date-input\" class=\"input__title\">Date display formatter</label>\r\n          <input id=\"date-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter your date with 6 or 8 numbers\">\r\n        </div>\r\n        <div class=\"form__select\">\r\n          <label for=\"date-input-format\">Chose input format of date:</label>\r\n          <select name=\"input-format\" id=\"date-input-format\">\r\n            <option value=\"DDMMYYYY\">DDMMYYYY</option>\r\n            <option value=\"YYYYMMDD\">YYYYMMDD</option>\r\n            <option value=\"MMDDYYYY\">MMDDYYYY</option>\r\n            <option value=\"DDMMYY\">DDMMYY</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__select\">\r\n          <label for=\"date-output-format\">Chose output format of date:</label>\r\n          <select name=\"output-format\" id=\"date-output-format\">\r\n            <option value=\"DD-MM-YYYY\">DD-MM-YYYY</option>\r\n            <option value=\"YYYY-MM-DD\">YYYY-MM-DD</option>\r\n            <option value=\"MM-DD-YYYY\">MM-DD-YYYY</option>\r\n            <option value=\"DD-MM-YY\">DD-MM-YY</option>\r\n            <option value=\"from-now\">From now</option>\r\n          </select>\r\n        </div>\r\n        <div class=\"form__checkbox checkbox\">\r\n          <label for=\"is-text-month\" class=\"checkbox__title\">Put a checkbox if you want text format:</label>\r\n          <input type=\"checkbox\" name=\"is-text\" id=\"is-text-month\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Format</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"date-output\" class=\"output__title\">Result of formatting date:</label>\r\n          <output id=\"date-output\" for=\"date-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"text-formatting section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"string-input\" class=\"input__title\">Text formatter</label>\r\n          <input id=\"string-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter string to format\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"max-length\" class=\"input__title\">Maximum string length:</label>\r\n          <input id=\"max-length\" class=\"input__text\" type=\"number\" min=\"1\">\r\n        </div>\r\n        <div>\r\n          <label for=\"max-strings\" class=\"input__title\">Maximum string number:</label>\r\n          <input id=\"max-strings\" class=\"input__text\" type=\"number\" min=\"0\">\r\n        </div>\r\n        <div class=\"form__input input\">\r\n          <label for=\"carryover-input\" class=\"input__title\">Carryover</label>\r\n          <input id=\"carryover-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter character, word or sentence\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Format</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"string-output\" class=\"output__title\">Result of formatting string:</label>\r\n          <pre id=\"string-output\" for=\"string-input\" class=\"output__text\"></з>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"string-calculator section\">\r\n    <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"calc-expr-input\" class=\"input__title\">String calculator</label>\r\n          <input id=\"calc-expr-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter mathematic expression\">\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"calc-expr-output\" class=\"output__title\">Result of calculating:</label>\r\n          <output id=\"calc-expr-output\" for=\"date-input\" class=\"output__text\" ></output>\r\n        </div>\r\n    </div>\r\n    </section>\r\n    <section class=\"array-sort section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"array-sort-input\" class=\"input__title\">Array sort</label>\r\n          <input id=\"array-sort-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter your array with comma between numbers\">\r\n        </div>\r\n        <div class=\"form__select select\">\r\n          <select name=\"sort-type\" id=\"sort-selection\">\r\n            <option value=\"bubble\">Bubble sort</option>\r\n            <option value=\"quick\">Quick sort</option>\r\n            <option value=\"choice\">Choice sort</option>\r\n            <option value=\"shaker\">Shaker sort</option>\r\n           </select>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"array-sort-output\" class=\"output__title\">Result of sorting:</label>\r\n          <output id=\"array-sort-output\" for=\"array-sort-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"binary-converter section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"convertation-input\" class=\"input__title\">Binary converter</label>\r\n          <input id=\"convertation-input\" class=\"input__text\" type=\"text\"\r\n            placeholder=\"Enter the number to convertation\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"old-base\" class=\"input__title\">Old base:</label>\r\n          <input id=\"old-base\" class=\"input__text\" type=\"number\" min=\"1\" max=\"10\">\r\n        </div>\r\n        <div class=\"form__input\">\r\n          <label for=\"new-base\" class=\"input__title\">New base:</label>\r\n          <input id=\"new-base\" class=\"input__text\" type=\"number\" min=\"1\" max=\"10\">\r\n        </div>\r\n        <div class=\"form__start\">\r\n          <button>Convert</button>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"convertation-output\" class=\"output__title\">Result of convertation:</label>\r\n          <output id=\"convertation-output\" for=\"convertation-input\" class=\"output__text\"></output>\r\n        </div>\r\n      </div>\r\n    </section>\r\n    <section class=\"caching-calculator section\">\r\n      <div class=\"form\">\r\n        <div class=\"form__input input\">\r\n          <label for=\"caching-calc-input\" class=\"input__title\">Caching calculator</label>\r\n          <input id=\"caching-calc-input\" class=\"input__text\" type=\"text\" placeholder=\"Enter mathematic expression\">\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"caching-functions\" class=\"output__title\">Caching functions:</label>\r\n          <pre id=\"caching-functions\" class=\"output__text\" ></pre>\r\n        </div>\r\n        <div class=\"form__output output\">\r\n          <label for=\"caching-calc-output\" class=\"output__title\">Result of calculating:</label>\r\n          <output id=\"caching-calc-output\" for=\"caching-calc-input\" class=\"output__text\" ></output>\r\n        </div>\r\n    </section>\r\n  </main>\r\n</body>\r\n\r\n</html>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -724,6 +724,11 @@ var arrayProcessingSelect = document.querySelector('.array-processing .select');
 var arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option');
 
 function processArray(e) {
+  if (arrayProcessingInput.value == '') {
+    arrayProcessingOutput.textContent = 'Your input is empty!';
+    return;
+  }
+
   var arr = arrayProcessingInput.value.split(',');
   var res = null;
   var selected = getSelected(arrayProcessingOptions);
@@ -793,10 +798,22 @@ var textChecking = document.querySelector('#is-text-month');
 var dateOutput = document.querySelector('.date-formatter .output__text');
 
 function formateDate() {
+  if (dateInput.value === '') {
+    dateOutput.textContent = 'Your input is empty!';
+    dateInput.focus();
+    return;
+  }
+
   var date = dateInput.value;
 
-  if (date === undefined || !(date.length === 6 || date.length === 8)) {
-    dateOutput.textContent = 'Date input is incorrect!';
+  if (!isNumber(date)) {
+    dateOutput.textContent = 'Your input should only contain numbers!';
+    dateInput.focus();
+    return;
+  }
+
+  if (!(date.length === 6 || date.length === 8)) {
+    dateOutput.textContent = 'Date input should be 6 or 8 numbers!';
     dateInput.focus();
     return;
   }
@@ -835,6 +852,12 @@ var inputCarryover = textFormattingBlock.querySelector('#carryover-input');
 var outputFormattingText = textFormattingBlock.querySelector('#string-output');
 
 function formatText() {
+  if (inputStr.value === '') {
+    outputFormattingText.textContent = 'Your input is empty!';
+    inputStr.focus();
+    return;
+  }
+
   var str = inputStr.value;
   var maxLength = +inputMaxLength.value || undefined;
   var maxStrings = +inputMaxStr.value || undefined;
@@ -858,13 +881,26 @@ var exprInput = stringCalculatorBlock.querySelector('#calc-expr-input');
 var exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output');
 
 function calculateExpr() {
+  if (exprInput.value === '') {
+    exprOutput.textContent = 'Your input is empty!';
+    exprInput.focus();
+    return;
+  }
+
   var expr = exprInput.value;
+
+  if (!isMathExpression(expr)) {
+    exprOutput.textContent = 'Your input isn\'t mathematic expression';
+    exprInput.focus();
+    return;
+  }
 
   try {
     var res = _js_String_calculator__WEBPACK_IMPORTED_MODULE_5___default().calculateExpression(expr);
 
     if (isNaN(res)) {
       exprOutput.textContent = 'The entered expression is incorrect!';
+      exprInput.focus();
     } else {
       exprOutput.textContent = res;
     }
@@ -882,12 +918,20 @@ var sortSelecting = arraySorting.querySelector('#sort-selection');
 var sortOutput = arraySorting.querySelector('#array-sort-output');
 
 function sortArray() {
+  if (sortInput.value === '') {
+    sortOutput.textContent = 'Your input is empty!';
+    sortInput.focus();
+    return;
+  }
+
   var arr = sortInput.value.split(',').map(function (el) {
     return +el;
   });
   var sortType = getSelected(sortSelecting.children);
 
   if (sortType === null) {
+    sortOutput.textContent = 'You should choose a sort type!';
+    sortInput.focus();
     return;
   }
 
@@ -933,7 +977,13 @@ var convertationOutput = convertationBlock.querySelector('#convertation-output')
 var convertationStart = convertationBlock.querySelector('.form__start');
 
 function convertation() {
-  if (isNaN(convertationInput.value)) {
+  if (convertationInput.value === '') {
+    convertationOutput.textContent = 'Your input is empty!';
+    convertationInput.focus();
+    return;
+  }
+
+  if (!isNumber(convertationInput.value)) {
     convertationOutput.textContent = 'Your input should be number!';
     convertationInput.focus();
     return;
@@ -944,6 +994,27 @@ function convertation() {
   }).reverse('');
   var oldBase = +oldBaseInput.value;
   var newBase = +newBaseInput.value;
+
+  if (oldBase < 2 || oldBase > 10) {
+    convertationOutput.textContent = 'Old base should be number between 2 and 10 inclusive!';
+    oldBaseInput.focus();
+    return;
+  }
+
+  if (newBase < 2 || newBase > 10) {
+    convertationOutput.textContent = 'New base should be number between 2 and 10 inclusive!';
+    newBaseInput.focus();
+    return;
+  }
+
+  if (numArr.some(function (num) {
+    return num >= oldBase;
+  })) {
+    convertationOutput.textContent = 'Your input contains numbers more then old base value!';
+    convertationInput.focus();
+    return;
+  }
+
   var result = _js_Binary_converter__WEBPACK_IMPORTED_MODULE_7___default().convertToNewSystem(numArr, oldBase, newBase).reverse().join('');
   convertationOutput.textContent = result;
 }
@@ -956,7 +1027,19 @@ var cachingCalcOutput = cachingCalculatorBlock.querySelector('#caching-calc-outp
 var cachingFunctionsOutput = cachingCalculatorBlock.querySelector('#caching-functions');
 
 function calculateWithCache() {
+  if (cachingCalcInput.value === '') {
+    cachingCalcOutput.textContent = 'Your input is empty!';
+    cachingCalcInput.focus();
+    return;
+  }
+
   var expr = cachingCalcInput.value;
+
+  if (!isMathExpression(expr)) {
+    cachingCalcOutput.textContent = 'Your input isn\'t mathematic expression';
+    cachingCalcInput.focus();
+    return;
+  }
 
   try {
     var _cachingCalculator$ca = _js_Caching_calculator__WEBPACK_IMPORTED_MODULE_8___default().calculate(expr),
@@ -973,6 +1056,7 @@ function calculateWithCache() {
 
     if (isNaN(result)) {
       cachingCalcOutput.textContent = 'The entered expression is incorrect!';
+      cachingCalcInput.focus();
     } else {
       cachingCalcOutput.textContent = result;
     }
@@ -1009,6 +1093,14 @@ function getSelected(options) {
   }
 
   return null;
+}
+
+function isMathExpression(str) {
+  return str.match(/[0-9\(\)\+\-\*\/]+/);
+}
+
+function isNumber(numStr) {
+  return numStr.match(/[0-9]+/);
 }
 })();
 
