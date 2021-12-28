@@ -15,6 +15,11 @@ const arrayProcessingSelect = document.querySelector('.array-processing .select'
 const arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option')
 
 function processArray(e) {
+  if (arrayProcessingInput.value == '') {
+    arrayProcessingOutput.textContent = 'Your input is empty!'
+    return
+  }
+
   let arr = arrayProcessingInput.value.split(',')
   let res = null
   const selected = getSelected(arrayProcessingOptions)
@@ -80,11 +85,22 @@ const dateOutput = document.querySelector('.date-formatter .output__text')
 
 
 function formateDate() {
+  if (dateInput.value === '') {
+    dateOutput.textContent = 'Your input is empty!'
+    dateInput.focus()
+    return
+  }
 
   let date = dateInput.value
 
-  if (date === undefined || !(date.length === 6 || date.length === 8)) {
-    dateOutput.textContent = 'Date input is incorrect!'
+  if (!isNumber(date)) {
+    dateOutput.textContent = 'Your input should only contain numbers!'
+    dateInput.focus()
+    return
+  }
+
+  if (!(date.length === 6 || date.length === 8)) {
+    dateOutput.textContent = 'Date input should be 6 or 8 numbers!'
     dateInput.focus()
     return
   }
@@ -127,6 +143,12 @@ const inputCarryover = textFormattingBlock.querySelector('#carryover-input')
 const outputFormattingText = textFormattingBlock.querySelector('#string-output')
 
 function formatText() {
+  if (inputStr.value === '') {
+    outputFormattingText.textContent = 'Your input is empty!'
+    inputStr.focus()
+    return
+  }
+
   const str = inputStr.value
 
   const maxLength = +inputMaxLength.value || undefined
@@ -156,13 +178,26 @@ const exprInput = stringCalculatorBlock.querySelector('#calc-expr-input')
 const exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output')
 
 function calculateExpr() {
+  if (exprInput.value === '') {
+    exprOutput.textContent = 'Your input is empty!'
+    exprInput.focus()
+    return
+  }
+
   const expr = exprInput.value
+
+  if (!isMathExpression(expr)) {
+    exprOutput.textContent = 'Your input isn\'t mathematic expression'
+    exprInput.focus()
+    return
+  }
 
   try {
     const res = stringCalculator.calculateExpression(expr)
 
     if (isNaN(res)) {
       exprOutput.textContent = 'The entered expression is incorrect!'
+      exprInput.focus()
 
     } else {
       exprOutput.textContent = res
@@ -184,10 +219,18 @@ const sortSelecting = arraySorting.querySelector('#sort-selection')
 const sortOutput = arraySorting.querySelector('#array-sort-output')
 
 function sortArray() {
+  if (sortInput.value === '') {
+    sortOutput.textContent = 'Your input is empty!'
+    sortInput.focus()
+    return
+  }
+
   const arr = sortInput.value.split(',').map(el => +el)
   let sortType = getSelected(sortSelecting.children)
 
   if (sortType === null) {
+    sortOutput.textContent = 'You should choose a sort type!'
+    sortInput.focus()
     return
   }
 
@@ -231,11 +274,16 @@ const convertationOutput = convertationBlock.querySelector('#convertation-output
 const convertationStart = convertationBlock.querySelector('.form__start')
 
 function convertation() {
-  if (isNaN(convertationInput.value)) {
+  if (convertationInput.value === '') {
+    convertationOutput.textContent = 'Your input is empty!'
+    convertationInput.focus()
+    return
+  }
+
+  if (!isNumber(convertationInput.value)) {
     convertationOutput.textContent = 'Your input should be number!'
     convertationInput.focus()
     return
-
   }
 
   const numArr = convertationInput.value
@@ -244,6 +292,24 @@ function convertation() {
     .reverse('')
   const oldBase = +oldBaseInput.value
   const newBase = +newBaseInput.value
+
+  if (oldBase < 2 || oldBase > 10) {
+    convertationOutput.textContent = 'Old base should be number between 2 and 10 inclusive!'
+    oldBaseInput.focus()
+    return
+  }
+  
+  if (newBase < 2 || newBase > 10) {
+    convertationOutput.textContent = 'New base should be number between 2 and 10 inclusive!'
+    newBaseInput.focus()
+    return
+  }
+
+  if (numArr.some(num => num >= oldBase)) {
+    convertationOutput.textContent = 'Your input contains numbers more then old base value!'
+    convertationInput.focus()
+    return
+  }
 
   let result = binaryConverter.convertToNewSystem(numArr, oldBase, newBase)
     .reverse()
@@ -262,7 +328,19 @@ const cachingCalcOutput = cachingCalculatorBlock.querySelector('#caching-calc-ou
 const cachingFunctionsOutput = cachingCalculatorBlock.querySelector('#caching-functions')
 
 function calculateWithCache() {
+  if (cachingCalcInput.value === '') {
+    cachingCalcOutput.textContent = 'Your input is empty!'
+    cachingCalcInput.focus()
+    return
+  }
+
   const expr = cachingCalcInput.value
+  
+  if (!isMathExpression(expr)) {
+    cachingCalcOutput.textContent = 'Your input isn\'t mathematic expression'
+    cachingCalcInput.focus()
+    return
+  }
 
   try {
     let { result, cache } = cachingCalculator.calculate(expr)
@@ -276,6 +354,7 @@ function calculateWithCache() {
     cachingFunctionsOutput.textContent = cacheOutput
     if (isNaN(result)) {
       cachingCalcOutput.textContent = 'The entered expression is incorrect!'
+      cachingCalcInput.focus()
 
     } else {
       cachingCalcOutput.textContent = result
@@ -308,4 +387,12 @@ function getSelected(options) {
   }
 
   return null
+}
+
+function isMathExpression(str) {
+  return str.match(/[0-9\(\)\+\-\*\/]+/)
+}
+
+function isNumber(numStr) {
+  return numStr.match(/[0-9]+/)
 }
