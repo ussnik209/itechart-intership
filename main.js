@@ -736,26 +736,32 @@ function processArray(e) {
   arr = arr.map(function (el) {
     return +el;
   });
+  var isIncorrect = false;
 
   switch (selected.value) {
     case 'MaxSubLong':
       res = _js_Array_processing_tool__WEBPACK_IMPORTED_MODULE_2___default().getMaxSubSumLong(arr);
+      isIncorrect = isNaN(res);
       break;
 
     case 'MaxSubShort':
       res = _js_Array_processing_tool__WEBPACK_IMPORTED_MODULE_2___default().getMaxSubSum(arr);
+      isIncorrect = isNaN(res);
       break;
 
     case 'Min':
       res = _js_Array_processing_tool__WEBPACK_IMPORTED_MODULE_2___default().min(arr);
+      isIncorrect = isNaN(res);
       break;
 
     case 'Max':
       res = _js_Array_processing_tool__WEBPACK_IMPORTED_MODULE_2___default().max(arr);
+      isIncorrect = isNaN(res);
       break;
 
     case 'Med':
       res = _js_Array_processing_tool__WEBPACK_IMPORTED_MODULE_2___default().med(arr);
+      isIncorrect = isNaN(res);
       break;
 
     case 'AscSec':
@@ -767,7 +773,7 @@ function processArray(e) {
       return;
   }
 
-  if (isNaN(res)) {
+  if (isIncorrect) {
     arrayProcessingOutput.textContent = 'Your input is incorrect!';
     arrayProcessingInput.focus();
   } else {
