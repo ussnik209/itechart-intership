@@ -5,6 +5,7 @@ const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const ImageMinPlugin = require('image-min-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -51,7 +52,7 @@ const plugins = () => {
 
   if (isProd) {
     basePlugins.push(
-      new ImageminPlugin({
+      new ImageMinPlugin({
         bail: false, // Ignore errors on corrupted images
         cache: true,
         imageminOptions: {

@@ -25,22 +25,28 @@ function processArray(e) {
   }
 
   arr = arr.map(el => +el)
+  let isIncorrect = false
 
   switch (selected.value) {
     case 'MaxSubLong':
       res = arrayProcessingTool.getMaxSubSumLong(arr)
+      isIncorrect = isNaN(res)
       break
     case 'MaxSubShort':
       res = arrayProcessingTool.getMaxSubSum(arr)
+      isIncorrect = isNaN(res)
       break
     case 'Min':
       res = arrayProcessingTool.min(arr)
+      isIncorrect = isNaN(res)
       break
     case 'Max':
       res = arrayProcessingTool.max(arr)
+      isIncorrect = isNaN(res)
       break
     case 'Med':
       res = arrayProcessingTool.med(arr)
+      isIncorrect = isNaN(res)
       break
     case 'AscSec':
       res = arrayProcessingTool.selectIncreasing(arr)
@@ -50,7 +56,7 @@ function processArray(e) {
       return
   }
 
-  if (isNaN(res)) {
+  if (isIncorrect) {
     arrayProcessingOutput.textContent = 'Your input is incorrect!'
     arrayProcessingInput.focus()
 
