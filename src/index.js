@@ -109,16 +109,22 @@ function formateDate() {
   let outputFormat = getSelected(outputFormats).value
   let isText = textChecking.checked
 
-  if (outputFormat === 'from-now') {
-    dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
-    return
-  }
+  let formattedDate
+  try {
 
-  let formattedDate = dateDisplayFormatter.format(date, {
-    inputExpr: inputFormat,
-    outputExpr: outputFormat,
-    isText
-  })
+    if (outputFormat === 'from-now') {
+      dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
+      return
+    }
+
+    formattedDate = dateDisplayFormatter.format(date, {
+      inputExpr: inputFormat,
+      outputExpr: outputFormat,
+      isText
+    })
+  } catch (error) {
+    alert(error.message)
+  }
 
   dateOutput.textContent = formattedDate
 }
@@ -166,8 +172,6 @@ function formatText() {
     inputMaxStrAmount: maxStrings,
     inputCarryover: carryover
   }))
-
-
 }
 
 textFormattingButton.addEventListener('click', formatText)
@@ -298,7 +302,7 @@ function convertation() {
     oldBaseInput.focus()
     return
   }
-  
+
   if (newBase < 2 || newBase > 10) {
     convertationOutput.textContent = 'New base should be number between 2 and 10 inclusive!'
     newBaseInput.focus()
@@ -335,7 +339,7 @@ function calculateWithCache() {
   }
 
   const expr = cachingCalcInput.value
-  
+
   if (!isMathExpression(expr)) {
     cachingCalcOutput.textContent = 'Your input isn\'t mathematic expression'
     cachingCalcInput.focus()

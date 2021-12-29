@@ -8,9 +8,11 @@ let dateDisplayFormatter = {
     inputExpr = inputExpr || 'DDMMYYYY'
     outputExpr = outputExpr || 'DD-MM-YYYY'
     isText = isText || false
-
     if (typeof dateStr !== 'string') dateStr = String(dateStr)
     let { day, month, year } = this.getParsedDate(dateStr, inputExpr)
+    
+    this.isValidDate(+day, +month, +year)
+
     let formattedDate = this.getFormattedDate(outputExpr, day, month, year)
 
 
@@ -97,7 +99,6 @@ let dateDisplayFormatter = {
     const now = new Date()
     const nowWithoutTime = new Date(now.getFullYear(), now.getMonth(), now.getDate())
     let timeDif = nowWithoutTime - matchingDate
-    console.log(timeDif)
 
     if (timeDif === 0) {
       return 'Today'
@@ -124,15 +125,19 @@ let dateDisplayFormatter = {
     }
 
     if (timeDif > 0) {
-      return( dateDif + ' ago').trim()
+      return (dateDif + ' ago').trim()
     } else {
       return ('after' + dateDif).trim()
     }
+  },
+
+  isValidDate(day, month, year) {
+    if (year < 1970) throw new Error("Year should be before 1970!")
+    if (month < 1 || month > 12) throw new Error("Month should be between 1 and 12 inclusive!")
+    let testDate = new Date(year, month - 1, day)
+    console.log(testDate)
+    if (testDate.getDate() != day) throw new Error("You enter incorrect day!")
   }
 }
 
 module.exports = dateDisplayFormatter
-
-// let res = DateDisplayFormatter.format('31102011', { isText: true, outputExpr: 'DD MM YYYY' })
-// let res = dateDisplayFormatter.fromNow('17122021', 'DDMMYYYY')
-// console.log(res)
