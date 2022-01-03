@@ -1,4 +1,4 @@
-const stringCalculator = require('./String-calculator')
+const stringCalculator = require('../string-calculator/String-calculator')
 
 let cachingCalculator = {
   cache: [],

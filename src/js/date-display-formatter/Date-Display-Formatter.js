@@ -135,7 +135,6 @@ let dateDisplayFormatter = {
     if (year < 1970) throw new Error("Year should be before 1970!")
     if (month < 1 || month > 12) throw new Error("Month should be between 1 and 12 inclusive!")
     let testDate = new Date(year, month - 1, day)
-    console.log(testDate)
     if (testDate.getDate() != day) throw new Error("You enter incorrect day!")
   }
 }
