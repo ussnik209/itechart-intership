@@ -1,2 +1,2 @@
-# #ignore map files
-# *.*.map
+#ignore map files
+*.*.map
