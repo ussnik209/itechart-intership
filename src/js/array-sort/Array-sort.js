@@ -1,7 +1,7 @@
 let arraySort = {
   bubbleSort(array) {
     let isSwap = false
-    let arr = array
+    let arr = [...array]
 
     do {
       isSwap = false
@@ -21,7 +21,7 @@ let arraySort = {
   quickSort(array, first = 0, last = array.length - 1) {
     if (last == first) return
 
-    let arr = array
+    let arr = [...array]
 
     const supIndex = this.partition(arr, first, last)
 
@@ -60,7 +60,7 @@ let arraySort = {
   },
 
   choiceSort(array) {
-    let arr = array
+    let arr = [...array]
 
     for (let i = 0, length = arr.length; i < length - 1; i++) {
       const minEl = Math.min(...arr.slice(i))
@@ -75,7 +75,7 @@ let arraySort = {
   shakerSort(array) {
     if (array.length < 2) return array
 
-    let arr = array
+    let arr = [...array]
     let left = 0,
       right = arr.length - 1
 
