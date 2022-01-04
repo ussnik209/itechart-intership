@@ -1,10 +1,14 @@
 let stringCalculator = {
   calculateOperation(a, b, operation) {
+    let bDigits = b.length 
     a = Number(a)
     b = Number(b)
     let res = 0
 
     switch (operation) {
+      case '.':
+        res = a + b / (10 * bDigits)
+        break
       case '+':
         res = a + b
         break
@@ -25,15 +29,15 @@ let stringCalculator = {
   },
 
   calculateExpression(expr) {
-    const operations = ['*', '/', '+', '-']
-    
+    const operations = ['.', '*', '/', '+', '-']
+
     exprArr = expr.replace(/[0-9]+/g, '$& ')
-    .replace(/[\+\-\*\/\(\)]{1}/g, '$& ')
-    .split(' ')
-    .slice(0, -1)
+      .replace(/[\.\+\-\*\/\(\)]{1}/g, '$& ')
+      .split(' ')
+      .slice(0, -1)
 
     exprArr = this.processNegative(exprArr)
-    
+
     let openedBrackets = []
     let closedBrackets = []
     for (let i = 0, len = exprArr.length; i < len; i++) {
@@ -59,13 +63,15 @@ let stringCalculator = {
 
       let innerBrackets = exprArr.slice(opened + 1, closed)
 
-      innerBrackets = this.calculate(innerBrackets, operations.slice(0, 2))
-      innerBrackets = this.calculate(innerBrackets, operations.slice(2))
+      innerBrackets = this.calculate(innerBrackets, operations[0])
+      innerBrackets = this.calculate(innerBrackets, operations.slice(1, 3))
+      innerBrackets = this.calculate(innerBrackets, operations.slice(3))
       exprArr.splice(opened, closed - opened + 1, innerBrackets[0])
     }
 
-    exprArr = this.calculate(exprArr, operations.slice(0, 2))
-    exprArr = this.calculate(exprArr, operations.slice(2))
+    exprArr = this.calculate(exprArr, operations[0])
+    exprArr = this.calculate(exprArr, operations.slice(1, 3))
+    exprArr = this.calculate(exprArr, operations.slice(3))
 
     return exprArr[0]
   },
@@ -104,7 +110,7 @@ let stringCalculator = {
 
       if (exprArray[i] === '-' && (i === 0 || isNaN(exprArray[i - 1]))) {
         exprArray.splice(i, 2, -exprArray[i + 1])
-        
+
       }
     }
 
