@@ -1,5 +1,5 @@
 import stringCalculator from './String-calculator'
-import { runWithKeyEnter, isMathExpression } from '../utils/utils'
+import { runWithKeyEnter, isMathExpression, removeWhitespace } from '../utils/utils'
 
 const stringCalculatorBlock = document.querySelector('.string-calculator')
 const exprInput = stringCalculatorBlock.querySelector('#calc-expr-input')
@@ -21,7 +21,7 @@ function calculateExpr() {
   }
 
   try {
-    const res = stringCalculator.calculateExpression(expr)
+    const res = stringCalculator.calculateExpression(removeWhitespace(expr))
 
     if (isNaN(res)) {
       exprOutput.textContent = 'The entered expression is incorrect!'

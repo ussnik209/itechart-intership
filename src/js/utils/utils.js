@@ -23,9 +23,14 @@ function getSelected(options) {
   return null
 }
 
+function removeWhitespace(str) {
+  return str.replace(/ /g, '')
+}
+
 module.exports = {
   isMathExpression,
   isNumber,
   getSelected,
   runWithKeyEnter,
+  removeWhitespace,
 }

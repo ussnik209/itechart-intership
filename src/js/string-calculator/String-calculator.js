@@ -26,9 +26,6 @@ let stringCalculator = {
 
   calculateExpression(expr) {
     const operations = ['*', '/', '+', '-']
-
-    expr = expr.replace(/ /g, '')
-
     
     exprArr = expr.replace(/[0-9]+/g, '$& ')
     .replace(/[\+\-\*\/\(\)]{1}/g, '$& ')

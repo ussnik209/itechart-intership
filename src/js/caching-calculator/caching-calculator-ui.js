@@ -1,4 +1,4 @@
-import { isMathExpression, runWithKeyEnter } from '../utils/utils'
+import { isMathExpression, runWithKeyEnter, removeWhitespace } from '../utils/utils'
 import cachingCalculator from './Caching-calculator'
 
 const cachingCalculatorBlock = document.querySelector('.caching-calculator')
@@ -22,7 +22,7 @@ function calculateWithCache() {
   }
 
   try {
-    let { result, cache } = cachingCalculator.calculate(expr)
+    let { result, cache } = cachingCalculator.calculate(removeWhitespace(expr))
     let cacheOutput = ''
 
 
