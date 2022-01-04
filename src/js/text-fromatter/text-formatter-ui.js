@@ -17,9 +17,9 @@ function formatText() {
 
   const str = inputStr.value
 
-  const maxLength = +inputMaxLength.value || undefined
-  const maxStrings = +inputMaxStr.value || undefined
-  const carryover = inputCarryover.value || undefined
+  const maxLength = isNaN(+inputMaxLength.value) ? null : +inputMaxLength.value
+  const maxStrings = isNaN(+inputMaxStr.value) ? null : +inputMaxStr.value
+  const carryover = inputCarryover.value ? null : inputCarryover.value
 
   outputFormattingText.textContent = textFormatter.format(str, {
     inputMaxStrLength: maxLength,

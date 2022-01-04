@@ -1,25 +1,25 @@
 let textFormatter = {
   format(inputStr, { inputMaxStrLength, inputMaxStrAmount, inputCarryover }) {
     let str = inputStr,
-      maxStrLength = inputMaxStrLength || undefined,
-      maxStrAmount = inputMaxStrAmount || undefined,
+      maxStrLength = inputMaxStrLength,
+      maxStrAmount = inputMaxStrAmount,
       carryover = inputCarryover
 
-    if (maxStrLength === 0) {
+    if (maxStrLength === 0 || maxStrAmount === 0) {
       return ''
     }
 
-    if (maxStrLength !== undefined) {
+    if (maxStrLength) {
       str = this.getSplittedByLength(str, maxStrLength)
         .join('\n')
     }
 
-    if(carryover !== undefined) {
+    if (carryover) {
       const reg = new RegExp(carryover, 'g')
       str = str.replace(reg, `${carryover}\n`)
     }
 
-    if (maxStrAmount !== undefined) {
+    if (maxStrAmount) {
       str = str.split('\n')
         .slice(0, maxStrAmount)
         .join('\n')
@@ -41,11 +41,3 @@ let textFormatter = {
 }
 
 module.exports = textFormatter
-
-// let res = textFormatter.format('hi1hi1hi1hi1hi1hi1hi1hi1hi1hi1', {
-//   maxStrLength: 2,
-//   maxStrAmount: 4,
-//   carryover: '1'
-// })
-
-// console.log(res)
