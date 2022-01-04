@@ -6,6 +6,10 @@ function isNumber(numStr) {
   return numStr.match(/[0-9]+/)
 }
 
+function isNumber16Dig(numStr) {
+  return numStr.match(/[0-9A-Fa-f]/)
+}
+
 function runWithKeyEnter(e, fun) {
   if (e.keyCode != 13) return
 
@@ -33,4 +37,5 @@ module.exports = {
   getSelected,
   runWithKeyEnter,
   removeWhitespace,
+  isNumber16Dig,
 }

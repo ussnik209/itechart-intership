@@ -1,21 +1,34 @@
 let binaryConverter = {
-  convertToNewSystem(numArr, base, newBase) {
-    let num = this.getDecNum(numArr, base)
-    let decNum = []
+  letters: ['A', 'B', 'C', 'D', 'E', 'F'],
 
-    if (num === 0) return [0]
+  convertToNewSystem(numArr, base, newBase) {
+    let decNum = this.getDecNum(numArr, base)
+    let newNum = []
+
+    if (decNum === 0) return [0]
 
     do {
-      decNum.push(num % newBase)
-      num = Math.trunc(num / newBase)
-    
-    } while (num > 0)
+      const dig = decNum % newBase
+      newNum.push(
+        dig < 10 ? dig : this.letters[dig - 10]
+      )
+      decNum = Math.trunc(decNum / newBase)
 
-    return decNum
+    } while (decNum > 0)
+
+    return newNum
   },
 
   getDecNum(numArr, base) {
-    return numArr.reduce((num, dig, i) => num + dig * base ** i, 0)
+    return numArr.reduce((num, dig, i) => {
+      if (isNaN(dig)) {
+        return num + (this.letters.indexOf(dig.toUpperCase()) + 10) * base ** i
+
+      } else {
+        return num + (+dig) * base ** i
+
+      }
+    }, 0)
   }
 }
 
