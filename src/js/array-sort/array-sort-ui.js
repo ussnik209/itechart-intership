@@ -5,6 +5,7 @@ const arraySorting = document.querySelector('.array-sort')
 const sortInput = arraySorting.querySelector('#array-sort-input')
 const sortSelecting = arraySorting.querySelector('#sort-selection')
 const sortOutput = arraySorting.querySelector('#array-sort-output')
+const sortDirection = arraySorting.querySelector('.sort-direction')
 
 function sortArray() {
   if (sortInput.value === '') {
@@ -14,15 +15,23 @@ function sortArray() {
   }
 
   const arr = sortInput.value.split(',').map(el => +el)
-  let sortType = getSelected(sortSelecting.children)
 
+  let sortType = getSelected(sortSelecting.children)
   if (sortType === null) {
     sortOutput.textContent = 'You should choose a sort type!'
-    sortInput.focus()
+    sortSelecting.focus()
+    return
+  }
+
+  let sortDir = getSelected(sortDirection.children)
+  if (sortDir === null) {
+    sortOutput.textContent = 'You should choose a sort direction!'
+    sortDirection.focus()
     return
   }
 
   sortType = sortType.value
+  sortDir = sortDir.value
   let sortedArr = []
 
   switch (sortType) {
@@ -45,10 +54,15 @@ function sortArray() {
     sortInput.focus()
 
   } else {
+    if (sortDir === 'desc') {
+      sortedArr.reverse()
+    }
     sortOutput.textContent = sortedArr
 
   }
 }
 
 sortInput.addEventListener('change', sortArray)
+sortSelecting.addEventListener('change', sortArray)
+sortDirection.addEventListener('change', sortArray)
 sortInput.addEventListener('keydown', runWithKeyEnter.bind(this, sortArray))

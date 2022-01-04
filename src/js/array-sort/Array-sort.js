@@ -13,8 +13,7 @@ let arraySort = {
 
       }
 
-    }
-    while (isSwap)
+    } while (isSwap)
 
     return arr
   },
