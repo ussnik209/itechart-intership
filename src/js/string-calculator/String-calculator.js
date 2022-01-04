@@ -31,6 +31,8 @@ let stringCalculator = {
     .replace(/[\+\-\*\/\(\)]{1}/g, '$& ')
     .split(' ')
     .slice(0, -1)
+
+    exprArr = this.processNegative(exprArr)
     
     let openedBrackets = []
     let closedBrackets = []
@@ -93,6 +95,20 @@ let stringCalculator = {
 
     }
     return arr
+  },
+
+  processNegative(exprInput) {
+    let exprArray = [...exprInput]
+
+    for (let i = 0, length = exprArray.length; i < length; i++) {
+
+      if (exprArray[i] === '-' && (i === 0 || isNaN(exprArray[i - 1]))) {
+        exprArray.splice(i, 2, -exprArray[i + 1])
+        
+      }
+    }
+
+    return exprArray
   }
 }
 
