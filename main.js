@@ -710,6 +710,7 @@ var dateDisplayFormatter = {
         month = _this$getParsedDate2.month,
         year = _this$getParsedDate2.year;
 
+    this.isValidDate(+day, +month, +year);
     var matchingDate = new Date("".concat(year, "-").concat(month, "-").concat(day));
     var now = new Date();
     var nowWithoutTime = new Date(now.getFullYear(), now.getMonth(), now.getDate());
@@ -746,7 +747,7 @@ var dateDisplayFormatter = {
     }
   },
   isValidDate: function isValidDate(day, month, year) {
-    if (year < 1970) throw new Error("Year should be before 1970!");
+    if (year < 1970) throw new Error("Year should be after 1970!");
     if (month < 1 || month > 12) throw new Error("Month should be between 1 and 12 inclusive!");
     var testDate = new Date(year, month - 1, day);
     if (testDate.getDate() != day) throw new Error("You enter incorrect day!");
@@ -852,7 +853,7 @@ var stringCalculator = {
 
     switch (operation) {
       case '.':
-        res = a + b / (10 * bDigits);
+        res = a + b / Math.pow(10, bDigits);
         break;
 
       case '+':
@@ -1030,7 +1031,7 @@ var textFormatter = {
         maxStrAmount = inputMaxStrAmount,
         carryover = inputCarryover;
 
-    if (maxStrLength === 0 || maxStrAmount === 0) {
+    if (maxStrLength <= 0 || maxStrAmount <= 0) {
       return '';
     }
 
