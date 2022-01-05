@@ -1,13 +1,13 @@
 let stringCalculator = {
   calculateOperation(a, b, operation) {
-    let bDigits = b.length 
+    let bDigits = b.length
     a = Number(a)
     b = Number(b)
     let res = 0
 
     switch (operation) {
       case '.':
-        res = a + b / (10 * bDigits)
+        res = a + b / (10 ** bDigits)
         break
       case '+':
         res = a + b
@@ -37,6 +37,7 @@ let stringCalculator = {
       .slice(0, -1)
 
     exprArr = this.processNegative(exprArr)
+
 
     let openedBrackets = []
     let closedBrackets = []

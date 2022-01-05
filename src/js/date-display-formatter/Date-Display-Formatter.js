@@ -94,6 +94,8 @@ let dateDisplayFormatter = {
       expr = inputExpr
     let { day, month, year } = this.getParsedDate(date, expr)
 
+    this.isValidDate(+day, +month, +year)
+
     let matchingDate = new Date(`${year}-${month}-${day}`)
 
     const now = new Date()
@@ -132,7 +134,7 @@ let dateDisplayFormatter = {
   },
 
   isValidDate(day, month, year) {
-    if (year < 1970) throw new Error("Year should be before 1970!")
+    if (year < 1970) throw new Error("Year should be after 1970!")
     if (month < 1 || month > 12) throw new Error("Month should be between 1 and 12 inclusive!")
     let testDate = new Date(year, month - 1, day)
     if (testDate.getDate() != day) throw new Error("You enter incorrect day!")

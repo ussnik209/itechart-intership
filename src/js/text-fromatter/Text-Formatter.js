@@ -5,7 +5,7 @@ let textFormatter = {
       maxStrAmount = inputMaxStrAmount,
       carryover = inputCarryover
 
-    if (maxStrLength === 0 || maxStrAmount === 0) {
+    if (maxStrLength <= 0 || maxStrAmount <= 0) {
       return ''
     }
 
