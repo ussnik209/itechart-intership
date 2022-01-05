@@ -4,10 +4,10 @@ let stringCalculator = {
     a = Number(a)
     b = Number(b)
     let res = 0
-
     switch (operation) {
       case '.':
-        res = a + b / (10 ** bDigits)
+        const fraction = a >= 0 ? b / (10 ** bDigits) : -(b / (10 ** bDigits))
+        res = a + fraction
         break
       case '+':
         res = a + b
@@ -74,6 +74,7 @@ let stringCalculator = {
     exprArr = this.calculate(exprArr, operations.slice(1, 3))
     exprArr = this.calculate(exprArr, operations.slice(3))
 
+
     return exprArr[0]
   },
 
@@ -84,6 +85,7 @@ let stringCalculator = {
       curEl = arr[i]
 
       if (curEl == operations[0] || curEl == operations[1]) {
+
         res = this.calculateOperation(arr[i - 1], arr[i + 1], curEl)
 
         if (i + 1 < arr.length - 1) {
