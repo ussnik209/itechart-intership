@@ -853,7 +853,8 @@ var stringCalculator = {
 
     switch (operation) {
       case '.':
-        res = a + b / Math.pow(10, bDigits);
+        var fraction = a >= 0 ? b / Math.pow(10, bDigits) : -(b / Math.pow(10, bDigits));
+        res = a + fraction;
         break;
 
       case '+':
