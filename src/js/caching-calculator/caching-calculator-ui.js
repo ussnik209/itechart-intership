@@ -22,27 +22,22 @@ function calculateWithCache() {
   }
 
   try {
-    let { result, cache } = cachingCalculator.calculate(removeWhitespace(expr))
+    const { result, cache } = cachingCalculator.calculate(removeWhitespace(expr))
     let cacheOutput = ''
 
-
-    for (let expr in cache) {
-      cacheOutput += `${expr.split(' ').join('')}=${cache[expr]}\n`
-    }
+    cache.forEach((cacheExpr) => {
+      cacheOutput += `${cacheExpr.split(' ').join('')}=${cache[cacheExpr]}\n`
+    })
 
     cachingFunctionsOutput.textContent = cacheOutput
-    if (isNaN(result)) {
+    if (Number.isNaN(result)) {
       cachingCalcOutput.textContent = 'The entered expression is incorrect!'
       cachingCalcInput.focus()
-
     } else {
       cachingCalcOutput.textContent = result
-
     }
-
   } catch (error) {
     cachingCalcOutput.textContent = error.message
-
   }
 }
 

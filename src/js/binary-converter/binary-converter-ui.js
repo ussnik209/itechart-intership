@@ -1,5 +1,5 @@
 import binaryConverter from './Binary-converter'
-import { isNumber16Dig } from '../utils/utils'
+import { isNumber16Dig, isBaseFits } from '../utils/utils'
 
 const convertationBlock = document.querySelector('.binary-converter')
 const convertationInput = convertationBlock.querySelector('#convertation-input')
@@ -45,34 +45,11 @@ function convertation() {
     return
   }
 
-  let result = binaryConverter.convertToNewSystem(numArr, oldBase, newBase)
+  const result = binaryConverter.convertToNewSystem(numArr, oldBase, newBase)
     .reverse()
     .join('')
 
   convertationOutput.textContent = result
-}
-
-function isBaseFits(numArr, base) {
-  const letters = ['A', 'B', 'C', 'D', 'E', 'F']
-  let fitCheck = true
-
-  numArr.forEach(dig => {
-    if (isNaN(dig)) {
-      if ((letters.indexOf(dig.toUpperCase()) + 10) >= base) {
-        fitCheck = false
-
-      }
-
-    } else {
-      if (dig >= base) {
-        fitCheck = false
-
-      }
-
-    }
-  })
-
-  return fitCheck
 }
 
 convertationStart.addEventListener('click', convertation)

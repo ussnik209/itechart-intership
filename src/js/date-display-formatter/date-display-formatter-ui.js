@@ -8,7 +8,6 @@ const formatButton = document.querySelector('.date-formatter .form__start button
 const textChecking = document.querySelector('#is-text-month')
 const dateOutput = document.querySelector('.date-formatter .output__text')
 
-
 function formateDate() {
   if (dateInput.value === '') {
     dateOutput.textContent = 'Your input is empty!'
@@ -16,7 +15,7 @@ function formateDate() {
     return
   }
 
-  let date = dateInput.value
+  const date = dateInput.value
 
   if (!isNumber(date)) {
     dateOutput.textContent = 'Your input should only contain numbers!'
@@ -30,13 +29,12 @@ function formateDate() {
     return
   }
 
-  let inputFormat = getSelected(inputFormats).value
-  let outputFormat = getSelected(outputFormats).value
-  let isText = textChecking.checked
+  const inputFormat = getSelected(inputFormats).value
+  const outputFormat = getSelected(outputFormats).value
+  const isText = textChecking.checked
 
   let formattedDate
   try {
-
     if (outputFormat === 'from-now') {
       dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
       return
@@ -45,7 +43,7 @@ function formateDate() {
     formattedDate = dateDisplayFormatter.format(date, {
       inputExpr: inputFormat,
       outputExpr: outputFormat,
-      isText
+      isText,
     })
   } catch (error) {
     alert(error.message)

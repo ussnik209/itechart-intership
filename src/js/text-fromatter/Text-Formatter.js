@@ -1,9 +1,9 @@
-let textFormatter = {
+const textFormatter = {
   format(inputStr, { inputMaxStrLength, inputMaxStrAmount, inputCarryover }) {
-    let str = inputStr,
-      maxStrLength = inputMaxStrLength,
-      maxStrAmount = inputMaxStrAmount,
-      carryover = inputCarryover
+    let str = inputStr
+    const maxStrLength = inputMaxStrLength
+    const maxStrAmount = inputMaxStrAmount
+    const carryover = inputCarryover
 
     if (maxStrLength <= 0 || maxStrAmount <= 0) {
       return ''
@@ -23,14 +23,13 @@ let textFormatter = {
       str = str.split('\n')
         .slice(0, maxStrAmount)
         .join('\n')
-
     }
 
     return str
   },
 
   getSplittedByLength(inputStr, maxStrLength) {
-    let splittedStr = []
+    const splittedStr = []
 
     for (let i = 0; i < inputStr.length; i += maxStrLength) {
       splittedStr.push(inputStr.slice(i, i + maxStrLength))

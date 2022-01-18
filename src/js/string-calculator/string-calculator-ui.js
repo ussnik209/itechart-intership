@@ -23,20 +23,16 @@ function calculateExpr() {
   try {
     const res = stringCalculator.calculateExpression(removeWhitespace(expr))
 
-    if (isNaN(res)) {
+    if (Number.isNaN(res)) {
       exprOutput.textContent = 'The entered expression is incorrect!'
       exprInput.focus()
-
     } else {
       exprOutput.textContent = res
-
     }
   } catch (error) {
     exprOutput.textContent = error.message
-
   }
 }
 
 exprInput.addEventListener('change', calculateExpr)
 exprInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateExpr))
-

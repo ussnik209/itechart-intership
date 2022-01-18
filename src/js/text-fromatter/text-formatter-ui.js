@@ -17,20 +17,20 @@ function formatText() {
 
   const str = inputStr.value
 
-  const maxLength = isNaN(+inputMaxLength.value) ? null : +inputMaxLength.value
-  const maxStrings = isNaN(+inputMaxStr.value) ? null : +inputMaxStr.value
+  const maxLength = Number.isNaN(+inputMaxLength.value) ? null : +inputMaxLength.value
+  const maxStrings = Number.isNaN(+inputMaxStr.value) ? null : +inputMaxStr.value
   const carryover = inputCarryover.value ? null : inputCarryover.value
 
   outputFormattingText.textContent = textFormatter.format(str, {
     inputMaxStrLength: maxLength,
     inputMaxStrAmount: maxStrings,
-    inputCarryover: carryover
+    inputCarryover: carryover,
   })
 
   console.log(textFormatter.format(str, {
     inputMaxStrLength: maxLength,
     inputMaxStrAmount: maxStrings,
-    inputCarryover: carryover
+    inputCarryover: carryover,
   }))
 }
 

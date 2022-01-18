@@ -6,8 +6,8 @@ const arrayProcessingOutput = document.querySelector('#array-processing-output')
 const arrayProcessingSelect = document.querySelector('.array-processing .select')
 const arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option')
 
-function processArray(e) {
-  if (arrayProcessingInput.value == '') {
+function processArray() {
+  if (arrayProcessingInput.value === '') {
     arrayProcessingOutput.textContent = 'Your input is empty!'
     return
   }
@@ -21,29 +21,29 @@ function processArray(e) {
     return
   }
 
-  arr = arr.map(el => +el)
+  arr = arr.map((el) => +el)
   let isIncorrect = false
 
   switch (selected.value) {
     case 'MaxSubLong':
       res = arrayProcessingTool.getMaxSubSumLong(arr)
-      isIncorrect = isNaN(res)
+      isIncorrect = Number.isNaN(res)
       break
     case 'MaxSubShort':
       res = arrayProcessingTool.getMaxSubSum(arr)
-      isIncorrect = isNaN(res)
+      isIncorrect = Number.isNaN(res)
       break
     case 'Min':
       res = arrayProcessingTool.min(arr)
-      isIncorrect = isNaN(res)
+      isIncorrect = Number.isNaN(res)
       break
     case 'Max':
       res = arrayProcessingTool.max(arr)
-      isIncorrect = isNaN(res)
+      isIncorrect = Number.isNaN(res)
       break
     case 'Med':
       res = arrayProcessingTool.med(arr)
-      isIncorrect = isNaN(res)
+      isIncorrect = Number.isNaN(res)
       break
     case 'AscSec':
       res = arrayProcessingTool.selectIncreasing(arr)
@@ -56,10 +56,8 @@ function processArray(e) {
   if (isIncorrect) {
     arrayProcessingOutput.textContent = 'Your input is incorrect!'
     arrayProcessingInput.focus()
-
   } else {
     arrayProcessingOutput.textContent = res
-
   }
 }
 

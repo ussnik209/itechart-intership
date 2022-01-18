@@ -1,22 +1,24 @@
-let dateDisplayFormatter = {
+const dateDisplayFormatter = {
   months: ['January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August',
-    'September', 'October', 'November', 'December'
+    'September', 'October', 'November', 'December',
   ],
 
   format(dateStr, { inputExpr, outputExpr, isText }) {
-    inputExpr = inputExpr || 'DDMMYYYY'
-    outputExpr = outputExpr || 'DD-MM-YYYY'
-    isText = isText || false
-    if (typeof dateStr !== 'string') dateStr = String(dateStr)
-    let { day, month, year } = this.getParsedDate(dateStr, inputExpr)
-    
+    const input = inputExpr || 'DDMMYYYY'
+    const output = outputExpr || 'DD-MM-YYYY'
+    const isTextCheck = isText || false
+    let date = dateStr
+    if (typeof dateStr !== 'string') {
+      date = String(date)
+    }
+    const { day, month, year } = this.getParsedDate(date, input)
+
     this.isValidDate(+day, +month, +year)
 
-    let formattedDate = this.getFormattedDate(outputExpr, day, month, year)
+    let formattedDate = this.getFormattedDate(output, day, month, year)
 
-
-    if (isText) {
+    if (isTextCheck) {
       formattedDate = this.toText(formattedDate, outputExpr)
     }
 
@@ -24,11 +26,11 @@ let dateDisplayFormatter = {
   },
 
   getParsedDate(dateStr, exprStr) {
-    let expr = exprStr.split(''),
-      date = dateStr
-    let year = '',
-      month = '',
-      day = ''
+    const expr = exprStr.split('')
+    const date = dateStr
+    let year = ''
+    let month = ''
+    let day = ''
 
     expr.forEach((el, i) => {
       switch (el) {
@@ -41,24 +43,26 @@ let dateDisplayFormatter = {
         case 'Y':
           year += date[i]
           break
+        default:
+          throw Error('Incorrect value of input format!')
       }
     })
 
     return {
       day,
       month,
-      year
+      year,
     }
   },
 
   getFormattedDate(exprStr, dayInputStr, monthInputStr, yearInputStr) {
     let expr = exprStr.split('')
     expr.reverse()
-    let day = dayInputStr.split(''),
-      month = monthInputStr.split(''),
-      year = yearInputStr.split('')
+    const day = dayInputStr.split('')
+    const month = monthInputStr.split('')
+    const year = yearInputStr.split('')
 
-    expr = expr.map(el => {
+    expr = expr.map((el) => {
       switch (el) {
         case 'D':
           return day.pop()
@@ -75,8 +79,8 @@ let dateDisplayFormatter = {
   },
 
   toText(dateStr, exprStr) {
-    let date = dateStr.split('-'),
-      expr = exprStr.split('-')
+    const date = dateStr.split('-')
+    const expr = exprStr.split('-')
 
     expr.forEach((el, i) => {
       if (el[0] === 'M') date[i] = this.monthToText(+date[i] - 1)
@@ -90,17 +94,17 @@ let dateDisplayFormatter = {
   },
 
   fromNow(dateStr, inputExpr) {
-    let date = String(dateStr),
-      expr = inputExpr
-    let { day, month, year } = this.getParsedDate(date, expr)
+    const date = String(dateStr)
+    const expr = inputExpr
+    const { day, month, year } = this.getParsedDate(date, expr)
 
     this.isValidDate(+day, +month, +year)
 
-    let matchingDate = new Date(`${year}-${month}-${day}`)
+    const matchingDate = new Date(`${year}-${month}-${day}`)
 
     const now = new Date()
     const nowWithoutTime = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    let timeDif = nowWithoutTime - matchingDate
+    const timeDif = nowWithoutTime - matchingDate
 
     if (timeDif === 0) {
       return 'Today'
@@ -127,18 +131,17 @@ let dateDisplayFormatter = {
     }
 
     if (timeDif > 0) {
-      return (dateDif + ' ago').trim()
-    } else {
-      return ('after' + dateDif).trim()
+      return (`${dateDif} ago`).trim()
     }
+    return (`after${dateDif}`).trim()
   },
 
   isValidDate(day, month, year) {
-    if (year < 1970) throw new Error("Year should be after 1970!")
-    if (month < 1 || month > 12) throw new Error("Month should be between 1 and 12 inclusive!")
-    let testDate = new Date(year, month - 1, day)
-    if (testDate.getDate() != day) throw new Error("You enter incorrect day!")
-  }
+    if (year < 1970) throw new Error('Year should be after 1970!')
+    if (month < 1 || month > 12) throw new Error('Month should be between 1 and 12 inclusive!')
+    const testDate = new Date(year, month - 1, day)
+    if (testDate.getDate() !== day) throw new Error('You enter incorrect day!')
+  },
 }
 
 module.exports = dateDisplayFormatter

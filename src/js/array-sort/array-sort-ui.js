@@ -14,7 +14,7 @@ function sortArray() {
     return
   }
 
-  const arr = sortInput.value.split(',').map(el => +el)
+  const arr = sortInput.value.split(',').map((el) => +el)
 
   let sortType = getSelected(sortSelecting.children)
   if (sortType === null) {
@@ -47,18 +47,18 @@ function sortArray() {
     case 'shaker':
       sortedArr = arraySort.shakerSort(arr)
       break
+    default:
+      throw Error('Incorrect type of sorting!')
   }
 
-  if (sortedArr.some(el => isNaN(el))) {
+  if (sortedArr.some((el) => Number.isNaN(el))) {
     sortOutput.textContent = 'Your input is incorrect!'
     sortInput.focus()
-
   } else {
     if (sortDir === 'desc') {
       sortedArr.reverse()
     }
     sortOutput.textContent = sortedArr
-
   }
 }
 
