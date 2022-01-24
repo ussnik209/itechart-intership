@@ -48,7 +48,7 @@ const arrayProcessingTool = {
       length: 1,
       first: 0,
     }
-    let max = { ...cur }
+    let max = {...cur }
 
     arr.reduce((preEl, el, i) => {
       if (el > preEl) {
@@ -59,7 +59,7 @@ const arrayProcessingTool = {
       }
 
       if (cur.length > max.length) {
-        max = { ...cur }
+        max = {...cur }
       }
 
       return el

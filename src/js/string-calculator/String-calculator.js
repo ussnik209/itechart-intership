@@ -5,11 +5,12 @@ const stringCalculator = {
     const b = Number(rightOperand)
     let res = 0
     switch (operation) {
-      case '.': {
-        const fraction = a >= 0 ? b / (10 ** bDigits) : -(b / (10 ** bDigits))
-        res = a + fraction
-        break
-      }
+      case '.':
+        {
+          const fraction = a >= 0 ? b / (10 ** bDigits) : -(b / (10 ** bDigits))
+          res = a + fraction
+          break
+        }
       case '+':
         res = a + b
         break
