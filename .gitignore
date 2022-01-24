@@ -3,7 +3,5 @@ node_modules
 dist
 
 .prettierignore
-.prettierrc
 
 .eslintignore
-.eslintrc.js
