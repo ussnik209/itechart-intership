@@ -1,5 +1,11 @@
-const textFormatter = {
-  format(inputStr, { inputMaxStrLength, inputMaxStrAmount, inputCarryover }) {
+interface textFormatterConf {
+  inputMaxStrLength: number,
+  inputMaxStrAmount: number,
+  inputCarryover: string,
+ }
+
+export const textFormatter = {
+  format(inputStr: string, { inputMaxStrLength, inputMaxStrAmount, inputCarryover }: textFormatterConf) {
     let str = inputStr
     const maxStrLength = inputMaxStrLength
     const maxStrAmount = inputMaxStrAmount
@@ -28,7 +34,7 @@ const textFormatter = {
     return str
   },
 
-  getSplittedByLength(inputStr, maxStrLength) {
+  getSplittedByLength(inputStr: string, maxStrLength: number) {
     const splittedStr = []
 
     for (let i = 0; i < inputStr.length; i += maxStrLength) {

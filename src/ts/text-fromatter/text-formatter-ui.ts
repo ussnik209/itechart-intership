@@ -1,11 +1,11 @@
-import textFormatter from './Text-Formatter'
+import { textFormatter } from './Text-Formatter'
 
 const textFormattingBlock = document.querySelector('.text-formatting')
 const textFormattingButton = textFormattingBlock.querySelector('.form__start button')
-const inputStr = textFormattingBlock.querySelector('#string-input')
-const inputMaxLength = textFormattingBlock.querySelector('#max-length')
-const inputMaxStr = textFormattingBlock.querySelector('#max-strings')
-const inputCarryover = textFormattingBlock.querySelector('#carryover-input')
+const inputStr = textFormattingBlock.querySelector<HTMLInputElement>('#string-input')
+const inputMaxLength = textFormattingBlock.querySelector<HTMLInputElement>('#max-length')
+const inputMaxStr = textFormattingBlock.querySelector<HTMLInputElement>('#max-strings')
+const inputCarryover = textFormattingBlock.querySelector<HTMLInputElement>('#carryover-input')
 const outputFormattingText = textFormattingBlock.querySelector('#string-output')
 
 function formatText() {
