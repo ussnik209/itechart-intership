@@ -1,5 +1,5 @@
 import { getSelected, runWithKeyEnter } from '../utils/utils'
-import { arrayProcessingTool}  from './Array-processing-tool'
+import { arrayProcessingTool }  from './Array-processing-tool'
 
 const arrayProcessingInput = document.querySelector<HTMLInputElement>('#array-processing-input')
 const arrayProcessingOutput = document.querySelector<HTMLOutputElement>('#array-processing-output')

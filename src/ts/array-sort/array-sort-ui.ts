@@ -1,11 +1,11 @@
-import arraySort from './Array-sort'
+import { arraySort } from './Array-sort'
 import { getSelected, runWithKeyEnter } from '../utils/utils'
 
-const arraySorting = document.querySelector('.array-sort')
-const sortInput = arraySorting.querySelector('#array-sort-input')
-const sortSelecting = arraySorting.querySelector('#sort-selection')
-const sortOutput = arraySorting.querySelector('#array-sort-output')
-const sortDirection = arraySorting.querySelector('.sort-direction')
+const arraySorting = document.querySelector<HTMLElement>('.array-sort')
+const sortInput = arraySorting.querySelector<HTMLInputElement>('#array-sort-input')
+const sortSelecting = arraySorting.querySelector<HTMLSelectElement>('#sort-selection')
+const sortOutput = arraySorting.querySelector<HTMLOutputElement>('#array-sort-output')
+const sortDirection = arraySorting.querySelector<HTMLSelectElement>('.sort-direction')
 
 function sortArray() {
   if (sortInput.value === '') {
@@ -58,7 +58,7 @@ function sortArray() {
     if (sortDir === 'desc') {
       sortedArr.reverse()
     }
-    sortOutput.textContent = sortedArr
+    sortOutput.textContent = String(sortedArr)
   }
 }
 

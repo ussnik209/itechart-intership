@@ -1,5 +1,5 @@
-const arraySort = {
-  bubbleSort(array) {
+export const arraySort = {
+  bubbleSort(array: number[]) {
     let isSwap = false
     const arr = [...array]
 
@@ -16,7 +16,7 @@ const arraySort = {
     return arr
   },
 
-  quickSort(array, first = 0, last = array.length - 1) {
+  quickSort(array: number[], first = 0, last = array.length - 1) {
     if (last === first) return array
 
     const arr = [...array]
@@ -29,7 +29,7 @@ const arraySort = {
     return arr
   },
 
-  partition(arr, first, last) {
+  partition(arr: number[], first: number, last: number) {
     const sup = arr[Math.floor((first + last) / 2)]
     let left = first
     let right = last
@@ -53,12 +53,12 @@ const arraySort = {
     return left
   },
 
-  swap(array, first, second) {
+  swap(array: number[], first: number, second: number) {
     const arr = array;
     [arr[first], arr[second]] = [arr[second], arr[first]]
   },
 
-  choiceSort(array) {
+  choiceSort(array: number[]) {
     const arr = [...array]
 
     for (let i = 0, { length } = arr; i < length - 1; i += 1) {
@@ -71,7 +71,7 @@ const arraySort = {
     return arr
   },
 
-  shakerSort(array) {
+  shakerSort(array: number[]) {
     if (array.length < 2) return array
 
     const arr = [...array]
@@ -98,4 +98,4 @@ const arraySort = {
   },
 }
 
-module.exports = arraySort
+// module.exports = arraySort

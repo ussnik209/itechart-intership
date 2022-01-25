@@ -7,3 +7,5 @@ import './ts/string-calculator/string-calculator-ui'
 import './ts/array-sort/array-sort-ui'
 import './ts/binary-converter/binary-converter-ui'
 import './ts/caching-calculator/caching-calculator-ui'
+
+console.log('It is work!')
