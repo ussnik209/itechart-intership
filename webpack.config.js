@@ -2,7 +2,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const ImageMinPlugin = require('imagemin-webpack')
@@ -81,7 +81,7 @@ const plugins = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './index.js',
+  entry: './index.ts',
   output: {
     filename: `./${filename('js')}`,
     path: path.resolve(__dirname, 'dist'),
@@ -103,9 +103,7 @@ module.exports = {
         use: [{
             loader: MiniCSSExtractPlugin.loader,
             options: {
-              publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + '/'
-              },
+              publicPath: (resourcePath, context) => `${path.relative(path.dirname(resourcePath), context)  }/`,
             }
           },
           {
@@ -140,6 +138,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ]
-  }
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
 }

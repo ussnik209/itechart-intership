@@ -1,9 +1,9 @@
 import { getSelected, runWithKeyEnter } from '../utils/utils'
-import arrayProcessingTool from './Array-processing-tool'
+import { arrayProcessingTool}  from './Array-processing-tool'
 
-const arrayProcessingInput = document.querySelector('#array-processing-input')
-const arrayProcessingOutput = document.querySelector('#array-processing-output')
-const arrayProcessingSelect = document.querySelector('.array-processing .select')
+const arrayProcessingInput = document.querySelector<HTMLInputElement>('#array-processing-input')
+const arrayProcessingOutput = document.querySelector<HTMLOutputElement>('#array-processing-output')
+const arrayProcessingSelect = document.querySelector<HTMLSelectElement>('.array-processing .select')
 const arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option')
 
 function processArray() {
@@ -21,32 +21,32 @@ function processArray() {
     return
   }
 
-  arr = arr.map((el) => +el)
+  const arrNumeric = arr.map((el: string) => +el)
   let isIncorrect = false
 
   switch (selected.value) {
     case 'MaxSubLong':
-      res = arrayProcessingTool.getMaxSubSumLong(arr)
+      res = arrayProcessingTool.getMaxSubSumLong(arrNumeric)
       isIncorrect = Number.isNaN(res)
       break
     case 'MaxSubShort':
-      res = arrayProcessingTool.getMaxSubSum(arr)
+      res = arrayProcessingTool.getMaxSubSum(arrNumeric)
       isIncorrect = Number.isNaN(res)
       break
     case 'Min':
-      res = arrayProcessingTool.min(arr)
+      res = arrayProcessingTool.min(arrNumeric)
       isIncorrect = Number.isNaN(res)
       break
     case 'Max':
-      res = arrayProcessingTool.max(arr)
+      res = arrayProcessingTool.max(arrNumeric)
       isIncorrect = Number.isNaN(res)
       break
     case 'Med':
-      res = arrayProcessingTool.med(arr)
+      res = arrayProcessingTool.med(arrNumeric)
       isIncorrect = Number.isNaN(res)
       break
     case 'AscSec':
-      res = arrayProcessingTool.selectIncreasing(arr)
+      res = arrayProcessingTool.selectIncreasing(arrNumeric)
       break
     default:
       arrayProcessingOutput.textContent = 'Select one of the processing options!'

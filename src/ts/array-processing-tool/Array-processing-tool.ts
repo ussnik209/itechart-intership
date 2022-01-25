@@ -1,5 +1,5 @@
-const arrayProcessingTool = {
-  getMaxSubSumLong(arr) {
+export const arrayProcessingTool = {
+  getMaxSubSumLong(arr: number[]) {
     let maxSum = 0
 
     for (let i = 0, { length } = arr; i < length; i += 1) {
@@ -15,7 +15,7 @@ const arrayProcessingTool = {
     return maxSum
   },
 
-  getMaxSubSum(arr) {
+  getMaxSubSum(arr: number[]) {
     let maxSum = 0
     let curSum = 0
     arr.forEach((el) => {
@@ -25,23 +25,23 @@ const arrayProcessingTool = {
     return maxSum
   },
 
-  sort(arr) {
+  sort(arr: number[]) {
     return arr.sort((a, b) => a - b)
   },
 
-  min(arr) {
+  min(arr: number[]) {
     return this.sort(arr)[0]
   },
 
-  max(arr) {
+  max(arr: number[]) {
     return this.sort(arr)[arr.length - 1]
   },
 
-  med(arr) {
+  med(arr: number[]) {
     return this.sort(arr)[Math.floor(arr.length / 2)]
   },
 
-  selectIncreasing(arr) {
+  selectIncreasing(arr: number[]) {
     if (arr.length < 2) return arr.length
 
     const cur = {
@@ -65,12 +65,11 @@ const arrayProcessingTool = {
       return el
     })
 
-    // change to slice
-    return arr.splice(max.first, max.length)
+    return arr.slice(max.first, max.first + max.length)
   },
 }
 
-module.exports = arrayProcessingTool
+// module.exports = arrayProcessingTool
 
 // const test1 = [-1, 2, 3, -9, 11],
 //   test2 = [-2, -1, 1, 2],
