@@ -1,10 +1,16 @@
-const dateDisplayFormatter = {
+interface formatterConf {
+  inputExpr: string,
+  outputExpr: string,
+  isText: boolean,
+}
+
+export const dateDisplayFormatter = {
   months: ['January', 'February', 'March', 'April',
     'May', 'June', 'July', 'August',
     'September', 'October', 'November', 'December',
   ],
 
-  format(dateStr, { inputExpr, outputExpr, isText }) {
+  format(dateStr: string, { inputExpr, outputExpr, isText }: formatterConf) {
     const input = inputExpr || 'DDMMYYYY'
     const output = outputExpr || 'DD-MM-YYYY'
     const isTextCheck = isText || false
@@ -25,7 +31,7 @@ const dateDisplayFormatter = {
     return formattedDate
   },
 
-  getParsedDate(dateStr, exprStr) {
+  getParsedDate(dateStr: string, exprStr: string) {
     const expr = exprStr.split('')
     const date = dateStr
     let year = ''
@@ -55,7 +61,7 @@ const dateDisplayFormatter = {
     }
   },
 
-  getFormattedDate(exprStr, dayInputStr, monthInputStr, yearInputStr) {
+  getFormattedDate(exprStr: string, dayInputStr: string, monthInputStr: string, yearInputStr: string) {
     let expr = exprStr.split('')
     expr.reverse()
     const day = dayInputStr.split('')
@@ -78,7 +84,7 @@ const dateDisplayFormatter = {
     return expr.reverse().join('')
   },
 
-  toText(dateStr, exprStr) {
+  toText(dateStr: string, exprStr: string) {
     const date = dateStr.split('-')
     const expr = exprStr.split('-')
 
@@ -89,11 +95,11 @@ const dateDisplayFormatter = {
     return date.join(' ')
   },
 
-  monthToText(month) {
+  monthToText(month: string) {
     return this.months[month]
   },
 
-  fromNow(dateStr, inputExpr) {
+  fromNow(dateStr: string, inputExpr: string) {
     const date = String(dateStr)
     const expr = inputExpr
     const { day, month, year } = this.getParsedDate(date, expr)
@@ -104,7 +110,7 @@ const dateDisplayFormatter = {
 
     const now = new Date()
     const nowWithoutTime = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    const timeDif = nowWithoutTime - matchingDate
+    const timeDif = Number(nowWithoutTime) - Number(matchingDate)
 
     if (timeDif === 0) {
       return 'Today'
@@ -136,7 +142,7 @@ const dateDisplayFormatter = {
     return (`after${dateDif}`).trim()
   },
 
-  isValidDate(day, month, year) {
+  isValidDate(day: number, month: number, year: number) {
     if (year < 1970) throw new Error('Year should be after 1970!')
     if (month < 1 || month > 12) throw new Error('Month should be between 1 and 12 inclusive!')
     const testDate = new Date(year, month - 1, day)
