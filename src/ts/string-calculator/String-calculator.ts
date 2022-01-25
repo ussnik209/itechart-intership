@@ -1,6 +1,6 @@
-const stringCalculator = {
-  calculateOperation(leftOperand, rightOperand, operation) {
-    const bDigits = rightOperand.length
+export const stringCalculator = {
+  calculateOperation(leftOperand: string | number, rightOperand: string | number, operation: string) {
+    const bDigits = String(rightOperand).length
     const a = Number(leftOperand)
     const b = Number(rightOperand)
     let res = 0
@@ -32,7 +32,7 @@ const stringCalculator = {
     return res
   },
 
-  calculateExpression(expr) {
+  calculateExpression(expr: string) {
     const operations = ['.', '*', '/', '+', '-']
 
     let exprArr = expr.replace(/[0-9]+/g, '$& ')
@@ -78,7 +78,7 @@ const stringCalculator = {
     return exprArr[0]
   },
 
-  calculate(inputArr, operations) {
+  calculate(inputArr: Array<string | number>, operations: string[]) {
     let arr = [...inputArr]
     let i = 0
     let res = 0
@@ -104,7 +104,7 @@ const stringCalculator = {
     return arr
   },
 
-  processNegative(exprInput) {
+  processNegative(exprInput: string[] | number[]) {
     const exprArray = [...exprInput]
 
     for (let i = 0, { length } = exprArray; i < length; i += 1) {

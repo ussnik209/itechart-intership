@@ -1,8 +1,8 @@
-import stringCalculator from './String-calculator'
+import { stringCalculator } from './String-calculator'
 import { runWithKeyEnter, isMathExpression, removeWhitespace } from '../utils/utils'
 
 const stringCalculatorBlock = document.querySelector('.string-calculator')
-const exprInput = stringCalculatorBlock.querySelector('#calc-expr-input')
+const exprInput = stringCalculatorBlock.querySelector<HTMLInputElement>('#calc-expr-input')
 const exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output')
 
 function calculateExpr() {
