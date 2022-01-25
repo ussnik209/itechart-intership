@@ -1,7 +1,7 @@
-const binaryConverter = {
+export const binaryConverter = {
   letters: ['A', 'B', 'C', 'D', 'E', 'F'],
 
-  convertToNewSystem(numArr, base, newBase) {
+  convertToNewSystem(numArr: string[], base: number, newBase: number) {
     let decNum = this.getDecNum(numArr, base)
     const newNum = []
 
@@ -18,7 +18,7 @@ const binaryConverter = {
     return newNum
   },
 
-  getDecNum(numArr, base) {
+  getDecNum(numArr: string[], base: number) {
     return numArr.reduce((num, dig, i) => {
       if (Number.isNaN(dig)) {
         return num + (this.letters.indexOf(dig.toUpperCase()) + 10) * base ** i

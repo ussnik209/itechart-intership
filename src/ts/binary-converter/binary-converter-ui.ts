@@ -1,12 +1,12 @@
-import binaryConverter from './Binary-converter'
+import { binaryConverter } from './Binary-converter'
 import { isNumber16Dig, isBaseFits } from '../utils/utils'
 
 const convertationBlock = document.querySelector('.binary-converter')
-const convertationInput = convertationBlock.querySelector('#convertation-input')
-const oldBaseInput = convertationBlock.querySelector('#old-base')
-const newBaseInput = convertationBlock.querySelector('#new-base')
-const convertationOutput = convertationBlock.querySelector('#convertation-output')
-const convertationStart = convertationBlock.querySelector('.form__start')
+const convertationInput = convertationBlock.querySelector<HTMLInputElement>('#convertation-input')
+const oldBaseInput = convertationBlock.querySelector<HTMLInputElement>('#old-base')
+const newBaseInput = convertationBlock.querySelector<HTMLInputElement>('#new-base')
+const convertationOutput = convertationBlock.querySelector<HTMLOutputElement>('#convertation-output')
+const convertationStart = convertationBlock.querySelector<HTMLButtonElement>('.form__start')
 
 function convertation() {
   if (convertationInput.value === '') {
@@ -23,7 +23,7 @@ function convertation() {
 
   const numArr = convertationInput.value
     .split('')
-    .reverse('')
+    .reverse()
   const oldBase = +oldBaseInput.value
   const newBase = +newBaseInput.value
 
