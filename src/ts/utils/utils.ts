@@ -11,8 +11,7 @@ export function isNumber16Dig(numStr: string) {
 }
 
 export function runWithKeyEnter(e: KeyboardEvent, fun: Function) {
-  console.log(Number(e.key));
-  if (Number(e.key) !== 13) return
+  if (Number(e.keyCode) !== 13) return
 
   e.preventDefault()
   fun()

@@ -24,8 +24,8 @@ function convertation() {
   const numArr = convertationInput.value
     .split('')
     .reverse()
-  const oldBase = +oldBaseInput.value
-  const newBase = +newBaseInput.value
+  const oldBase = Number(oldBaseInput.value)
+  const newBase = Number(newBaseInput.value)
 
   if (oldBase < 2 || oldBase > 16) {
     convertationOutput.textContent = 'Old base should be number between 2 and 16 inclusive!'

@@ -108,7 +108,7 @@ export const stringCalculator = {
     const exprArray = [...exprInput]
 
     for (let i = 0, { length } = exprArray; i < length; i += 1) {
-      if (exprArray[i] === '-' && (i === 0 || Number.isNaN(exprArray[i - 1]))) {
+      if (exprArray[i] === '-' && (i === 0 || Number.isNaN(+exprArray[i - 1]))) {
         exprArray.splice(i, 2, -exprArray[i + 1])
       }
     }
@@ -117,4 +117,4 @@ export const stringCalculator = {
   },
 }
 
-module.exports = stringCalculator
+// module.exports = stringCalculator

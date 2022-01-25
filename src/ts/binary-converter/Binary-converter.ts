@@ -20,7 +20,7 @@ export const binaryConverter = {
 
   getDecNum(numArr: string[], base: number) {
     return numArr.reduce((num, dig, i) => {
-      if (Number.isNaN(dig)) {
+      if (Number.isNaN(+dig)) {
         return num + (this.letters.indexOf(dig.toUpperCase()) + 10) * base ** i
       }
       return num + (+dig) * base ** i
@@ -28,4 +28,4 @@ export const binaryConverter = {
   },
 }
 
-module.exports = binaryConverter
+// module.exports = binaryConverter

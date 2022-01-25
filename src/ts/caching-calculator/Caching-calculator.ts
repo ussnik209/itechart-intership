@@ -1,4 +1,4 @@
-const stringCalculator = require('../string-calculator/String-calculator')
+import { stringCalculator } from '../string-calculator/String-calculator'
 
 interface cache {
   [key: string]: string

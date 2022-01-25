@@ -3,9 +3,11 @@ import { getSelected, runWithKeyEnter } from '../utils/utils'
 
 const arraySorting = document.querySelector<HTMLElement>('.array-sort')
 const sortInput = arraySorting.querySelector<HTMLInputElement>('#array-sort-input')
-const sortSelecting = arraySorting.querySelector<HTMLSelectElement>('#sort-selection')
+const sortSelect = arraySorting.querySelector<HTMLSelectElement>('#sort-selection')
 const sortOutput = arraySorting.querySelector<HTMLOutputElement>('#array-sort-output')
-const sortDirection = arraySorting.querySelector<HTMLSelectElement>('.sort-direction')
+const sortDirectionSelect = arraySorting.querySelector<HTMLSelectElement>('.sort-direction')
+const sortTypes = sortSelect.querySelectorAll('option')
+const sortDirections = sortDirectionSelect.querySelectorAll('option')
 
 function sortArray() {
   if (sortInput.value === '') {
@@ -16,25 +18,25 @@ function sortArray() {
 
   const arr = sortInput.value.split(',').map((el) => +el)
 
-  let sortType = getSelected(sortSelecting.children)
+  let sortType = getSelected(sortTypes)
   if (sortType === null) {
     sortOutput.textContent = 'You should choose a sort type!'
-    sortSelecting.focus()
+    sortSelect.focus()
     return
   }
 
-  let sortDir = getSelected(sortDirection.children)
+  let sortDir = getSelected(sortDirections)
   if (sortDir === null) {
     sortOutput.textContent = 'You should choose a sort direction!'
-    sortDirection.focus()
+    sortDirectionSelect.focus()
     return
   }
 
-  sortType = sortType.value
-  sortDir = sortDir.value
+  const sortTypeName = sortType.value
+  const sortDirName = sortDir.value
   let sortedArr = []
 
-  switch (sortType) {
+  switch (sortTypeName) {
     case 'bubble':
       sortedArr = arraySort.bubbleSort(arr)
       break
@@ -55,7 +57,7 @@ function sortArray() {
     sortOutput.textContent = 'Your input is incorrect!'
     sortInput.focus()
   } else {
-    if (sortDir === 'desc') {
+    if (sortDirName === 'desc') {
       sortedArr.reverse()
     }
     sortOutput.textContent = String(sortedArr)
@@ -63,6 +65,6 @@ function sortArray() {
 }
 
 sortInput.addEventListener('change', sortArray)
-sortSelecting.addEventListener('change', sortArray)
-sortDirection.addEventListener('change', sortArray)
+sortSelect.addEventListener('change', sortArray)
+sortDirectionSelect.addEventListener('change', sortArray)
 sortInput.addEventListener('keydown', runWithKeyEnter.bind(this, sortArray))

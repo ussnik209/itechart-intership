@@ -19,7 +19,7 @@ function formatText() {
 
   const maxLength = Number.isNaN(+inputMaxLength.value) ? null : +inputMaxLength.value
   const maxStrings = Number.isNaN(+inputMaxStr.value) ? null : +inputMaxStr.value
-  const carryover = inputCarryover.value ? null : inputCarryover.value
+  const carryover = inputCarryover.value ? inputCarryover.value : null
 
   outputFormattingText.textContent = textFormatter.format(str, {
     inputMaxStrLength: maxLength,
@@ -27,11 +27,11 @@ function formatText() {
     inputCarryover: carryover,
   })
 
-  console.log(textFormatter.format(str, {
-    inputMaxStrLength: maxLength,
-    inputMaxStrAmount: maxStrings,
-    inputCarryover: carryover,
-  }))
+  // console.log(textFormatter.format(str, {
+  //   inputMaxStrLength: maxLength,
+  //   inputMaxStrAmount: maxStrings,
+  //   inputCarryover: carryover,
+  // }))
 }
 
 textFormattingButton.addEventListener('click', formatText)

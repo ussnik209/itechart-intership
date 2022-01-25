@@ -45,4 +45,4 @@ export const textFormatter = {
   },
 }
 
-module.exports = textFormatter
+// module.exports = textFormatter
