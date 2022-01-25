@@ -2,8 +2,8 @@ import { dateDisplayFormatter } from './Date-Display-Formatter'
 import { getSelected, isNumber } from '../utils/utils'
 
 const dateInput = document.querySelector<HTMLInputElement>('.date-formatter .input__text')
-const inputFormats = document.querySelectorAll('#date-input-format option')
-const outputFormats = document.querySelectorAll('#date-output-format option')
+const inputFormats = document.querySelectorAll<HTMLOptionElement>('#date-input-format option')
+const outputFormats = document.querySelectorAll<HTMLOptionElement>('#date-output-format option')
 const formatButton = document.querySelector('.date-formatter .form__start button')
 const textChecking = document.querySelector<HTMLInputElement>('#is-text-month')
 const dateOutput = document.querySelector('.date-formatter .output__text')
