@@ -1,9 +1,18 @@
 const stringCalculator = require('../string-calculator/String-calculator')
 
-const cachingCalculator = {
-  cache: [],
+interface cache {
+  [key: string]: string
+}
 
-  calculate(expr) {
+interface cachingTool {
+  cache: cache,
+  calculate: (expr: string) => { result: number, cache: cache }
+}
+
+export const cachingCalculator: cachingTool = {
+  cache: {},
+
+  calculate(expr: string) {
     let start = Date.now()
     let result = this.cache[expr]
 
@@ -25,4 +34,4 @@ const cachingCalculator = {
   },
 }
 
-module.exports = cachingCalculator
+// module.exports = cachingCalculator
