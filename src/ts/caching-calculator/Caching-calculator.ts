@@ -6,7 +6,7 @@ interface cache {
 
 interface cachingTool {
   cache: cache,
-  calculate: (expr: string) => { result: number, cache: cache }
+  calculate: (expr: string) => { result: string, cache: cache }
 }
 
 export const cachingCalculator: cachingTool = {

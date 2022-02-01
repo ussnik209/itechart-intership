@@ -11,7 +11,7 @@ export function isNumber16Dig(numStr: string) {
 }
 
 export function runWithKeyEnter(e: KeyboardEvent, fun: Function) {
-  if (Number(e.keyCode) !== 13) return
+  if (e.key !== 'Enter') return
 
   e.preventDefault()
   fun()
@@ -21,7 +21,7 @@ export function getSelected(options: NodeListOf<HTMLOptionElement>) {
   const optArr = Array.from(options)
   const option = optArr.find((opt) => opt.selected)
 
-  return option
+  return option || null
 }
 
 export function removeWhitespace(str: string) {

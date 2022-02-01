@@ -9,6 +9,10 @@ const textChecking = document.querySelector<HTMLInputElement>('#is-text-month')
 const dateOutput = document.querySelector('.date-formatter .output__text')
 
 function formateDate() {
+  if (!dateInput || !inputFormats || !outputFormats || !formatButton || !textChecking || !dateOutput) {
+    throw Error('One of the date display formatter fields are note exist!')
+  }
+
   if (dateInput.value === '') {
     dateOutput.textContent = 'Your input is empty!'
     dateInput.focus()
@@ -29,14 +33,16 @@ function formateDate() {
     return
   }
 
-  const inputFormat = getSelected(inputFormats).value
-  const outputFormat = getSelected(outputFormats).value
+  const inputFormatElement = getSelected(inputFormats)
+  const outputFormatElement = getSelected(outputFormats)
+  const inputFormat = inputFormatElement?.value
+  const outputFormat = outputFormatElement?.value
   const isText = textChecking.checked
 
-  let formattedDate
+  let formattedDate = null
   try {
     if (outputFormat === 'from-now') {
-      dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
+      if (inputFormat)  dateOutput.textContent = dateDisplayFormatter.fromNow(date, inputFormat)
       return
     }
 
@@ -45,11 +51,11 @@ function formateDate() {
       outputExpr: outputFormat,
       isText,
     })
-  } catch (error) {
+  } catch (error: any) {
     alert(error.message)
   }
 
   dateOutput.textContent = formattedDate
 }
 
-formatButton.addEventListener('click', formateDate)
+formatButton && formatButton.addEventListener('click', formateDate)

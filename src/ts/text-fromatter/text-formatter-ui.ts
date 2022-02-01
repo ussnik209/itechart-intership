@@ -1,14 +1,17 @@
 import { textFormatter } from './Text-Formatter'
 
 const textFormattingBlock = document.querySelector('.text-formatting')
-const textFormattingButton = textFormattingBlock.querySelector('.form__start button')
-const inputStr = textFormattingBlock.querySelector<HTMLInputElement>('#string-input')
-const inputMaxLength = textFormattingBlock.querySelector<HTMLInputElement>('#max-length')
-const inputMaxStr = textFormattingBlock.querySelector<HTMLInputElement>('#max-strings')
-const inputCarryover = textFormattingBlock.querySelector<HTMLInputElement>('#carryover-input')
-const outputFormattingText = textFormattingBlock.querySelector('#string-output')
+const textFormattingButton = textFormattingBlock && textFormattingBlock.querySelector('.form__start button')
+const inputStr = textFormattingBlock && textFormattingBlock.querySelector<HTMLInputElement>('#string-input')
+const inputMaxLength = textFormattingBlock && textFormattingBlock.querySelector<HTMLInputElement>('#max-length')
+const inputMaxStr = textFormattingBlock && textFormattingBlock.querySelector<HTMLInputElement>('#max-strings')
+const inputCarryover = textFormattingBlock && textFormattingBlock.querySelector<HTMLInputElement>('#carryover-input')
+const outputFormattingText = textFormattingBlock && textFormattingBlock.querySelector('#string-output')
 
 function formatText() {
+  if (!textFormattingButton || !inputStr || !inputMaxLength || !inputMaxStr || !inputCarryover || !outputFormattingText) {
+      throw Error('One of the text formatter fields are note exist!')
+  }
   if (inputStr.value === '') {
     outputFormattingText.textContent = 'Your input is empty!'
     inputStr.focus()
@@ -26,12 +29,6 @@ function formatText() {
     inputMaxStrAmount: maxStrings,
     inputCarryover: carryover,
   })
-
-  // console.log(textFormatter.format(str, {
-  //   inputMaxStrLength: maxLength,
-  //   inputMaxStrAmount: maxStrings,
-  //   inputCarryover: carryover,
-  // }))
 }
 
-textFormattingButton.addEventListener('click', formatText)
+textFormattingButton && textFormattingButton.addEventListener('click', formatText)

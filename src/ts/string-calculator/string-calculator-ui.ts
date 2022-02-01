@@ -2,10 +2,14 @@ import { stringCalculator } from './String-calculator'
 import { runWithKeyEnter, isMathExpression, removeWhitespace } from '../utils/utils'
 
 const stringCalculatorBlock = document.querySelector('.string-calculator')
-const exprInput = stringCalculatorBlock.querySelector<HTMLInputElement>('#calc-expr-input')
-const exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output')
+const exprInput = stringCalculatorBlock && stringCalculatorBlock.querySelector<HTMLInputElement>('#calc-expr-input')
+const exprOutput = stringCalculatorBlock && stringCalculatorBlock.querySelector('#calc-expr-output')
 
 function calculateExpr() {
+  if (!exprInput || !exprOutput) {
+    throw Error('One of the string calculator fields are note exist!')
+  }
+
   if (exprInput.value === '') {
     exprOutput.textContent = 'Your input is empty!'
     exprInput.focus()
@@ -29,10 +33,12 @@ function calculateExpr() {
     } else {
       exprOutput.textContent = res
     }
-  } catch (error) {
+  } catch (error: any) {
     exprOutput.textContent = error.message
   }
 }
 
-exprInput.addEventListener('change', calculateExpr)
-exprInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateExpr))
+exprInput && exprInput.addEventListener('change', calculateExpr)
+exprInput && exprInput.addEventListener('keydown', (e) => {
+  runWithKeyEnter.bind(this, e, calculateExpr)
+})

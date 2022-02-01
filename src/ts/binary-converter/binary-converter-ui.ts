@@ -2,13 +2,18 @@ import { binaryConverter } from './Binary-converter'
 import { isNumber16Dig, isBaseFits } from '../utils/utils'
 
 const convertationBlock = document.querySelector('.binary-converter')
-const convertationInput = convertationBlock.querySelector<HTMLInputElement>('#convertation-input')
-const oldBaseInput = convertationBlock.querySelector<HTMLInputElement>('#old-base')
-const newBaseInput = convertationBlock.querySelector<HTMLInputElement>('#new-base')
-const convertationOutput = convertationBlock.querySelector<HTMLOutputElement>('#convertation-output')
-const convertationStart = convertationBlock.querySelector<HTMLButtonElement>('.form__start')
+const convertationInput = convertationBlock && convertationBlock.querySelector<HTMLInputElement>('#convertation-input')
+const oldBaseInput = convertationBlock && convertationBlock.querySelector<HTMLInputElement>('#old-base')
+const newBaseInput = convertationBlock && convertationBlock.querySelector<HTMLInputElement>('#new-base')
+const convertationOutput = convertationBlock && convertationBlock.querySelector<HTMLOutputElement>('#convertation-output')
+const convertationStart = convertationBlock && convertationBlock.querySelector<HTMLButtonElement>('.form__start')
 
 function convertation() {
+const convertationStart = convertationBlock && convertationBlock.querySelector<HTMLButtonElement>('.form__start')
+if (!convertationInput || !convertationOutput || !oldBaseInput || !newBaseInput || !convertationStart) {
+  throw Error('One of the binary converter fields are note exist!')
+}
+
   if (convertationInput.value === '') {
     convertationOutput.textContent = 'Your input is empty!'
     convertationInput.focus()
@@ -52,4 +57,4 @@ function convertation() {
   convertationOutput.textContent = result
 }
 
-convertationStart.addEventListener('click', convertation)
+convertationStart && convertationStart.addEventListener('click', convertation)

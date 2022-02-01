@@ -1,7 +1,7 @@
 interface formatterConf {
-  inputExpr: string,
-  outputExpr: string,
-  isText: boolean,
+  inputExpr: string | undefined,
+  outputExpr: string | undefined,
+  isText: boolean | undefined,
 }
 
 export const dateDisplayFormatter = {
@@ -25,7 +25,7 @@ export const dateDisplayFormatter = {
     let formattedDate = this.getFormattedDate(output, day, month, year)
 
     if (isTextCheck) {
-      formattedDate = this.toText(formattedDate, outputExpr)
+      formattedDate = this.toText(formattedDate, output)
     }
 
     return formattedDate
@@ -62,13 +62,13 @@ export const dateDisplayFormatter = {
   },
 
   getFormattedDate(exprStr: string, dayInputStr: string, monthInputStr: string, yearInputStr: string) {
-    let expr = exprStr.split('')
+    const expr = exprStr.split('')
     expr.reverse()
     const day = dayInputStr.split('')
     const month = monthInputStr.split('')
     const year = yearInputStr.split('')
 
-    expr = expr.map((el) => {
+    const exprParsed = expr.map((el) => {
       switch (el) {
         case 'D':
           return day.pop()
@@ -81,7 +81,7 @@ export const dateDisplayFormatter = {
       }
     })
 
-    return expr.reverse().join('')
+    return exprParsed.reverse().join('')
   },
 
   toText(dateStr: string, exprStr: string) {
@@ -89,13 +89,14 @@ export const dateDisplayFormatter = {
     const expr = exprStr.split('-')
 
     expr.forEach((el, i) => {
-      if (el[0] === 'M') date[i] = this.monthToText(+date[i] - 1)
+      const monthIndex = +date[i] - 1
+      if (el[0] === 'M') date[i] = this.monthToText(monthIndex)
     })
 
     return date.join(' ')
   },
 
-  monthToText(month: string) {
+  monthToText(month: number) {
     return this.months[month]
   },
 

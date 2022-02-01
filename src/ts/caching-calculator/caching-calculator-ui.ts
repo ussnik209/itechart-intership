@@ -2,11 +2,16 @@ import { isMathExpression, runWithKeyEnter, removeWhitespace } from '../utils/ut
 import { cachingCalculator } from './Caching-calculator'
 
 const cachingCalculatorBlock = document.querySelector('.caching-calculator')
-const cachingCalcInput = cachingCalculatorBlock.querySelector<HTMLInputElement>('#caching-calc-input')
-const cachingCalcOutput = cachingCalculatorBlock.querySelector<HTMLOutputElement>('#caching-calc-output')
-const cachingFunctionsOutput = cachingCalculatorBlock.querySelector<HTMLOutputElement>('#caching-functions')
+const cachingCalcInput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector<HTMLInputElement>('#caching-calc-input')
+const cachingCalcOutput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector<HTMLOutputElement>('#caching-calc-output')
+const cachingFunctionsOutput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector<HTMLOutputElement>('#caching-functions')
+
 
 function calculateWithCache() {
+  if (!cachingCalcInput || !cachingCalcOutput || !cachingFunctionsOutput) {
+    throw Error('One of the caching calculator fields are note exist!')
+  }
+
   if (cachingCalcInput.value === '') {
     cachingCalcOutput.textContent = 'Your input is empty!'
     cachingCalcInput.focus()
@@ -39,10 +44,12 @@ function calculateWithCache() {
     } else {
       cachingCalcOutput.textContent = String(result)
     }
-  } catch (error) {
+  } catch (error: any) {
     cachingCalcOutput.textContent = error.message
   }
 }
 
-cachingCalcInput.addEventListener('change', calculateWithCache)
-cachingCalcInput.addEventListener('keydown', runWithKeyEnter.bind(this, calculateWithCache))
+cachingCalcInput && cachingCalcInput.addEventListener('change', calculateWithCache)
+cachingCalcInput && cachingCalcInput.addEventListener('keydown', (e) => {
+  runWithKeyEnter.bind(this, e, calculateWithCache)
+})

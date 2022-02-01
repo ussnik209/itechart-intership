@@ -35,17 +35,17 @@ export const stringCalculator = {
   calculateExpression(expr: string) {
     const operations = ['.', '*', '/', '+', '-']
 
-    let exprArr = expr.replace(/[0-9]+/g, '$& ')
+    const exprArr = expr.replace(/[0-9]+/g, '$& ')
       .replace(/[.+\-*/()]{1}/g, '$& ')
       .split(' ')
       .slice(0, -1)
 
-    exprArr = this.processNegative(exprArr)
+    let exprWithNeg = this.processNegative(exprArr)
 
-    const openedBrackets = []
-    const closedBrackets = []
-    for (let i = 0, len = exprArr.length; i < len; i += 1) {
-      const el = exprArr[i]
+    const openedBrackets: number[] = []
+    const closedBrackets: number[] = []
+    for (let i = 0, len = exprWithNeg.length; i < len; i += 1) {
+      const el = exprWithNeg[i]
       if (el === '(') {
         openedBrackets.push(i)
       } else if (el === ')') {
@@ -59,26 +59,26 @@ export const stringCalculator = {
 
     while (openedBrackets.length > 0) {
       const opened = openedBrackets.pop()
-      const closed = exprArr.findIndex(
-        (el, i) => el === ')' && i > opened,
+      const closed = exprWithNeg.findIndex(
+        (el, i) => el === ')' && opened && i > opened
       )
 
-      let innerBrackets = exprArr.slice(opened + 1, closed)
+      let innerBrackets = exprWithNeg.slice(opened && opened + 1, closed)
 
       innerBrackets = this.calculate(innerBrackets, operations[0])
       innerBrackets = this.calculate(innerBrackets, operations.slice(1, 3))
       innerBrackets = this.calculate(innerBrackets, operations.slice(3))
-      exprArr.splice(opened, closed - opened + 1, innerBrackets[0])
+      exprWithNeg.splice(Number(opened), closed - Number(opened) + 1, innerBrackets[0])
     }
 
-    exprArr = this.calculate(exprArr, operations[0])
-    exprArr = this.calculate(exprArr, operations.slice(1, 3))
-    exprArr = this.calculate(exprArr, operations.slice(3))
+    exprWithNeg = this.calculate(exprWithNeg, operations[0])
+    exprWithNeg = this.calculate(exprWithNeg, operations.slice(1, 3))
+    exprWithNeg = this.calculate(exprWithNeg, operations.slice(3))
 
     return exprArr[0]
   },
 
-  calculate(inputArr: Array<string | number>, operations: string[]) {
+  calculate(inputArr: Array<string | number>, operations: string[] | string) {
     let arr = [...inputArr]
     let i = 0
     let res = 0

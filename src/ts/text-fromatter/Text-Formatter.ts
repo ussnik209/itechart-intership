@@ -1,7 +1,7 @@
 interface textFormatterConf {
-  inputMaxStrLength: number,
-  inputMaxStrAmount: number,
-  inputCarryover: string,
+  inputMaxStrLength: number | null,
+  inputMaxStrAmount: number | null,
+  inputCarryover: string | null,
  }
 
 export const textFormatter = {
@@ -11,11 +11,11 @@ export const textFormatter = {
     const maxStrAmount = inputMaxStrAmount
     const carryover = inputCarryover
 
-    if (maxStrLength <= 0 || maxStrAmount <= 0) {
-      return ''
-    }
-
     if (maxStrLength) {
+      if (maxStrLength <= 0) {
+        return ''
+      }
+
       str = this.getSplittedByLength(str, maxStrLength)
         .join('\n')
     }
@@ -26,6 +26,10 @@ export const textFormatter = {
     }
 
     if (maxStrAmount) {
+      if (maxStrAmount <= 0) {
+        return ''
+      }
+
       str = str.split('\n')
         .slice(0, maxStrAmount)
         .join('\n')
