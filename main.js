@@ -132,65 +132,74 @@ var arrayProcessingTool = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/utils */ "./ts/utils/utils.ts");
 /* harmony import */ var _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Array-processing-tool */ "./ts/array-processing-tool/Array-processing-tool.ts");
+var _this = undefined;
 
 
 var arrayProcessingInput = document.querySelector('#array-processing-input');
 var arrayProcessingOutput = document.querySelector('#array-processing-output');
 var arrayProcessingSelect = document.querySelector('.array-processing .select');
-var arrayProcessingOptions = arrayProcessingSelect.querySelectorAll('option');
+var arrayProcessingOptions = arrayProcessingSelect && arrayProcessingSelect.querySelectorAll('option');
 function processArray() {
-    if (arrayProcessingInput.value === '') {
-        arrayProcessingOutput.textContent = 'Your input is empty!';
+    if (arrayProcessingInput && arrayProcessingInput.value === '') {
+        if (arrayProcessingOutput)
+            arrayProcessingOutput.textContent = 'Your input is empty!';
         return;
     }
-    var arr = arrayProcessingInput.value.split(',');
+    var arr = arrayProcessingInput && arrayProcessingInput.value.split(',');
     var res = null;
-    var selected = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.getSelected)(arrayProcessingOptions);
+    var selected = arrayProcessingOptions && (0,_utils_utils__WEBPACK_IMPORTED_MODULE_0__.getSelected)(arrayProcessingOptions);
     if (selected === null) {
-        arrayProcessingOutput.textContent = 'Select one of the processing options!';
+        if (arrayProcessingOutput)
+            arrayProcessingOutput.textContent = 'Select one of the processing options!';
         return;
     }
-    var arrNumeric = arr.map(function (el) { return +el; });
+    var arrNumeric = arr && arr.map(function (el) { return +el; });
     var isIncorrect = false;
-    switch (selected.value) {
+    switch (selected && selected.value) {
         case 'MaxSubLong':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.getMaxSubSumLong(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.getMaxSubSumLong(arrNumeric);
             isIncorrect = Number.isNaN(res);
             break;
         case 'MaxSubShort':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.getMaxSubSum(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.getMaxSubSum(arrNumeric);
             isIncorrect = Number.isNaN(res);
             break;
         case 'Min':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.min(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.min(arrNumeric);
             isIncorrect = Number.isNaN(res);
             break;
         case 'Max':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.max(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.max(arrNumeric);
             isIncorrect = Number.isNaN(res);
             break;
         case 'Med':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.med(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.med(arrNumeric);
             isIncorrect = Number.isNaN(res);
             break;
         case 'AscSec':
-            res = _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.selectIncreasing(arrNumeric);
+            res = arrNumeric && _Array_processing_tool__WEBPACK_IMPORTED_MODULE_1__.arrayProcessingTool.selectIncreasing(arrNumeric);
             break;
         default:
-            arrayProcessingOutput.textContent = 'Select one of the processing options!';
+            if (arrayProcessingOutput)
+                arrayProcessingOutput.textContent = 'Select one of the processing options!';
             return;
     }
     if (isIncorrect) {
-        arrayProcessingOutput.textContent = 'Your input is incorrect!';
-        arrayProcessingInput.focus();
+        if (arrayProcessingOutput)
+            arrayProcessingOutput.textContent = 'Your input is incorrect!';
+        if (arrayProcessingInput)
+            arrayProcessingInput.focus();
     }
     else {
-        arrayProcessingOutput.textContent = res;
+        if (arrayProcessingOutput)
+            arrayProcessingOutput.textContent = String(res);
     }
 }
-arrayProcessingInput.addEventListener('change', processArray);
-arrayProcessingInput.addEventListener('keydown', _utils_utils__WEBPACK_IMPORTED_MODULE_0__.runWithKeyEnter.bind(undefined, processArray));
-arrayProcessingSelect.addEventListener('change', processArray);
+arrayProcessingInput && arrayProcessingInput.addEventListener('change', processArray);
+arrayProcessingInput && arrayProcessingInput.addEventListener('keydown', function (e) {
+    _utils_utils__WEBPACK_IMPORTED_MODULE_0__.runWithKeyEnter.call(_this, e, processArray);
+});
+arrayProcessingSelect && arrayProcessingSelect.addEventListener('change', processArray);
 
 
 /***/ }),
@@ -310,68 +319,76 @@ var arraySort = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Array_sort__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Array-sort */ "./ts/array-sort/Array-sort.ts");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utils */ "./ts/utils/utils.ts");
+var _this = undefined;
 
 
 var arraySorting = document.querySelector('.array-sort');
-var sortInput = arraySorting.querySelector('#array-sort-input');
-var sortSelect = arraySorting.querySelector('#sort-selection');
-var sortOutput = arraySorting.querySelector('#array-sort-output');
-var sortDirectionSelect = arraySorting.querySelector('.sort-direction');
-var sortTypes = sortSelect.querySelectorAll('option');
-var sortDirections = sortDirectionSelect.querySelectorAll('option');
+var sortInput = arraySorting && arraySorting.querySelector('#array-sort-input');
+var sortSelect = arraySorting && arraySorting.querySelector('#sort-selection');
+var sortOutput = arraySorting && arraySorting.querySelector('#array-sort-output');
+var sortDirectionSelect = arraySorting && arraySorting.querySelector('.sort-direction');
+var sortTypes = sortSelect && sortSelect.querySelectorAll('option');
+var sortDirections = sortDirectionSelect && sortDirectionSelect.querySelectorAll('option');
 function sortArray() {
-    if (sortInput.value === '') {
-        sortOutput.textContent = 'Your input is empty!';
+    if (sortInput && sortInput.value === '') {
+        if (sortOutput)
+            sortOutput.textContent = 'Your input is empty!';
         sortInput.focus();
         return;
     }
-    var arr = sortInput.value.split(',').map(function (el) { return +el; });
-    var sortType = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(sortTypes);
+    var arr = sortInput && sortInput.value.split(',').map(function (el) { return +el; });
+    var sortType = sortTypes && (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(sortTypes);
     if (sortType === null) {
-        sortOutput.textContent = 'You should choose a sort type!';
-        sortSelect.focus();
+        if (sortOutput)
+            sortOutput.textContent = 'You should choose a sort type!';
+        sortSelect && sortSelect.focus();
         return;
     }
-    var sortDir = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(sortDirections);
+    var sortDir = sortDirections && (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(sortDirections);
     if (sortDir === null) {
-        sortOutput.textContent = 'You should choose a sort direction!';
-        sortDirectionSelect.focus();
+        if (sortOutput)
+            sortOutput.textContent = 'You should choose a sort direction!';
+        sortDirectionSelect && sortDirectionSelect.focus();
         return;
     }
-    var sortTypeName = sortType.value;
-    var sortDirName = sortDir.value;
+    var sortTypeName = sortType && sortType.value;
+    var sortDirName = sortDir && sortDir.value;
     var sortedArr = [];
     switch (sortTypeName) {
         case 'bubble':
-            sortedArr = _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.bubbleSort(arr);
+            sortedArr = arr && _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.bubbleSort(arr);
             break;
         case 'quick':
-            sortedArr = _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.quickSort(arr);
+            sortedArr = arr && _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.quickSort(arr);
             break;
         case 'choice':
-            sortedArr = _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.choiceSort(arr);
+            sortedArr = arr && _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.choiceSort(arr);
             break;
         case 'shaker':
-            sortedArr = _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.shakerSort(arr);
+            sortedArr = arr && _Array_sort__WEBPACK_IMPORTED_MODULE_0__.arraySort.shakerSort(arr);
             break;
         default:
             throw Error('Incorrect type of sorting!');
     }
-    if (sortedArr.some(function (el) { return Number.isNaN(el); })) {
-        sortOutput.textContent = 'Your input is incorrect!';
-        sortInput.focus();
+    if (sortedArr && sortedArr.some(function (el) { return Number.isNaN(el); })) {
+        if (sortOutput)
+            sortOutput.textContent = 'Your input is incorrect!';
+        sortInput && sortInput.focus();
     }
     else {
         if (sortDirName === 'desc') {
-            sortedArr.reverse();
+            sortedArr && sortedArr.reverse();
         }
-        sortOutput.textContent = String(sortedArr);
+        if (sortOutput)
+            sortOutput.textContent = String(sortedArr);
     }
 }
-sortInput.addEventListener('change', sortArray);
-sortSelect.addEventListener('change', sortArray);
-sortDirectionSelect.addEventListener('change', sortArray);
-sortInput.addEventListener('keydown', _utils_utils__WEBPACK_IMPORTED_MODULE_1__.runWithKeyEnter.bind(undefined, sortArray));
+sortInput && sortInput.addEventListener('change', sortArray);
+sortSelect && sortSelect.addEventListener('change', sortArray);
+sortDirectionSelect && sortDirectionSelect.addEventListener('change', sortArray);
+sortInput && sortInput.addEventListener('keydown', function (e) {
+    _utils_utils__WEBPACK_IMPORTED_MODULE_1__.runWithKeyEnter.bind(_this, e, sortArray);
+});
 
 
 /***/ }),
@@ -427,12 +444,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var convertationBlock = document.querySelector('.binary-converter');
-var convertationInput = convertationBlock.querySelector('#convertation-input');
-var oldBaseInput = convertationBlock.querySelector('#old-base');
-var newBaseInput = convertationBlock.querySelector('#new-base');
-var convertationOutput = convertationBlock.querySelector('#convertation-output');
-var convertationStart = convertationBlock.querySelector('.form__start');
+var convertationInput = convertationBlock && convertationBlock.querySelector('#convertation-input');
+var oldBaseInput = convertationBlock && convertationBlock.querySelector('#old-base');
+var newBaseInput = convertationBlock && convertationBlock.querySelector('#new-base');
+var convertationOutput = convertationBlock && convertationBlock.querySelector('#convertation-output');
+var convertationStart = convertationBlock && convertationBlock.querySelector('.form__start');
 function convertation() {
+    var convertationStart = convertationBlock && convertationBlock.querySelector('.form__start');
+    if (!convertationInput || !convertationOutput || !oldBaseInput || !newBaseInput || !convertationStart) {
+        throw Error('One of the binary converter fields are note exist!');
+    }
     if (convertationInput.value === '') {
         convertationOutput.textContent = 'Your input is empty!';
         convertationInput.focus();
@@ -468,7 +489,7 @@ function convertation() {
         .join('');
     convertationOutput.textContent = result;
 }
-convertationStart.addEventListener('click', convertation);
+convertationStart && convertationStart.addEventListener('click', convertation);
 
 
 /***/ }),
@@ -517,13 +538,17 @@ var cachingCalculator = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/utils */ "./ts/utils/utils.ts");
 /* harmony import */ var _Caching_calculator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Caching-calculator */ "./ts/caching-calculator/Caching-calculator.ts");
+var _this = undefined;
 
 
 var cachingCalculatorBlock = document.querySelector('.caching-calculator');
-var cachingCalcInput = cachingCalculatorBlock.querySelector('#caching-calc-input');
-var cachingCalcOutput = cachingCalculatorBlock.querySelector('#caching-calc-output');
-var cachingFunctionsOutput = cachingCalculatorBlock.querySelector('#caching-functions');
+var cachingCalcInput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector('#caching-calc-input');
+var cachingCalcOutput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector('#caching-calc-output');
+var cachingFunctionsOutput = cachingCalculatorBlock && cachingCalculatorBlock.querySelector('#caching-functions');
 function calculateWithCache() {
+    if (!cachingCalcInput || !cachingCalcOutput || !cachingFunctionsOutput) {
+        throw Error('One of the caching calculator fields are note exist!');
+    }
     if (cachingCalcInput.value === '') {
         cachingCalcOutput.textContent = 'Your input is empty!';
         cachingCalcInput.focus();
@@ -558,8 +583,10 @@ function calculateWithCache() {
         cachingCalcOutput.textContent = error.message;
     }
 }
-cachingCalcInput.addEventListener('change', calculateWithCache);
-cachingCalcInput.addEventListener('keydown', _utils_utils__WEBPACK_IMPORTED_MODULE_0__.runWithKeyEnter.bind(undefined, calculateWithCache));
+cachingCalcInput && cachingCalcInput.addEventListener('change', calculateWithCache);
+cachingCalcInput && cachingCalcInput.addEventListener('keydown', function (e) {
+    _utils_utils__WEBPACK_IMPORTED_MODULE_0__.runWithKeyEnter.bind(_this, e, calculateWithCache);
+});
 
 
 /***/ }),
@@ -592,7 +619,7 @@ var dateDisplayFormatter = {
         this.isValidDate(+day, +month, +year);
         var formattedDate = this.getFormattedDate(output, day, month, year);
         if (isTextCheck) {
-            formattedDate = this.toText(formattedDate, outputExpr);
+            formattedDate = this.toText(formattedDate, output);
         }
         return formattedDate;
     },
@@ -629,7 +656,7 @@ var dateDisplayFormatter = {
         var day = dayInputStr.split('');
         var month = monthInputStr.split('');
         var year = yearInputStr.split('');
-        expr = expr.map(function (el) {
+        var exprParsed = expr.map(function (el) {
             switch (el) {
                 case 'D':
                     return day.pop();
@@ -641,15 +668,16 @@ var dateDisplayFormatter = {
                     return el;
             }
         });
-        return expr.reverse().join('');
+        return exprParsed.reverse().join('');
     },
     toText: function (dateStr, exprStr) {
         var _this = this;
         var date = dateStr.split('-');
         var expr = exprStr.split('-');
         expr.forEach(function (el, i) {
+            var monthIndex = +date[i] - 1;
             if (el[0] === 'M')
-                date[i] = _this.monthToText(+date[i] - 1);
+                date[i] = _this.monthToText(monthIndex);
         });
         return date.join(' ');
     },
@@ -725,6 +753,9 @@ var formatButton = document.querySelector('.date-formatter .form__start button')
 var textChecking = document.querySelector('#is-text-month');
 var dateOutput = document.querySelector('.date-formatter .output__text');
 function formateDate() {
+    if (!dateInput || !inputFormats || !outputFormats || !formatButton || !textChecking || !dateOutput) {
+        throw Error('One of the date display formatter fields are note exist!');
+    }
     if (dateInput.value === '') {
         dateOutput.textContent = 'Your input is empty!';
         dateInput.focus();
@@ -741,13 +772,16 @@ function formateDate() {
         dateInput.focus();
         return;
     }
-    var inputFormat = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(inputFormats).value;
-    var outputFormat = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(outputFormats).value;
+    var inputFormatElement = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(inputFormats);
+    var outputFormatElement = (0,_utils_utils__WEBPACK_IMPORTED_MODULE_1__.getSelected)(outputFormats);
+    var inputFormat = inputFormatElement === null || inputFormatElement === void 0 ? void 0 : inputFormatElement.value;
+    var outputFormat = outputFormatElement === null || outputFormatElement === void 0 ? void 0 : outputFormatElement.value;
     var isText = textChecking.checked;
-    var formattedDate;
+    var formattedDate = null;
     try {
         if (outputFormat === 'from-now') {
-            dateOutput.textContent = _Date_Display_Formatter__WEBPACK_IMPORTED_MODULE_0__.dateDisplayFormatter.fromNow(date, inputFormat);
+            if (inputFormat)
+                dateOutput.textContent = _Date_Display_Formatter__WEBPACK_IMPORTED_MODULE_0__.dateDisplayFormatter.fromNow(date, inputFormat);
             return;
         }
         formattedDate = _Date_Display_Formatter__WEBPACK_IMPORTED_MODULE_0__.dateDisplayFormatter.format(date, {
@@ -761,7 +795,7 @@ function formateDate() {
     }
     dateOutput.textContent = formattedDate;
 }
-formatButton.addEventListener('click', formateDate);
+formatButton && formatButton.addEventListener('click', formateDate);
 
 
 /***/ }),
@@ -823,11 +857,11 @@ var stringCalculator = {
             .replace(/[.+\-*/()]{1}/g, '$& ')
             .split(' ')
             .slice(0, -1);
-        exprArr = this.processNegative(exprArr);
+        var exprWithNeg = this.processNegative(exprArr);
         var openedBrackets = [];
         var closedBrackets = [];
-        for (var i = 0, len = exprArr.length; i < len; i += 1) {
-            var el = exprArr[i];
+        for (var i = 0, len = exprWithNeg.length; i < len; i += 1) {
+            var el = exprWithNeg[i];
             if (el === '(') {
                 openedBrackets.push(i);
             }
@@ -840,20 +874,20 @@ var stringCalculator = {
         }
         var _loop_1 = function () {
             var opened = openedBrackets.pop();
-            var closed_1 = exprArr.findIndex(function (el, i) { return el === ')' && i > opened; });
-            var innerBrackets = exprArr.slice(opened + 1, closed_1);
+            var closed_1 = exprWithNeg.findIndex(function (el, i) { return el === ')' && opened && i > opened; });
+            var innerBrackets = exprWithNeg.slice(opened && opened + 1, closed_1);
             innerBrackets = this_1.calculate(innerBrackets, operations[0]);
             innerBrackets = this_1.calculate(innerBrackets, operations.slice(1, 3));
             innerBrackets = this_1.calculate(innerBrackets, operations.slice(3));
-            exprArr.splice(opened, closed_1 - opened + 1, innerBrackets[0]);
+            exprWithNeg.splice(Number(opened), closed_1 - Number(opened) + 1, innerBrackets[0]);
         };
         var this_1 = this;
         while (openedBrackets.length > 0) {
             _loop_1();
         }
-        exprArr = this.calculate(exprArr, operations[0]);
-        exprArr = this.calculate(exprArr, operations.slice(1, 3));
-        exprArr = this.calculate(exprArr, operations.slice(3));
+        exprWithNeg = this.calculate(exprWithNeg, operations[0]);
+        exprWithNeg = this.calculate(exprWithNeg, operations.slice(1, 3));
+        exprWithNeg = this.calculate(exprWithNeg, operations.slice(3));
         return exprArr[0];
     },
     calculate: function (inputArr, operations) {
@@ -902,12 +936,16 @@ var stringCalculator = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _String_calculator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./String-calculator */ "./ts/string-calculator/String-calculator.ts");
 /* harmony import */ var _utils_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/utils */ "./ts/utils/utils.ts");
+var _this = undefined;
 
 
 var stringCalculatorBlock = document.querySelector('.string-calculator');
-var exprInput = stringCalculatorBlock.querySelector('#calc-expr-input');
-var exprOutput = stringCalculatorBlock.querySelector('#calc-expr-output');
+var exprInput = stringCalculatorBlock && stringCalculatorBlock.querySelector('#calc-expr-input');
+var exprOutput = stringCalculatorBlock && stringCalculatorBlock.querySelector('#calc-expr-output');
 function calculateExpr() {
+    if (!exprInput || !exprOutput) {
+        throw Error('One of the string calculator fields are note exist!');
+    }
     if (exprInput.value === '') {
         exprOutput.textContent = 'Your input is empty!';
         exprInput.focus();
@@ -933,8 +971,10 @@ function calculateExpr() {
         exprOutput.textContent = error.message;
     }
 }
-exprInput.addEventListener('change', calculateExpr);
-exprInput.addEventListener('keydown', _utils_utils__WEBPACK_IMPORTED_MODULE_1__.runWithKeyEnter.bind(undefined, calculateExpr));
+exprInput && exprInput.addEventListener('change', calculateExpr);
+exprInput && exprInput.addEventListener('keydown', function (e) {
+    _utils_utils__WEBPACK_IMPORTED_MODULE_1__.runWithKeyEnter.bind(_this, e, calculateExpr);
+});
 
 
 /***/ }),
@@ -956,10 +996,10 @@ var textFormatter = {
         var maxStrLength = inputMaxStrLength;
         var maxStrAmount = inputMaxStrAmount;
         var carryover = inputCarryover;
-        if (maxStrLength <= 0 || maxStrAmount <= 0) {
-            return '';
-        }
         if (maxStrLength) {
+            if (maxStrLength <= 0) {
+                return '';
+            }
             str = this.getSplittedByLength(str, maxStrLength)
                 .join('\n');
         }
@@ -968,6 +1008,9 @@ var textFormatter = {
             str = str.replace(reg, "".concat(carryover, "\n"));
         }
         if (maxStrAmount) {
+            if (maxStrAmount <= 0) {
+                return '';
+            }
             str = str.split('\n')
                 .slice(0, maxStrAmount)
                 .join('\n');
@@ -997,13 +1040,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Text_Formatter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Text-Formatter */ "./ts/text-fromatter/Text-Formatter.ts");
 
 var textFormattingBlock = document.querySelector('.text-formatting');
-var textFormattingButton = textFormattingBlock.querySelector('.form__start button');
-var inputStr = textFormattingBlock.querySelector('#string-input');
-var inputMaxLength = textFormattingBlock.querySelector('#max-length');
-var inputMaxStr = textFormattingBlock.querySelector('#max-strings');
-var inputCarryover = textFormattingBlock.querySelector('#carryover-input');
-var outputFormattingText = textFormattingBlock.querySelector('#string-output');
+var textFormattingButton = textFormattingBlock && textFormattingBlock.querySelector('.form__start button');
+var inputStr = textFormattingBlock && textFormattingBlock.querySelector('#string-input');
+var inputMaxLength = textFormattingBlock && textFormattingBlock.querySelector('#max-length');
+var inputMaxStr = textFormattingBlock && textFormattingBlock.querySelector('#max-strings');
+var inputCarryover = textFormattingBlock && textFormattingBlock.querySelector('#carryover-input');
+var outputFormattingText = textFormattingBlock && textFormattingBlock.querySelector('#string-output');
 function formatText() {
+    if (!textFormattingButton || !inputStr || !inputMaxLength || !inputMaxStr || !inputCarryover || !outputFormattingText) {
+        throw Error('One of the text formatter fields are note exist!');
+    }
     if (inputStr.value === '') {
         outputFormattingText.textContent = 'Your input is empty!';
         inputStr.focus();
@@ -1018,13 +1064,8 @@ function formatText() {
         inputMaxStrAmount: maxStrings,
         inputCarryover: carryover,
     });
-    // console.log(textFormatter.format(str, {
-    //   inputMaxStrLength: maxLength,
-    //   inputMaxStrAmount: maxStrings,
-    //   inputCarryover: carryover,
-    // }))
 }
-textFormattingButton.addEventListener('click', formatText);
+textFormattingButton && textFormattingButton.addEventListener('click', formatText);
 
 
 /***/ }),
@@ -1055,7 +1096,7 @@ function isNumber16Dig(numStr) {
     return numStr.match(/[0-9A-Fa-f]/);
 }
 function runWithKeyEnter(e, fun) {
-    if (Number(e.keyCode) !== 13)
+    if (e.key !== 'Enter')
         return;
     e.preventDefault();
     fun();
@@ -1063,7 +1104,7 @@ function runWithKeyEnter(e, fun) {
 function getSelected(options) {
     var optArr = Array.from(options);
     var option = optArr.find(function (opt) { return opt.selected; });
-    return option;
+    return option || null;
 }
 function removeWhitespace(str) {
     return str.replace(/ /g, '');
