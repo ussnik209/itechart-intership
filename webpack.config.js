@@ -81,7 +81,7 @@ const plugins = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './index.ts',
+  entry: './index.js',
   output: {
     filename: `./${filename('js')}`,
     path: path.resolve(__dirname, 'dist'),
@@ -134,7 +134,7 @@ module.exports = {
       //   }
       // },
       {
-        test: /\.js$/,
+        test: /\.(?:|js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
