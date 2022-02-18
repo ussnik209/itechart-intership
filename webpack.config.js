@@ -2,9 +2,10 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+// const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
+const ImageMinPlugin = require('imagemin-webpack')
 
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
@@ -41,24 +42,20 @@ const plugins = () => {
     new MiniCSSExtractPlugin({
       filename: `./css/${filename('css')}`
     }),
-    new CopyWebpackPlugin({
-      patterns: [{
-        from: path.resolve(__dirname, 'src/assets'),
-        to: path.resolve(__dirname, 'dist/assets')
-      }, ]
-    }),
+    // new CopyWebpackPlugin({
+    //   patterns: [{
+    //     from: path.resolve(__dirname, 'src/assets'),
+    //     to: path.resolve(__dirname, 'dist/assets')
+    //   }, ]
+    // }),
   ]
 
   if (isProd) {
     basePlugins.push(
-      new ImageminPlugin({
+      new ImageMinPlugin({
         bail: false, // Ignore errors on corrupted images
         cache: true,
         imageminOptions: {
-          // Before using imagemin plugins make sure you have added them in `package.json` (`devDependencies`) and installed them
-
-          // Lossless optimization with custom option
-          // Feel free to experiment with options for better result for you
           plugins: [
             ["gifsicle", { interlaced: true }],
             ["jpegtran", { progressive: true }],
@@ -84,7 +81,7 @@ const plugins = () => {
 module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
-  entry: './index.js',
+  entry: './index.ts',
   output: {
     filename: `./${filename('js')}`,
     path: path.resolve(__dirname, 'dist'),
@@ -95,7 +92,7 @@ module.exports = {
     open: true,
     compress: true,
     hot: true,
-    port: 3000,
+    port: 8000,
   },
   optimization: optimization(),
   plugins: plugins(),
@@ -106,9 +103,7 @@ module.exports = {
         use: [{
             loader: MiniCSSExtractPlugin.loader,
             options: {
-              publicPath: (resourcePath, context) => {
-                return path.relative(path.dirname(resourcePath), context) + '/'
-              },
+              publicPath: (resourcePath, context) => `${path.relative(path.dirname(resourcePath), context)  }/`,
             }
           },
           {
@@ -143,6 +138,14 @@ module.exports = {
         exclude: /node_modules/,
         use: ['babel-loader']
       },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ]
-  }
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
+  },
 }

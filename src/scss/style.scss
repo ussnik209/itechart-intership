@@ -1,1 +1,66 @@
 @import '~normalize.css';
+%horizontal-centering {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+$dark-grey: rgb(42, 41, 41);
+
+html {
+  font-size: 10px;
+}
+
+body {
+  padding: 0px 50px;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0px auto;
+  background-color: lightgray;
+}
+
+.section {
+  padding: 50px 0px;
+  border-bottom: 3px solid $dark-grey;
+}
+
+.form {
+  font-size: 3rem;
+  color: $dark-grey;
+  @extend %horizontal-centering;
+  &__output {
+    width: 100%;
+    @extend %horizontal-centering;
+  }
+  &__select {
+    select {
+      color: $dark-grey
+    }
+  }
+  &__input {
+    width: 60%;
+    @extend %horizontal-centering;  
+  }
+  &>* {
+    margin-top: 20px;
+  }
+}
+
+.input {
+  &__text {
+    width: 100%;
+  }
+}
+
+.output {
+  &__text {
+    box-sizing: border-box;
+    width: 60%;
+    height: 200px;
+    padding: 10px;
+    background-color: white;
+    overflow-y: scroll;
+  }
+}

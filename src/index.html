@@ -5,12 +5,180 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
-  <title>Jesus page</title>
+  <title>Js Tasks</title>
 </head>
 
 <body>
-  
+  <header></header>
+  <main class="container">
+    <section class="array-processing section">
+      <div class="array-processing__form form" action="">
+        <div class="form__input input">
+          <label for="array-processing-input" class="input__title">Array processing tool</label>
+          <input id="array-processing-input" class="input__text" type="text"
+            placeholder="Enter your array with comma between numbers">
+        </div>
+        <div class="form__select select">
+          <select name="processing-type" id="processing-selection">
+            <option value="">Choose one of the options</option>
+            <option value="MaxSubLong">Maximum subarray's summary O(n<sup>2</sup>)</option>
+            <option value="MaxSubShort">Maximum subarray's summary O(n)</option>
+            <option value="Min">Minimum value</option>
+            <option value="Max">Maximum value</option>
+            <option value="Med">Median value</option>
+            <option value="AscSec">Ascending sequence of maximum length</option>
+          </select>
+        </div>
+        <div class="form__output output">
+          <label for="array-processing-output" class="output__title">Result of chosen operation:</label>
+          <output id="array-processing-output" for="sub-sum-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
+    <section class="date-formatter section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="date-input" class="input__title">Date display formatter</label>
+          <input id="date-input" class="input__text" type="text" placeholder="Enter your date with 6 or 8 numbers">
+        </div>
+        <div class="form__select">
+          <label for="date-input-format">Chose input format of date:</label>
+          <select name="input-format" id="date-input-format">
+            <option value="DDMMYYYY">DDMMYYYY</option>
+            <option value="YYYYMMDD">YYYYMMDD</option>
+            <option value="MMDDYYYY">MMDDYYYY</option>
+            <option value="DDMMYY">DDMMYY</option>
+          </select>
+        </div>
+        <div class="form__select">
+          <label for="date-output-format">Chose output format of date:</label>
+          <select name="output-format" id="date-output-format">
+            <option value="DD-MM-YYYY">DD-MM-YYYY</option>
+            <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+            <option value="MM-DD-YYYY">MM-DD-YYYY</option>
+            <option value="DD-MM-YY">DD-MM-YY</option>
+            <option value="from-now">From now</option>
+          </select>
+        </div>
+        <div class="form__checkbox checkbox">
+          <label for="is-text-month" class="checkbox__title">Put a checkbox if you want text format:</label>
+          <input type="checkbox" name="is-text" id="is-text-month">
+        </div>
+        <div class="form__start">
+          <button>Format</button>
+        </div>
+        <div class="form__output output">
+          <label for="date-output" class="output__title">Result of formatting date:</label>
+          <output id="date-output" for="date-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
+    <section class="text-formatting section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="string-input" class="input__title">Text formatter</label>
+          <input id="string-input" class="input__text" type="text" placeholder="Enter string to format">
+        </div>
+        <div class="form__input">
+          <label for="max-length" class="input__title">Maximum string length:</label>
+          <input id="max-length" class="input__text" type="number" min="1">
+        </div>
+        <div class="form__input">
+          <label for="max-strings" class="input__title">Maximum string number:</label>
+          <input id="max-strings" class="input__text" type="number" min="0">
+        </div>
+        <div class="form__input input">
+          <label for="carryover-input" class="input__title">Carryover</label>
+          <input id="carryover-input" class="input__text" type="text" placeholder="Enter character, word or sentence">
+        </div>
+        <div class="form__start">
+          <button>Format</button>
+        </div>
+        <div class="form__output output">
+          <label for="string-output" class="output__title">Result of formatting string:</label>
+          <pre id="string-output" for="string-input" class="output__text"></з>
+        </div>
+      </div>
+    </section>
+    <section class="string-calculator section">
+    <div class="form">
+        <div class="form__input input">
+          <label for="calc-expr-input" class="input__title">String calculator</label>
+          <input id="calc-expr-input" class="input__text" type="text" placeholder="Enter mathematic expression">
+        </div>
+        <div class="form__output output">
+          <label for="calc-expr-output" class="output__title">Result of calculating:</label>
+          <output id="calc-expr-output" for="date-input" class="output__text" ></output>
+        </div>
+    </div>
+    </section>
+    <section class="array-sort section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="array-sort-input" class="input__title">Array sort</label>
+          <input id="array-sort-input" class="input__text" type="text"
+            placeholder="Enter your array with comma between numbers">
+        </div>
+        <div class="form__select select">
+          <select name="sort-type" id="sort-selection">
+            <option value="bubble">Bubble sort</option>
+            <option value="quick">Quick sort</option>
+            <option value="choice">Choice sort</option>
+            <option value="shaker">Shaker sort</option>
+           </select>
+        </div>
+        <div class="form__select select">
+          <select name="sort-dir" class="sort-direction">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+           </select>
+        </div>
+        <div class="form__output output">
+          <label for="array-sort-output" class="output__title">Result of sorting:</label>
+          <output id="array-sort-output" for="array-sort-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
+    <section class="binary-converter section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="convertation-input" class="input__title">Binary converter</label>
+          <input id="convertation-input" class="input__text" type="text"
+            placeholder="Enter the number to convertation">
+        </div>
+        <div class="form__input">
+          <label for="old-base" class="input__title">Old base:</label>
+          <input id="old-base" class="input__text" type="number" min="1" max="16">
+        </div>
+        <div class="form__input">
+          <label for="new-base" class="input__title">New base:</label>
+          <input id="new-base" class="input__text" type="number" min="1" max="16">
+        </div>
+        <div class="form__start">
+          <button>Convert</button>
+        </div>
+        <div class="form__output output">
+          <label for="convertation-output" class="output__title">Result of convertation:</label>
+          <output id="convertation-output" for="convertation-input" class="output__text"></output>
+        </div>
+      </div>
+    </section>
+    <section class="caching-calculator section">
+      <div class="form">
+        <div class="form__input input">
+          <label for="caching-calc-input" class="input__title">Caching calculator</label>
+          <input id="caching-calc-input" class="input__text" type="text" placeholder="Enter mathematic expression">
+        </div>
+        <div class="form__output output">
+          <label for="caching-functions" class="output__title">Caching functions:</label>
+          <pre id="caching-functions" class="output__text" ></pre>
+        </div>
+        <div class="form__output output">
+          <label for="caching-calc-output" class="output__title">Result of calculating:</label>
+          <output id="caching-calc-output" for="caching-calc-input" class="output__text" ></output>
+        </div>
+    </section>
+  </main>
 </body>
 
 </html>
