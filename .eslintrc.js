@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     'prettier',
+    'plugin:react/recommended'
   ],
   parserOptions: {
     ecmaVersion: 'latest',
