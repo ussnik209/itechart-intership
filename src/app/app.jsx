@@ -1,9 +1,15 @@
 import React from "react"
+import { Routes, Route } from "react-router-dom"
+
+import Layout from "./components/Layout.jsx"
 
 const PizzaApp = () => (
-    <div id="pizza-app">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus voluptas repudiandae, rerum ut delectus necessitatibus beatae soluta pariatur eos culpa, a aspernatur dolorum repellendus amet, quod molestiae corrupti! Atque, repudiandae?
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* <Route index element={}/>
+        <Route path="basket" element={}/> */}
+      </Route>
+    </Routes>
   )
 
 export default PizzaApp
