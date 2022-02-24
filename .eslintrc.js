@@ -14,5 +14,6 @@ module.exports = {
   },
   rules: {
     semi: ['error', 'never'],
+    'default-param-last': ['error', 'never']
   },
 }

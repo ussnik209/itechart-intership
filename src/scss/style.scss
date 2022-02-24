@@ -1,13 +1,35 @@
-header {
+@import '~normalize.css';
+
+$simple-text-color: rgb(3, 124, 3);
+$active-text-color: rgb(11, 168, 155);
+
+%orange-theme {
   background-color: orange;
+  color: $simple-text-color;
+  a {
+    color: inherit;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+header {
+  @extend %orange-theme
 }
 
 .container {
-  max-width: 70%;
+  max-width: 60%;
   margin: 0 auto;
+  padding: 20px 0;
 }
 
 nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+}
+
+.active {
+  color: $active-text-color;
 }

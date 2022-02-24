@@ -1,6 +1,19 @@
-const updateMenu = (menu) => ({
-  type: 'UPDATE_MENU',
-  menu,
-})
+const requestMenu = () => {
+  return {
+    type: 'REQUEST_MENU',
+    isLoaded: false,
+  }
+}
 
-export default updateMenu
+const postMenu = (menu) => {
+  return {
+    type: 'POST_MENU',
+    isLoaded: true,
+    menu,
+  }
+}
+
+export {
+  requestMenu,
+  postMenu
+}
