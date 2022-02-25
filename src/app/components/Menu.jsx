@@ -24,10 +24,12 @@ class Menu extends React.Component {
       <h1>This is menu.</h1>
       {console.log(this.props.isLoaded)}
       <ul id="menu">{ !this.props.isLoaded ? 'Loading...'
-        : this.props.menu.map((dish) => {
-          console.log(dish);
-          return <Dish key={dish.id} {...dish}/>
-        }
+        : this.props.menu
+          .filter(dish => dish.category === 'Pizza')
+          .map((dish) => {
+            console.log(dish);
+            return <Dish key={dish.id} {...dish}/>
+          }
         )}
       </ul>
 
