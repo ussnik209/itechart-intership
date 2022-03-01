@@ -1,13 +1,25 @@
+import { Card } from '@mui/material'
 import React from 'react'
 
-import OrderDish from './OrderDish.jsx'
+import CardButton from './CardButton.jsx'
 import Dish from './Dish.jsx'
 
 const MenuItem = ({dish}) => (
-  <div className='menu__item'>
+  <Card sx={{
+    display: 'flex',
+    flexDirection: 'row',
+    alingItems: 'center' 
+  }}>
     <Dish {...dish}/>
-    <OrderDish dishId={dish.id}/> 
-  </div>
+    <CardButton>Order</CardButton>
+  </Card>
 )
+
+// (
+//   <div className='menu__item'>
+//     <Dish {...dish}/>
+//     <OrderDish dishId={dish.id}/> 
+//   </div>
+// )
 
 export default MenuItem

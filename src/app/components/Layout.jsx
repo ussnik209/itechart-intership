@@ -12,7 +12,7 @@ class Layout extends React.Component {
     return (
       <>
       <header>
-        <Container maxWidth="sm">
+        <Container maxWidth="md">
           <nav>
             <NavLink to="/">Homepage</NavLink>
             <NavLink to="/menu">Menu</NavLink>
@@ -21,7 +21,7 @@ class Layout extends React.Component {
         </Container>
       </header>
 
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Outlet />
       </Container>     
       </>

@@ -1,3 +1,4 @@
+import { Stack } from '@mui/material'
 import React from 'react'
 
 import MenuItem from './MenuItem.jsx'
@@ -22,14 +23,15 @@ class Menu extends React.Component {
     return (
       <>
       <h1>This is menu.</h1>
-      <ul id="menu">{ !this.props.isLoaded ? 'Loading...'
+      <Stack spacing={2}>
+        { !this.props.isLoaded ? 'Loading...'
         : this.props.menu
           .filter(dish => dish.category === 'Pizza')
           .map((dish) => {
             return <MenuItem key={dish.id} dish={dish}/>
           }
         )}
-      </ul>
+      </Stack>
       </>
     )
   }

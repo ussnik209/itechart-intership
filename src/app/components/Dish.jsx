@@ -1,9 +1,33 @@
+import {
+  CardActionArea,
+  CardMedia,
+  CardContent,
+  Typography,
+} from '@mui/material'
 import React from 'react'
 
-const Dish = ({name, price}) => 
-  <div>
-  <h2>{name}</h2>
-  <span>Price: {price/10}$</span>
-  </div>
+const Dish = ({name, price}) => (
+  <CardActionArea sx={{
+    display: 'flex',
+    flexDirection: 'row',
+    alingItems: 'center' 
+  }}>
+    <CardMedia sx={{
+      border: '1px solid black',
+    }}
+      component="img"
+      image="/static/images/cards/contemplative-reptile.jpg"
+      alt="pizza"
+    />
+    <CardContent>
+      <Typography gutterBottom variant="h5" component="div">
+        {name}
+      </Typography>
+      <Typography variant="body2" color="text.secondary">
+        Price: {price/10}$
+      </Typography>
+    </CardContent>
+  </CardActionArea>
+)
 
   export default Dish
