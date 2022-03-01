@@ -1,5 +1,7 @@
 @import '~normalize.css';
 
+@import './common.scss';
+
 $simple-text-color: rgb(3, 124, 3);
 $active-text-color: rgb(11, 168, 155);
 
@@ -32,4 +34,9 @@ nav {
 
 .active {
   color: $active-text-color;
+}
+
+.menu__item {
+  display: flex;
+  justify-content: space-between;
 }

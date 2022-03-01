@@ -23,7 +23,7 @@ class PizzaApp extends React.Component {
     return (
     <Provider store={store}>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="" element={<Layout />}>
           <Route index element={<Homepage />}/>
           <Route path="menu" element={<UpdatingMenu />}/>
           <Route path="basket" element={<Basket />}/>

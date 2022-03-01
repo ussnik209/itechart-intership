@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
+import { Container } from '@mui/material'
+
 class Layout extends React.Component {
   constructor(props) {
     super(props)
@@ -10,18 +12,18 @@ class Layout extends React.Component {
     return (
       <>
       <header>
-        <div className="container">
+        <Container maxWidth="sm">
           <nav>
             <NavLink to="/">Homepage</NavLink>
             <NavLink to="/menu">Menu</NavLink>
             <NavLink to="/basket">Basket</NavLink>
           </nav>
-        </div>
+        </Container>
       </header>
 
-      <main className="container">
+      <Container maxWidth="sm">
         <Outlet />
-      </main>
+      </Container>     
       </>
   )
 } 
