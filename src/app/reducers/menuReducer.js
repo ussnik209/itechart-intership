@@ -1,4 +1,4 @@
-const menuReducer = (state = {
+const menu = (state = {
   isLoaded: false
 }, action) => {
   switch (action.type) {
@@ -16,4 +16,4 @@ const menuReducer = (state = {
   }
 }
 
-export default menuReducer
+export default menu

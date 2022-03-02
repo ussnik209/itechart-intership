@@ -14,6 +14,7 @@ class PizzaApp extends React.Component {
   }
 
   componentDidMount() {
+    console.log(store.getState())
   }
 
   componentWillUnmount() {

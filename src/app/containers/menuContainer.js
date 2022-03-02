@@ -1,11 +1,11 @@
 import { connect } from 'react-redux'
 
-import { requestMenu, postMenu } from '../actions/menuActionCreators'
+import { requestMenu, postMenu } from '../actions/menuActions'
 import Menu from '../components/Menu.jsx'
 
 const mapStateToProps = (
   state
-) => ({ ...state.menuReducer })
+) => ({ ...state.menu })
 
 const mapDispatchToProps = (
   dispatch
@@ -16,7 +16,6 @@ const mapDispatchToProps = (
     fetch(path)
       .then(response => response.json())
       .then(menu => dispatch(postMenu(menu)))
-      .then(() => console.log('get menu'))
   }
 })
 

@@ -1,7 +1,7 @@
 import { Card } from '@mui/material'
 import React from 'react'
 
-import CardButton from './CardButton.jsx'
+import OrderButtonContainer from '../containers/orderButtonContainer'
 import Dish from './Dish.jsx'
 
 const MenuItem = ({dish}) => (
@@ -11,15 +11,8 @@ const MenuItem = ({dish}) => (
     alingItems: 'center' 
   }}>
     <Dish {...dish}/>
-    <CardButton>Order</CardButton>
+    <OrderButtonContainer dishId={dish.id}>Order</OrderButtonContainer>
   </Card>
 )
-
-// (
-//   <div className='menu__item'>
-//     <Dish {...dish}/>
-//     <OrderDish dishId={dish.id}/> 
-//   </div>
-// )
 
 export default MenuItem
