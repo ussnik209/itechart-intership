@@ -2,6 +2,7 @@ import { Stack } from '@mui/material'
 import React from 'react'
 
 import MenuItem from './MenuItem.jsx'
+import OrderButtonContainer from '../containers/OrderButtonContainer'
 
 const menuApi = 'https://private-anon-52b8161a2d-pizzaapp.apiary-mock.com/restaurants/restaurantId/menu?category=Pizza'
 
@@ -28,7 +29,10 @@ class Menu extends React.Component {
         : this.props.menu
           .filter(dish => dish.category === 'Pizza')
           .map((dish) => {
-            return <MenuItem key={dish.id} dish={dish}/>
+            return <MenuItem 
+            key={dish.id} dish={dish} 
+            Button={OrderButtonContainer}
+            />
           }
         )}
       </Stack>

@@ -16,7 +16,7 @@ const Dish = ({name, price}) => (
       border: '1px solid black',
     }}
       component="img"
-      image="/static/images/cards/contemplative-reptile.jpg"
+      image=""
       alt="pizza"
     />
     <CardContent>

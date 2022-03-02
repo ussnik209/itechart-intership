@@ -5,10 +5,10 @@ const addToOrder = (dish) => {
   }
 }
 
-const removeFromOrder = (id) => {
+const removeFromOrder = (dish) => {
   return {
     type: 'REMOVE_FROM_ORDER',
-    id
+    dish
   }
 }
 

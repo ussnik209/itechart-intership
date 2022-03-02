@@ -1,8 +1,9 @@
 import React from "react"
-import { Stack, Alert, AlertTitle } from '@mui/material'
+import { Stack, Alert, AlertTitle, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 import MenuItem from './MenuItem.jsx'
+import RemoveButton from '../containers/RemoveButtonContainer'
 
 const Basket = ({order}) => (
   <>
@@ -16,7 +17,14 @@ const Basket = ({order}) => (
         Add goods from <Link to='/menu'>menu</Link>
       </Alert>
       : order.map((dish) => {
-        return <MenuItem key={dish.id} dish={dish}/>
+        return (
+        <div key={dish.id}>
+        <MenuItem 
+        dish={dish}
+        Button={RemoveButton}/>
+        <Typography>Number:{dish.number}</Typography>
+        </div>
+        )
       }
     )
     }

@@ -1,17 +1,18 @@
-import { Card } from '@mui/material'
+import { Card, CardActions } from '@mui/material'
 import React from 'react'
 
-import OrderButtonContainer from '../containers/OrderButtonContainer'
 import Dish from './Dish.jsx'
 
-const MenuItem = ({dish}) => (
+const MenuItem = ({dish, Button}) => (
   <Card sx={{
     display: 'flex',
     flexDirection: 'row',
     alingItems: 'center' 
   }}>
     <Dish {...dish}/>
-    <OrderButtonContainer dishId={dish.id}>Order</OrderButtonContainer>
+    <CardActions>
+      <Button dish={dish} />
+    </CardActions>
   </Card>
 )
 

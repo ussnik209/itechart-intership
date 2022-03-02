@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import OrderButton from '../components/OrderButton.jsx'
+import OrderButton from '../components/TitledButton.jsx'
 import { addToOrder } from '../actions/orderActions'
 
 
@@ -8,15 +8,16 @@ const mapStateToProps = (
   state,
   ownProps
 ) => ({ 
-  menu: state.menu.menu,
+  title: 'Add to basket',
   ...ownProps
 })
 
 const mapDispatchToProps = (
-  dispatch
+  dispatch,
+  ownProps
 ) => ({
-  addToOrder: (dish) => {
-    dispatch(addToOrder(dish))    
+  onClick: () => {
+    dispatch(addToOrder(ownProps.dish))    
   }
 })
 

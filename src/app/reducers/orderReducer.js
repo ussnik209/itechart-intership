@@ -1,13 +1,25 @@
 const order = (state = [], action) => {
+  const matchedDish = state.find(dish => dish.id === action.dish.id)
+
   switch (action.type) {
     case 'ADD_TO_ORDER':
-      return [
+      return matchedDish ? [
+        ...state.filter(dish => dish !== matchedDish),
+        { ...matchedDish, number: matchedDish.number + 1}
+      ]
+      : [
         ...state,
-        action.dish
+        { ...action.dish, number: 1}
       ]
     case 'REMOVE_FROM_ORDER':
-      return [
-        ...state.filter(dish => dish.id != action.id)
+      
+      return matchedDish.number > 1 ? [
+        ...state.filter(dish => dish !== action.dish),
+        { ...matchedDish, number: matchedDish.number - 1 }
+
+      ].sort((dishA, dishB) => dishA.id - dishB.id) 
+      : [
+        ...state.filter(dish => dish !== action.dish)
       ]
     default:
       return state
