@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 
 import Layout from './components/Layout.jsx'
-import UpdatingMenu from './containers/menuContainer'
+import UpdatingMenu from './containers/MenuContainer'
 import Homepage from './components/Homepage.jsx'
-import Basket from './components/Basket.jsx'
+import OrderBasket from './containers/BasketContainer'
 import store from './store/Store'
 
 class PizzaApp extends React.Component {
@@ -14,7 +14,6 @@ class PizzaApp extends React.Component {
   }
 
   componentDidMount() {
-    console.log(store.getState())
   }
 
   componentWillUnmount() {
@@ -27,7 +26,7 @@ class PizzaApp extends React.Component {
         <Route path="" element={<Layout />}>
           <Route index element={<Homepage />}/>
           <Route path="menu" element={<UpdatingMenu />}/>
-          <Route path="basket" element={<Basket />}/>
+          <Route path="basket" element={<OrderBasket />}/>
         </Route>
       </Routes>
     </Provider>

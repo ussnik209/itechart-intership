@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
 import menu from './menuReducer'
-import orders from './ordersReducer'
+import order from './orderReducer'
 
 const pizzaAppReducer = combineReducers({
   menu,
-  orders
+  order
 })
 
 export default pizzaAppReducer

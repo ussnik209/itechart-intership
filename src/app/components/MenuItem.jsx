@@ -1,7 +1,7 @@
 import { Card } from '@mui/material'
 import React from 'react'
 
-import OrderButtonContainer from '../containers/orderButtonContainer'
+import OrderButtonContainer from '../containers/OrderButtonContainer'
 import Dish from './Dish.jsx'
 
 const MenuItem = ({dish}) => (

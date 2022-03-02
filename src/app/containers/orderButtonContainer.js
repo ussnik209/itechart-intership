@@ -15,8 +15,7 @@ const mapStateToProps = (
 const mapDispatchToProps = (
   dispatch
 ) => ({
-  addToOrder: (menu, id) => {
-    const dish = menu.find(dish => dish.id === id)
+  addToOrder: (dish) => {
     dispatch(addToOrder(dish))    
   }
 })

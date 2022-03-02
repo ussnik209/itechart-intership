@@ -1,4 +1,4 @@
-const orders = (state = [], action) => {
+const order = (state = [], action) => {
   switch (action.type) {
     case 'ADD_TO_ORDER':
       return [
@@ -14,4 +14,4 @@ const orders = (state = [], action) => {
   }
 }
 
-export default orders
+export default order
