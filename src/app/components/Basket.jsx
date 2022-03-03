@@ -38,7 +38,7 @@ const Basket = ({order}) => (
     order.length ? <Grid item xs={12} sx={{
       display: 'flex',
       justifyContent: 'center'
-      }}>
+    }}>
         <MakeOrderButton />
       </Grid> : <></>
     }

@@ -1,5 +1,14 @@
-const order = (state = [], action) => {
+const storageTitle = 'orderHistory'
+
+const order = (
+  state = [],
+   action) => {
   
+  console.log('local:')
+  localStorage.getItem(storageTitle) 
+  ? console.log(localStorage.getItem(storageTitle))
+  : null
+
   switch (action.type) {
     case 'ADD_TO_ORDER': {
       const matchedDish = state.find(dish => dish.id === action.dish.id)
@@ -26,7 +35,20 @@ const order = (state = [], action) => {
       ]
     }
     case 'MAKE_ORDER':
-      return []
+      localStorage.getItem(storageTitle)
+        ? localStorage.setItem(storageTitle, [
+          state.map(obj => JSON.stringify(obj)),
+          orderHistory
+        ])
+        : localStorage.setItem(storageTitle, [
+          state.map(obj => JSON.stringify(obj))
+        ])
+
+        console.log('state:')
+        console.log(...state)
+      
+
+        return []
     default:
       return state
   }
