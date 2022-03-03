@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 
 import MenuItem from './MenuItem.jsx'
 import RemoveButton from '../containers/RemoveButtonContainer'
+import MakeOrderButton from '../containers/MakeOrderButtonContainer'
 
 const Basket = ({order}) => (
   <>
@@ -32,6 +33,14 @@ const Basket = ({order}) => (
           </Badge>
         </Grid>
       ))
+    }
+    {
+    order.length ? <Grid item xs={12} sx={{
+      display: 'flex',
+      justifyContent: 'center'
+      }}>
+        <MakeOrderButton />
+      </Grid> : <></>
     }
   </Grid>
   </>

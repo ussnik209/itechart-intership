@@ -25,6 +25,8 @@ const order = (state = [], action) => {
         ...state.filter(dish => dish !== action.dish)
       ]
     }
+    case 'MAKE_ORDER':
+      return []
     default:
       return state
   }

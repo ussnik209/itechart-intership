@@ -1,23 +1,22 @@
 import { connect } from 'react-redux'
 
 import OrderButton from '../components/TitledButton.jsx'
-import { addToOrder } from '../actions/orderActions'
+import { makeOrder } from '../actions/orderActions'
 
 
 const mapStateToProps = (
   state,
   ownProps
 ) => ({ 
-  title: 'Add to basket',
+  title: 'Make order',
   ...ownProps
 })
 
 const mapDispatchToProps = (
-  dispatch,
-  ownProps
+  dispatch
 ) => ({
   onClick: () => {
-    dispatch(addToOrder(ownProps.dish))    
+    dispatch(makeOrder())    
   }
 })
 

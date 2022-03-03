@@ -12,4 +12,9 @@ const removeFromOrder = (dish) => {
   }
 }
 
-export { addToOrder, removeFromOrder }
+const makeOrder = () => {
+  return {
+    type: 'MAKE_ORDER'
+  }
+}
+export { addToOrder, removeFromOrder, makeOrder }
