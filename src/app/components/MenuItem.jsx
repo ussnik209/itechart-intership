@@ -5,9 +5,7 @@ import Dish from './Dish.jsx'
 
 const MenuItem = ({dish, Button}) => (
   <Card sx={{
-    display: 'flex',
-    flexDirection: 'row',
-    alingItems: 'center' 
+    width: 1
   }}>
     <Dish {...dish}/>
     <CardActions>

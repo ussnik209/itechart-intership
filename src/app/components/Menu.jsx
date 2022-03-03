@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Grid } from '@mui/material'
 import React from 'react'
 
 import MenuItem from './MenuItem.jsx'
@@ -24,18 +24,22 @@ class Menu extends React.Component {
     return (
       <>
       <h1>This is menu.</h1>
-      <Stack spacing={2}>
+      <Grid container spacing={2} sx={{
+        mt: 2
+      }}>
         { !this.props.isLoaded ? 'Loading...'
         : this.props.menu
           .filter(dish => dish.category === 'Pizza')
           .map((dish) => {
-            return <MenuItem 
-            key={dish.id} dish={dish} 
-            Button={OrderButtonContainer}
-            />
+            return <Grid item xs={6} key={dish.id}>
+              <MenuItem 
+                dish={dish} 
+                Button={OrderButtonContainer}
+              />
+            </Grid>
           }
         )}
-      </Stack>
+      </Grid>
       </>
     )
   }
