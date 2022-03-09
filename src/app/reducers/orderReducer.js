@@ -1,13 +1,6 @@
 const storageTitle = 'orderHistory'
 
-const order = (
-  state = [],
-   action) => {
-  
-  console.log('local:')
-  localStorage.getItem(storageTitle) 
-  ? console.log(localStorage.getItem(storageTitle))
-  : null
+const order = (state = [], action) => {
 
   switch (action.type) {
     case 'ADD_TO_ORDER': {
@@ -42,11 +35,7 @@ const order = (
         ])
         : localStorage.setItem(storageTitle, [
           state.map(obj => JSON.stringify(obj))
-        ])
-
-        console.log('state:')
-        console.log(...state)
-      
+        ])      
 
         return []
     default:

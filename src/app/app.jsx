@@ -2,7 +2,8 @@ import React, { useEffect } from "react"
 import { Routes, Route } from "react-router-dom"
 import { Provider } from "react-redux"
 
-import Layout from './components/Layout.jsx'
+// import Layout from './components/Layout.jsx'
+import AppBarContainer from './containers/AppBarContainer'
 import UpdatingMenu from './containers/MenuContainer'
 import Homepage from './components/Homepage.jsx'
 import OrderBasket from './containers/BasketContainer'
@@ -23,7 +24,7 @@ class PizzaApp extends React.Component {
     return (
     <Provider store={store}>
       <Routes>
-        <Route path="" element={<Layout />}>
+        <Route path="" element={<AppBarContainer />}>
           <Route index element={<Homepage />}/>
           <Route path="menu" element={<UpdatingMenu />}/>
           <Route path="basket" element={<OrderBasket />}/>

@@ -15,11 +15,12 @@ $active-text-color: rgb(11, 168, 155);
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
-header {
-  @extend %orange-theme
-}
+// header {
+//   @extend %orange-theme
+// }
 
 .container {
   max-width: 60%;
@@ -32,9 +33,9 @@ nav {
   justify-content: space-between;
 }
 
-.active {
-  color: $active-text-color;
-}
+// .active {
+//   color: $active-text-color;
+// }
 
 .menu__item {
   display: flex;
