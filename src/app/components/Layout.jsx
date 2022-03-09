@@ -13,6 +13,8 @@ import {
 } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
 
+import ModalHistoryContainer from '../containers/ModalHistoryContainer.js'
+
 class Layout extends React.Component {
   constructor(props) {
     super(props)
@@ -111,6 +113,8 @@ class Layout extends React.Component {
                   </MenuItem>
                 ))}
               </Box>
+              <ModalHistoryContainer title='History'>
+              </ModalHistoryContainer>
             </Toolbar>
           </Container>
         </AppBar>
