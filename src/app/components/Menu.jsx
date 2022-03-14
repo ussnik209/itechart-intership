@@ -4,7 +4,7 @@ import React from 'react'
 import MenuItem from './MenuItem.jsx'
 import OrderButtonContainer from '../containers/OrderButtonContainer'
 
-const menuApi = 'https://private-anon-52b8161a2d-pizzaapp.apiary-mock.com/restaurants/restaurantId/menu?category=Pizza'
+import { menuPath as menuApi } from '../constants/constants'
 
 class Menu extends React.Component {
   constructor(props) {

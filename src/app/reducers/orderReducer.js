@@ -1,4 +1,4 @@
-const storageTitle = 'orderHistory'
+import { historyTitle } from '../constants/constants'
 
 const order = (state = [], action) => {
 
@@ -28,14 +28,14 @@ const order = (state = [], action) => {
       ]
     }
     case 'MAKE_ORDER':
-      localStorage.getItem(storageTitle)
-        ? localStorage.setItem(storageTitle, [
-          state.map(obj => JSON.stringify(obj)),
-          orderHistory
-        ])
-        : localStorage.setItem(storageTitle, [
-          state.map(obj => JSON.stringify(obj))
-        ])      
+      localStorage.getItem(historyTitle)
+        ? localStorage.setItem(historyTitle, JSON.stringify([
+          state,
+          ...JSON.parse(localStorage.getItem(historyTitle))
+        ]))
+        : localStorage.setItem(historyTitle, JSON.stringify([
+          state
+        ]))      
 
         return []
     default:

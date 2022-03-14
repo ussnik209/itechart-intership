@@ -9,7 +9,11 @@ const MenuItem = ({dish, Button}) => (
   }}>
     <Dish {...dish}/>
     <CardActions>
-      <Button dish={dish} />
+      {
+        Button 
+          ? <Button dish={dish} />
+          : null
+      }
     </CardActions>
   </Card>
 )

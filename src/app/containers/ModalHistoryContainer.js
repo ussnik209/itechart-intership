@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import Modal from '../components/common/Modal.jsx'
+
 import { 
   openHistoryModal as openModal,
   closeHistoryModal as closeModal  
@@ -10,7 +11,7 @@ const mapStateToProps = (
   state,
   ownProps
 ) => ({ 
-  isOpen: state.history.isOpen
+  isOpen: state.history.isOpen,
 })
 
 const mapDispatchToProps = (
