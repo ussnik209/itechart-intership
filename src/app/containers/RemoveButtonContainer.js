@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import CardButton from '../components/TitledButton.jsx'
+import CardButton from '../components/common/TitledButton.jsx'
 import { removeFromOrder } from '../actions/orderActions'
 
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import OrderButton from '../components/TitledButton.jsx'
+import OrderButton from '../components/common/TitledButton.jsx'
 import { addToOrder } from '../actions/orderActions'
 
 

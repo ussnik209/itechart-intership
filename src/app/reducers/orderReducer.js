@@ -46,7 +46,8 @@ const order = (state = { orderList: [] }, action) => {
 
           return {
             ...state,
-            orderList: []
+            orderList: [],
+            isLoading: false
           }
       }
         
@@ -54,7 +55,8 @@ const order = (state = { orderList: [] }, action) => {
     case 'GET_ORDER_CONFIRMATION':
       return {
         ...state,
-        isConfirmed: action.isConfirmed
+        isConfirmed: action.isConfirmed,
+        isLoading: true
       }
     default:
       return state

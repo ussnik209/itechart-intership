@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import OrderButton from '../components/TitledButton.jsx'
+import OrderButton from '../components/common/TitledLoadingButton.jsx'
 import { makeOrder } from '../actions/orderActions'
 import { confirmOrder } from '../actions/orderActions'
 
@@ -11,6 +11,7 @@ const mapStateToProps = (
   ownProps
 ) => ({ 
   title: 'Make order',
+  isLoading: state.order.isLoading,
   ...ownProps
 })
 
