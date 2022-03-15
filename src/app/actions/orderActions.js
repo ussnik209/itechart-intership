@@ -17,4 +17,12 @@ const makeOrder = () => {
     type: 'MAKE_ORDER'
   }
 }
-export { addToOrder, removeFromOrder, makeOrder }
+
+const confirmOrder = (isConfirmed) => {
+  return {
+    type: 'GET_ORDER_CONFIRMATION',
+    isConfirmed
+  }
+}
+
+export { addToOrder, removeFromOrder, makeOrder, confirmOrder }

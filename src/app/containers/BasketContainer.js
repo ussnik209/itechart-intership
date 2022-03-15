@@ -5,7 +5,7 @@ import Basket from '../components/Basket.jsx'
 const mapStateToProps = (
   state
 ) => ({ 
-  order: state.order
+  order: state.order.orderList
 })
 
 const mapDispatchToProps = (

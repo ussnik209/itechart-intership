@@ -2,6 +2,8 @@ import { connect } from 'react-redux'
 
 import OrderButton from '../components/TitledButton.jsx'
 import { makeOrder } from '../actions/orderActions'
+import { confirmOrder } from '../actions/orderActions'
+
 
 
 const mapStateToProps = (
@@ -16,7 +18,9 @@ const mapDispatchToProps = (
   dispatch
 ) => ({
   onClick: () => {
-    dispatch(makeOrder())    
+    dispatch(confirmOrder(true))
+
+    setTimeout(() => dispatch(makeOrder()), 3000)
   }
 })
 
