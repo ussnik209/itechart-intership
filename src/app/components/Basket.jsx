@@ -6,6 +6,7 @@ import MenuItem from './MenuItem.jsx'
 import RemoveButton from '../containers/RemoveButtonContainer'
 import MakeOrderButton from '../containers/MakeOrderButtonContainer'
 import AlertMessage from "./common/AlertMessage.jsx"
+import ConfirmingSnackbar from "../containers/ConfirmingSnackbarContainer"
 
 const Basket = ({order}) => (
   <>
@@ -43,6 +44,7 @@ const Basket = ({order}) => (
       </Grid> : <></>
     }
   </Grid>
+  <ConfirmingSnackbar />
   </>
 )
 

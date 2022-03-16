@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
 
 import OrderButton from '../components/common/TitledLoadingButton.jsx'
-import { makeOrder } from '../actions/orderActions'
-import { confirmOrder } from '../actions/orderActions'
+import { makeOrder, confirmOrder, openConfirming } from '../actions/orderActions'
+
 
 
 
@@ -21,7 +21,10 @@ const mapDispatchToProps = (
   onClick: () => {
     dispatch(confirmOrder(true))
 
-    setTimeout(() => dispatch(makeOrder()), 3000)
+    setTimeout(() => {
+      dispatch(openConfirming())
+      dispatch(makeOrder())
+    }, 3000)
   }
 })
 

@@ -1,6 +1,11 @@
 import { historyTitle } from '../constants/constants'
 
-const order = (state = { orderList: [] }, action) => {
+const order = (state = {
+  orderList: [],
+  isConfirmed: false,
+  isConfirmingOpen: false,
+  isLoading: false,
+}, action) => {
 
   switch (action.type) {
     case 'ADD_TO_ORDER': {
@@ -47,7 +52,7 @@ const order = (state = { orderList: [] }, action) => {
           return {
             ...state,
             orderList: [],
-            isLoading: false
+            isLoading: false,
           }
       }
         
@@ -58,8 +63,18 @@ const order = (state = { orderList: [] }, action) => {
         isConfirmed: action.isConfirmed,
         isLoading: true
       }
-    default:
-      return state
+    case 'OPEN_CONFIRMING':
+      return {
+        ...state,
+        isConfirmingOpen: true
+      }
+    case 'CLOSE_CONFIRMING':
+      return {
+        ...state,
+        isConfirmingOpen: false
+      }
+      default:
+    return state
   }
 }
 

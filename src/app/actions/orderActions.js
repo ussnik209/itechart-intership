@@ -25,4 +25,22 @@ const confirmOrder = (isConfirmed) => {
   }
 }
 
-export { addToOrder, removeFromOrder, makeOrder, confirmOrder }
+const openConfirming = () => {
+  return {
+    type: 'OPEN_CONFIRMING'
+  }
+}
+
+const closeConfirming = () => {
+  return {
+    type: 'CLOSE_CONFIRMING'
+  }  
+}
+export { 
+  addToOrder,
+  removeFromOrder, 
+  makeOrder, 
+  confirmOrder,
+  openConfirming,
+  closeConfirming
+}
