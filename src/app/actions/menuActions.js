@@ -13,7 +13,26 @@ const postMenu = (menu) => {
   }
 }
 
+const requestIngredients = (title) => {
+  return {
+    type: 'REQUEST_INGREDIENTS',
+    isLoading: true,
+    title
+  }
+}
+
+const postIngredients = (title, ingredients) => {
+  return {
+    type: 'POST_INGREDIENTS',
+    isLoading: false,
+    title,
+    ingredients
+  }
+}
+
 export {
   requestMenu,
-  postMenu
+  postMenu,
+  requestIngredients,
+  postIngredients
 }

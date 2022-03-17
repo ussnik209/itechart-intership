@@ -11,16 +11,20 @@ import {
 import Dish from './Dish.jsx'
 
 
-const MenuItem = ({dish, Button}) => (
+const MenuItem = ({dish, Button, ingredients, isLoading, getIngredients}) => (
   <Card sx={{
     width: 1
   }}>
-    <Accordion>
+    <Accordion onChange={(event, isExpended) => {
+      isExpended && getIngredients()
+    }}>
       <AccordionSummary>
         <Dish {...dish}/>
       </AccordionSummary>
       <AccordionDetails>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laudantium eaque impedit odio possimus eveniet sit adipisci cumque recusandae dolore unde laborum libero esse explicabo sunt molestias, eligendi blanditiis! Eum, odit!
+        {
+          ingredients?.join(', ')
+        }
       </AccordionDetails>
     </Accordion>
     <CardActions>

@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import React from 'react'
 
-import MenuItem from './MenuItem.jsx'
+import MenuItemWithIngredients from '../containers/MenuItemContainer'
 import OrderButtonContainer from '../containers/OrderButtonContainer'
 
 import { menuPath as menuApi } from '../constants/constants'
@@ -32,7 +32,7 @@ class Menu extends React.Component {
           .filter(dish => dish.category === 'Pizza')
           .map((dish) => {
             return <Grid item xs={6} key={dish.id}>
-              <MenuItem 
+              <MenuItemWithIngredients 
                 dish={dish} 
                 Button={OrderButtonContainer}
               />
