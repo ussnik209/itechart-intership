@@ -5,7 +5,9 @@ import {
   CardActions, 
   Accordion, 
   AccordionDetails, 
-  AccordionSummary 
+  AccordionSummary, 
+  CircularProgress,
+  Box
 } from '@mui/material'
 
 import Dish from './Dish.jsx'
@@ -22,9 +24,12 @@ const MenuItem = ({dish, Button, ingredients, isLoading, getIngredients}) => (
         <Dish {...dish}/>
       </AccordionSummary>
       <AccordionDetails>
-        {
-          ingredients?.join(', ')
-        }
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          {
+            isLoading ? <CircularProgress />
+            : ingredients?.join(', ')
+          }
+        </Box>
       </AccordionDetails>
     </Accordion>
     <CardActions>
