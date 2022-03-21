@@ -19,7 +19,10 @@ const History = ({history}) => (
           <TwoColDishes dishList={order} />
           {
             id != history.length - 1 
-              ? <Divider /> 
+              ? <Divider sx={{
+                mt: 2,
+                mb: 2
+              }}/> 
               : null
           }
         </div>
