@@ -4,12 +4,14 @@ import menu from './menuReducer'
 import order from './orderReducer'
 import appBar from './appBarReducer'
 import history from './historyReducer'
+import points from './pointsReducer'
 
 const pizzaAppReducer = combineReducers({
   menu,
   order,
   appBar,
-  history
+  history,
+  points
 })
 
 export default pizzaAppReducer

@@ -36,6 +36,7 @@ const closeConfirming = () => {
     type: 'CLOSE_CONFIRMING'
   }  
 }
+
 export { 
   addToOrder,
   removeFromOrder, 
