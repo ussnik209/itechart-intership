@@ -2,6 +2,7 @@ import { historyTitle } from '../constants/constants'
 
 const order = (state = {
   orderList: [],
+  sum: 0,
   isConfirmed: false,
   isConfirmingOpen: false,
   isLoading: false,
@@ -20,7 +21,8 @@ const order = (state = {
           ] : [
             ...state.orderList,
             {...action.dish, number: 1 }
-          ]
+          ],
+          sum: state.sum + action.dish.price
         }
       }
     case 'REMOVE_FROM_ORDER':
@@ -35,7 +37,8 @@ const order = (state = {
 
           ].sort((dishA, dishB) => dishA.id - dishB.id) : [
             ...state.orderList.filter(dish => dish !== action.dish)
-          ]
+          ],
+          sum: state.sum - action.dish.price
         }
       }
     case 'MAKE_ORDER':
@@ -52,6 +55,7 @@ const order = (state = {
         return {
           ...state,
           orderList: [],
+          sum: 0,
           isLoading: false,
         }
       }
