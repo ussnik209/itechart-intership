@@ -1,5 +1,5 @@
 import React from "react"
-import { Grid, Badge } from '@mui/material'
+import { Grid, Badge, FormControlLabel, Checkbox } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 import MenuItem from './MenuItem.jsx'
@@ -9,7 +9,7 @@ import AlertMessage from './common/AlertMessage.jsx'
 import ConfirmingSnackbar from '../containers/ConfirmingSnackbarContainer'
 import Total from './common/Total.jsx'
 
-const Basket = ({order, total, points, totalWithDiscount}) => (
+const Basket = ({order, total, points, totalWithDiscount, isUsingDiscount, toggleUsingDiscount}) => (
   <>
   <Grid container spacing={2} sx={{
     mt: 2
@@ -54,6 +54,15 @@ const Basket = ({order, total, points, totalWithDiscount}) => (
         display: 'flex',
         justifyContent: 'center'
       }}>
+        <FormControlLabel control={
+            <Checkbox 
+              disabled={points === 0}
+              checked={isUsingDiscount} 
+              onChange={toggleUsingDiscount}
+              />
+          } 
+          label='Use bonus points to get discount'
+        />
         <MakeOrderButton />
       </Grid> : <></>
     }

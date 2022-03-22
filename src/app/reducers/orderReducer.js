@@ -6,6 +6,7 @@ const order = (state = {
   isConfirmed: false,
   isConfirmingOpen: false,
   isLoading: false,
+  isUsingDiscount: false
 }, action) => {
 
   switch (action.type) {
@@ -76,6 +77,11 @@ const order = (state = {
       return {
         ...state,
         isConfirmingOpen: false
+      }
+    case 'TOGGLE_USING_DISCOUNT':
+      return {
+        ...state,
+        isUsingDiscount: !state.isUsingDiscount
       }
     default:
       return state

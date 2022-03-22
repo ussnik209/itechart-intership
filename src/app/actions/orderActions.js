@@ -37,11 +37,18 @@ const closeConfirming = () => {
   }  
 }
 
+const toggleUsingDiscount = () => {
+  return {
+    type: 'TOGGLE_USING_DISCOUNT'
+  }  
+}
+
 export { 
   addToOrder,
   removeFromOrder, 
   makeOrder, 
   confirmOrder,
   openConfirming,
-  closeConfirming
+  closeConfirming,
+  toggleUsingDiscount
 }
