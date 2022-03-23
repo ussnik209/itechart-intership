@@ -1,3 +1,4 @@
+console.log("itechart path added")
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
