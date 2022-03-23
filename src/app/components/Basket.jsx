@@ -39,13 +39,13 @@ const Basket = ({order, total, points, totalWithDiscount, isUsingDiscount, toggl
     {
       order.length ? <>
         <Grid item xs={12}>
-          <Total title={'Total price'} total={total} />  
+          <Total title={'Total price'} total={`${total}$`} />  
         </Grid>
         <Grid item xs={12}>
           <Total title={'Points'} total={points}/>
         </Grid>
         <Grid item xs={12}>
-          <Total title={'Price with discount'} total={totalWithDiscount}/>
+          <Total title={'Price with discount'} total={`${totalWithDiscount}$`}/>
         </Grid>   
       </> : <></>
     }
@@ -63,7 +63,7 @@ const Basket = ({order, total, points, totalWithDiscount, isUsingDiscount, toggl
           } 
           label='Use bonus points to get discount'
         />
-        <MakeOrderButton />
+        <MakeOrderButton points={points} isDiscount={isUsingDiscount} />
       </Grid> : <></>
     }
   </Grid>

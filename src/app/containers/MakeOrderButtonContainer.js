@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 
 import OrderButton from '../components/common/TitledLoadingButton.jsx'
 import { makeOrder, confirmOrder, openConfirming } from '../actions/orderActions'
-import { addPoints } from '../actions/pointsActions'
+import { addPoints, subPoints } from '../actions/pointsActions'
 
 
 
@@ -17,19 +17,28 @@ const mapStateToProps = (
 })
 
 const mapDispatchToProps = (
-  dispatch
+  dispatch,
+  ownProps
 ) => ({
   onClick: (order) => {
     dispatch(confirmOrder(true))
 
     setTimeout(() => {
-      const sum =  order.reduce((sum, dish) => {
+      let sum =  order.reduce((sum, dish) => {
         return sum + (dish.price / 10) * dish.number
       }, 0)
 
-      const points = Math.trunc( sum / 10)
+      if (ownProps.isDiscount) {
+        const pointsAvailable = ownProps.points
+        const pointsToSub = pointsAvailable <= sum ? pointsAvailable
+        : pointsAvailable - ( pointsAvailable - Math.trunc(sum)) 
+        
+        dispatch(subPoints(pointsToSub))
+        sum = sum - pointsToSub
+      }
+      const pointsReceived = Math.trunc( sum / 10)
       
-      dispatch(addPoints(points))
+      dispatch(addPoints(pointsReceived))
       
       dispatch(openConfirming())
       dispatch(makeOrder())
