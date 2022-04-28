@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import AppBar from '../containers/AppBarContainer'
+import Layout from '../containers/HeaderContainer'
 import Homepage from '../components/Homepage.jsx'
 import BookPage from '../components/BookPage.jsx'
 import UserPage from '../components/UserPage.jsx'
@@ -12,7 +12,7 @@ import Authorization from '../components/Authorization.jsx'
 
 const Router = () => (
   <Routes>
-    <Route path='' element={<AppBar />}>
+    <Route path='' element={<Layout />}>
       <Route index element={<Homepage />}/>
       <Route path='book' element={<BookPage />}/>
       <Route path='user' element={<UserPage />}/>
