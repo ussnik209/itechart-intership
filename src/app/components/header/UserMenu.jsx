@@ -44,7 +44,7 @@ const UserMenu = () => {
   return (
     <>
     <IconButton size="large" color="inherit" onClick={handleProfileMenuOpen}>
-        <AccountCircleIcon />
+      <AccountCircleIcon />
     </IconButton>
     {renderMenu}
     </>

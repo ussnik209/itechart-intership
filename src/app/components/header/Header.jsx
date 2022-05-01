@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 import { AppBar, Toolbar, Box } from '@mui/material'
 
@@ -13,7 +14,9 @@ const Header = () => (
         display: 'flex',
         justifyContent: 'space-between'
       }}>
-        <Logo content='BooksMyLove' />
+        <NavLink to='/'>
+          <Logo content='BooksMyLove' />
+        </NavLink>
         <SearchBar />
         <UserMenu />
       </Toolbar>
