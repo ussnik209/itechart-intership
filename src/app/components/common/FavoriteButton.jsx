@@ -5,9 +5,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite'
 
 const favoriteButton = {
   position: 'absolute',
-  top: '0px',
-  right: '0px',
-
+  top: '10px',
+  right: '10px',
 }
 
 const FavoriteButton = () => (

@@ -1,15 +1,13 @@
 import React from 'react'
 
-import { Paper, Stack } from '@mui/material'
-
-import BooksItem from '../booksList/BooksItem.jsx'
+import BooksList from '../booksList/BooksList.jsx'
+import SectionHeader from '../common/SectionHeader.jsx'
 
 const Homepage = () => (
-  <Paper>
-    <Stack>
-      <BooksItem></BooksItem>
-    </Stack>
-  </Paper>
+  <>
+    <SectionHeader>All books</SectionHeader>
+    <BooksList></BooksList>
+  </>
 )
 
 export default Homepage

@@ -19,7 +19,8 @@ import {
 const BooksItem = () => (
   <Card sx={{
     display: 'flex',
-    position: 'relative'
+    position: 'relative',
+    borderRadius: '30px'
   }}>
     <ImageContainer imagePath={imagePath}></ImageContainer>
     <CardContent>
