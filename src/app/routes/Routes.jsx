@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import Layout from '../components/Layout.jsx'
 import Homepage from '../components/homepage/Homepage.jsx'
-import BookPage from '../components/BookPage.jsx'
+import BookPage from '../components/bookPage/BookPage.jsx'
 import UserPage from '../components/UserPage.jsx'
 import AddingBook from '../components/AddingBook.jsx'
 import Admin from '../components/Admin.jsx'

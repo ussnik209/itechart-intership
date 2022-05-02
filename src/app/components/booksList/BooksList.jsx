@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Stack } from '@mui/material'
 
-import BooksItem from './BooksItem.jsx'
+import BooksItem from '../bookItem/BooksItem.jsx'
 
 const BooksList = () => (
   <Stack spacing={2}>

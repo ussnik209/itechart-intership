@@ -2,8 +2,7 @@ import React from 'react'
 
 const imageContainer = {
   height: '200px',
-  borderColor: 'green',
-  padding: '16px'
+  // padding: '16px'
 }
 
 const image = {
@@ -13,9 +12,9 @@ const image = {
   display: 'block'
 }
 
-const ImageContainer = ({imagePath}) => (
+const ImageContainer = ({src}) => (
   <div style={imageContainer}>
-    <img src={imagePath} alt="book's cover" style={image} />
+    <img src={src} alt="book's cover" style={image} />
   </div>
 )
 
