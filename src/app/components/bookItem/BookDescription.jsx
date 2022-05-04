@@ -3,7 +3,7 @@ import React from 'react'
 import { Typography } from '@mui/material'
 
 const BookDescription = ({children}) => (
-  <Typography variant='body2'>
+  <Typography variant='body1'>
     {children}
   </Typography>
 )

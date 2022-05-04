@@ -1,3 +1,12 @@
+%right-top-corner {
+  position: absolute !important;
+  top: 0px;
+  right: 0px;
+}
+
+$clear-icon-size: 24px;
+
+
 //cancel link decoration
 a {
   text-decoration: none;
@@ -11,3 +20,13 @@ a {
 body {
   background-color: #d1d1d1;
 }
+
+.favorite-button {
+  @extend %right-top-corner
+}
+
+.clear-button {
+  @extend %right-top-corner;
+  top: calc(50% - 24px);
+}
+

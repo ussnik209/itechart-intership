@@ -22,7 +22,7 @@ const BooksItem = () => (
     borderRadius: '30px',
     padding: '15px'
   }}>
-    <ImageContainer src={imagePath}></ImageContainer>
+    <ImageContainer src={imagePath} height={200}></ImageContainer>
     <CardContent sx={{position: 'relative'}}>
       <BookTitle>Harry Potter</BookTitle>
       <AuthorName>Joanne Rowling</AuthorName>
