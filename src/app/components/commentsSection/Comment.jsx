@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { Stack, Avatar } from '@mui/material'
+import { Grid, Avatar } from '@mui/material'
+
+import CommentInformation from './CommentInformation.jsx'
 
 const Comment = ({src}) => (
-  <Stack>
-    <Avatar 
+  <Grid container spacing={2}>
+    <Grid item xs="auto">
+      <Avatar 
         alt="avatar" 
         src={src}
         sx={{
@@ -12,7 +15,12 @@ const Comment = ({src}) => (
           width: 80
         }} 
       />
-  </Stack>
+    </Grid>
+    <Grid item xs={10}>
+      <CommentInformation author="Author name" publishingTime="8 hours ago" />
+    </Grid>
+    
+  </Grid>
 ) 
 
 export default Comment

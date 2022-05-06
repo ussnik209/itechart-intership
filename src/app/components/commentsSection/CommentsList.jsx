@@ -1,15 +1,21 @@
 import React from 'react'
 
-import { Stack } from '@mui/material'
+import { Grid } from '@mui/material'
 
 import Comment from './Comment.jsx'
 
 const CommentsList = () => (
-  <Stack spacing={4}>
-    <Comment />
-    <Comment />
-    <Comment />
-  </Stack>
+  <Grid container direction="column" spacing={4}>
+    <Grid item>
+      <Comment />
+    </Grid>
+    <Grid item>
+      <Comment />
+    </Grid>
+    <Grid item>
+      <Comment />
+    </Grid>
+  </Grid>
 )
 
 export default CommentsList
