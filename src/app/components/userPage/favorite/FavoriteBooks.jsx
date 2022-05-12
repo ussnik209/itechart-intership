@@ -1,13 +1,27 @@
 import React from 'react'
 
-import { Stack } from '@mui/material'
+import { Grid } from '@mui/material'
 
 import BooksItemShort from './BooksItemShort.jsx'
 
 const FavoriteBooks = () => (
-  <Stack spacing={2}>
-    <BooksItemShort />
-  </Stack>
+  <Grid container spacing={2}>
+    <Grid item xs={4}>
+      <BooksItemShort />
+    </Grid>
+    <Grid item xs={4}>
+      <BooksItemShort />
+    </Grid>
+    <Grid item xs={4}>
+      <BooksItemShort />
+    </Grid>
+    <Grid item xs={4}>
+      <BooksItemShort />
+    </Grid>
+    <Grid item xs={4}>
+      <BooksItemShort />
+    </Grid>
+  </Grid>
 )
 
 export default FavoriteBooks
