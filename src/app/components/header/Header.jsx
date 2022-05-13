@@ -9,7 +9,7 @@ import UserMenu from './UserMenu.jsx'
 
 const Header = () => (
   <Box sx={{ flexGrow: 1 }}>
-    <AppBar>
+    <AppBar position='sticky'>
       <Toolbar sx={{ 
         display: 'flex',
         justifyContent: 'space-between'

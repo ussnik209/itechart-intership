@@ -7,20 +7,20 @@ import BookPage from '../components/bookPage/BookPage.jsx'
 import UserPage from '../components/userPage/UserPage.jsx'
 import AddingBook from '../components/AddingBook.jsx'
 import Admin from '../components/Admin.jsx'
-import Registration from '../components/Registration.jsx'
-import Authorization from '../components/Authorization.jsx'
+import Registration from '../components/registration/Registration.jsx'
+import Authorization from '../components/authorization/Authorization.jsx'
 
 const Router = () => (
   <Routes>
-    <Route path='' element={<Layout />}>
+    <Route path='/' element={<Layout />}>
       <Route index element={<Homepage />}/>
       <Route path='book' element={<BookPage />}/>
       <Route path='user' element={<UserPage />}/>
       <Route path='add-book' element={<AddingBook />}/>
-      <Route path='admin' element={<Admin />}/>
-      <Route path='sign-up' element={<Registration />}/>
-      <Route path='sign-in' element={<Authorization />}/>      
+      <Route path='admin' element={<Admin />}/>     
     </Route>
+    <Route path='sign-up' element={<Registration />}/>
+    <Route path='sign-in' element={<Authorization />}/>
   </Routes>
 )
 
