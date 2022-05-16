@@ -18,7 +18,7 @@ const Authorization = () => (
         <Container   className='sign-content'>
           <Stack maxWidth='sm' spacing={12}>
             <LoginForm />
-            <AuthorizationFooter linkContent='sign up' linkTo='/sign-up'>Lorem ipsum, dolor sit amet consectetur adipisicing </AuthorizationFooter>
+            <AuthorizationFooter linkContent='sign up' linkTo='/sign-up'>Haven't an account yet?  </AuthorizationFooter>
           </Stack>
         </Container>
       </Grid>

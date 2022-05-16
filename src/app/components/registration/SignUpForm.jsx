@@ -16,9 +16,11 @@ const SignUpForm = () => (
     <Stack spacing={6}>
       <Stack spacing={2}>
         <Subtitle>Sign up your account</Subtitle>
+        <UserInput label='Name'/>
+        <UserInput label='Surname'/>
         <UserInput label='Email Address'/>
         <UserInput label='Password'/>
-        <UserInput label='Password again'/>
+        <UserInput label='Confirm password'/>
       </Stack>
       <Stack spacing={2}>
         <FormControlLabel control={<Checkbox />} label='Remember me'/>
