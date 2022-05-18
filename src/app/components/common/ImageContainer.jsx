@@ -11,7 +11,7 @@ const ImageContainer = ({src, height}) => (
   <div style={{height}}>
     <img 
       src={src} 
-      alt="book's cover" 
+      alt="Image" 
       style={image} 
     />
   </div>
