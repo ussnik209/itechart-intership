@@ -6,7 +6,7 @@ import Homepage from '../components/homepage/Homepage.jsx'
 import BookPage from '../components/bookPage/BookPage.jsx'
 import UserPage from '../components/userPage/UserPage.jsx'
 import AddingBook from '../components/addingBook/AddingBook.jsx'
-import Admin from '../components/Admin.jsx'
+import Admin from '../components/admin/Admin.jsx'
 import Registration from '../components/registration/Registration.jsx'
 import Authorization from '../components/authorization/Authorization.jsx'
 
